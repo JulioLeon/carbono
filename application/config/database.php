@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'galadriel',
-	'password' => 'galadrieldb',
-	'database' => 'carbono',
+	'hostname' => 'multiglass-plastic.com',
+	'username' => 'multigla',
+	'password' => '3H5+Jl47Ftms-W',
+	'database' => 'multigla_carbono',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
