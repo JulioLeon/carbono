@@ -27,7 +27,7 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="#"><b>
-      <img src="<?php echo $base_url; ?>uploads/<?= $logo;?>" width="60%" height="70px">
+      <img src="<?php echo $base_url; ?>uploads/<?= $logo;?>" width="360px" height="140px">
     </b></a>
   </div>
   <!-- /.login-logo -->
