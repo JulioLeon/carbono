@@ -67,3 +67,4 @@ $(document).ajaxStart(function() { Pace.restart(); });
 <script type="text/javascript">
 $(document).ready(function () { setTimeout(function() {$( ".alert-dismissable" ).fadeOut( 1000, function() {});}, 10000); });
 </script>
+ 

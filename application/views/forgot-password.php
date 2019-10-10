@@ -32,7 +32,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Forgot Password</p>
+    <p class="login-box-msg">Recuperar Contraseña</p>
 	   <div class="text-danger tex-center"><?php echo $this->session->flashdata('failed'); ?></div>
          
     
@@ -44,14 +44,14 @@
       <div class="row">
         <!-- /.col -->
         <div class="col-md-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Enviar</button>
         </div>
         <!-- /.col -->
       </div>
        
 	  
     </form>
-    <a class="pull-right" href="../<?php $base_url;?>">Click here to Sign in</a><br>
+    <a class="pull-right" href="../<?php $base_url;?>">Click para ingresar</a><br>
 
   </div>
   <!-- /.login-box-body -->

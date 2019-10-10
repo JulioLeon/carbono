@@ -64,9 +64,9 @@
           </form> 
           </li> -->
           <!-- User Account Menu -->
-            
+            <!-- deshabilita opcion idioma-->
             <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" style="display: none;">
                     <?= $this->session->userdata('language'); ?>
             </a>
             <ul class="dropdown-menu " style="width: auto;height: auto;">
@@ -111,19 +111,20 @@
 
                 <p>
                  <?php print ucfirst($this->session->userdata('inv_username')); ?>
-                  <small>Year <?=date("Y");?></small>
+                  <small><?=date("d / m / Y");?></small>
                 </p>
               </li>
               <!-- Menu Body -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="<?php echo $base_url; ?>logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo $base_url; ?>logout" class="btn btn-default btn-flat">Cerrar Sesión</a>
                 </div>
               </li>
             </ul>
           </li>
-          <li class="hidden-xs">
+          <!-- Deshabilitó opcion de Skins -->
+          <li class="hidden-xs" style="display: none;" >            
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>

@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b><?php  echo $SITE_TITLE;?> -v<?= $VERSION;?></b> 
     </div>
-    <strong>Copyright &copy; 2019 All rights reserved.</strong>
+    <strong>Copyright &copy; 2019 Derechos Reservados - Carbono inc.</strong>
   </footer>
 
   <!-- Control Sidebar -->
