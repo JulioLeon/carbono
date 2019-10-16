@@ -269,6 +269,9 @@
             <?php if($CI->permissions('print_labels')) { ?>
             <li class="labels-active-li"><a href="<?php echo $base_url; ?>items/labels"><i class="fa fa-barcode "></i> <span><?= $this->lang->line('print_labels'); ?></span></a></li>
             <?php } ?>
+            <?php if($CI->permissions('print_labels')) { ?>
+            <li class="labels-active-li"><a href="<?php echo $base_url; ?>almacen"><i class="glyphicon glyphicon-folder-close"></i> <span>Almacen</span></a></li>
+            <?php } ?>
           </ul>
         </li>
         <?php } ?>
