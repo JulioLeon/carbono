@@ -1,5 +1,6 @@
 <?php
-
+$lang['copy']		    				=		'copiar';
+$lang['print']  						=		'imprimir';
 $lang['dashboard']						=		'Tablero';
 $lang['sales']							=		'Ventas';
 $lang['new_sales']						=		'Nuevas ventas';

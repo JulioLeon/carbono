@@ -39,10 +39,10 @@
     <section class="content-header">
       <h1>
         <?=$page_title;?>
-        <small>Overall Information on Single Screen</small>
+        <small>Información general en pantalla única</small>
       </h1>
       <ol class="breadcrumb">
-        <li class="active"><i class="fa fa-dashboard"></i> Home</li>
+        <li class="active"><i class="fa fa-dashboard"></i> Inicio</li>
       </ol>
     </section><br/>
     <div class="col-md-12">

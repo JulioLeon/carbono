@@ -19,7 +19,7 @@
     <section class="content-header">
       <h1>
         <?=$page_title;?>
-        <small>View/Search Sold Items</small>
+        <small>Ver / Buscar Articulos</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -123,17 +123,17 @@ $(document).ready(function() {
         buttons: [
             {
                 className: 'btn bg-red color-palette btn-flat hidden delete_btn pull-left',
-                text: 'Delete',
+                text: 'Borrar',
                 action: function ( e, dt, node, config ) {
                     multi_delete();
                 }
             },
-            { extend: 'copy', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
+            { extend: 'copy', className: 'btn bg-teal color-palette btn-flat',text: 'Copiar',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
             { extend: 'excel', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
             { extend: 'pdf', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
-            { extend: 'print', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
+            { extend: 'print', className: 'btn bg-teal color-palette btn-flat',text:'Imprimir',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
             { extend: 'csv', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
-            { extend: 'colvis', className: 'btn bg-teal color-palette btn-flat',text:'Columns' },  
+            { extend: 'colvis', className: 'btn bg-teal color-palette btn-flat',text:'Ver' },  
 
             ]
         },
@@ -143,8 +143,11 @@ $(document).ready(function() {
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.
         "responsive": true,
-        language: {
-            processing: '<div class="text-primary bg-primary" style="position: relative;z-index:100;overflow: visible;">Processing...</div>'
+        // language: {
+        //     processing: '<div class="text-primary bg-primary" style="position: relative;z-index:100;overflow: visible;">Processing...</div>'
+        // },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"           
         },
         // Load data for the table's content from an Ajax source
         "ajax": {
