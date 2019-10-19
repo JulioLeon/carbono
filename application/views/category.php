@@ -26,7 +26,7 @@
         <small>Add/Update Category</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="<?php echo $base_url; ?>category/view"><?= $this->lang->line('categories_list'); ?></a></li>
         <li class="active"><?=$page_title;?></li>
       </ol>

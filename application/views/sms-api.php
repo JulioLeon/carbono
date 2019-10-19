@@ -23,7 +23,7 @@ $sms_status = $this->db->query("select sms_status from db_company where id=1")->
         <small>Add/Update SMS API</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i>Inicio</a></li>
         <li class="active"> <?= $this->lang->line('sms_api'); ?></li>
       </ol>
     </section>

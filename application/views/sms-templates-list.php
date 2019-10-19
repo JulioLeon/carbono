@@ -21,7 +21,7 @@
         <small>View/Search Template</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li class="active"><?= $this->lang->line('sms_templates_list'); ?></li>
         
       </ol>

@@ -29,7 +29,7 @@
         <small>Add/Update Template</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="<?php echo $base_url; ?>templates/sms"><?= $this->lang->line('sms_templates_list'); ?></a></li>
         <li><a href="<?php echo $base_url; ?>templates/sms_new"><?= $this->lang->line('add_template'); ?></a></li>
         <li class="active"><?= $this->lang->line('sms_template'); ?></li>

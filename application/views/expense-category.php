@@ -25,7 +25,7 @@
         <small>Add/Update <?= $page_title; ?></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="<?php echo $base_url; ?>expense/category"><?= $this->lang->line('expense_category_list'); ?></a></li>
         <li class="active"><?= $page_title; ?></li>
       </ol>

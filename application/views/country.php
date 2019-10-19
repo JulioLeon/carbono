@@ -25,7 +25,7 @@
         <small>Add/Update Country</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="<?php echo $base_url; ?>country">Countrys List</a></li>
         <li class="active"><?= $this->lang->line('country'); ?></li>
       </ol>

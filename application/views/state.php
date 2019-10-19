@@ -26,7 +26,7 @@ if(!isset($state)){
         <small>Add/Update State</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="<?php echo $base_url; ?>state"><?= $this->lang->line('states_list'); ?></a></li>
         <li class="active"><?= $this->lang->line('state'); ?></li>
       </ol>

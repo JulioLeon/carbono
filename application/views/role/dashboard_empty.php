@@ -36,7 +36,7 @@
         <small>Overall Information on Single Screen</small>
       </h1>
       <ol class="breadcrumb">
-        <li class="active"><i class="fa fa-dashboard"></i> Home</li>
+        <li class="active"><i class="fa fa-dashboard"></i> Inicio</li>
       </ol>
     </section><br/>
     <div class="col-md-12">

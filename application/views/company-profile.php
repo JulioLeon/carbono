@@ -22,7 +22,7 @@
         <small><?= $this->lang->line('add_or_update'); ?> <?= $this->lang->line('company_profile'); ?></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li class="active"><?= $this->lang->line('company_profile'); ?></li>
       </ol>
     </section>

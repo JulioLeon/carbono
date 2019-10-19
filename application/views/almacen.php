@@ -45,7 +45,8 @@
               <h3 class="box-title"><?=$page_title;?></h3>
               <!-- Aqui el primero -->
               <div class="box-tools">                
-                <button data-toggle="modal"  data-toggle="modal" data-target="#modaladdalmacen" class="btn btn-warning"><i class="fa fa-plus "></i> Nuevo Almacén</button>
+                <!-- <button data-toggle="modal"  data-toggle="modal" data-target="#modaladdalmacen" class="btn btn-warning"><i class="fa fa-plus "></i> Nuevo Almacén</button> -->
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal"><i class="fa fa-plus "></i>Nuevo Almacén</button>
               </div>
 
               <div class="card-header " style=" background-color: #00a65a;">           
@@ -102,80 +103,31 @@
 
 
 <!-- Agregando Modales -->
- <!-- Modal Agredar almacen -->
- <div class="modal fade" id="modaladdalmacen"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Almacén</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
         </div>
-        <div class="modal-body">                                                       
-              <!-- formulario -->
-              <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Código</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="codalm">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Almacén</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="nomalm">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Local </label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="localm">
-                  </div>
-                </div>
-              </div>
-                      
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
-                  <div class="col-sm-8">
-                    <select class="custom-select" id="estalm">
-                        <option selected>--[ seleccione estado ]--</option>
-                        <option value="1">Activo</option>
-                        <option value="0">Inactivo</option>                        
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                    <div class="form-group row">
-                      <label for="inputPassword" class="col-sm-3 col-form-label">Descripción </label>
-                      <div class="col-sm-8">
-                        <textarea  id="desalm" name="desalm" class="form-control"></textarea>
-                      </div>
-                    </div>
-            </div>
-            </div>
-
-            <small id="passwordHelpBlock" class="form-text text-muted">
-              ( * ) Dato necesario
-            </small>                      
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button  type="button" class="btn btn-primary">Agregar Almacén</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+
         </div>
       </div>
+      
     </div>
   </div>
-  </div>
-
-    <!-- Final modal -->
+ 
+ 
 
 <!-- SOUND CODE -->
 <?php include"comman/code_js_sound.php"; ?>

@@ -29,7 +29,7 @@
         <small>Enter Valid Information</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="<?php echo $base_url; ?>warehouse"><?= $this->lang->line('warehouse_list'); ?></a></li>
         <li class="active"><?= $this->lang->line('warehouse'); ?></li>
       </ol>
