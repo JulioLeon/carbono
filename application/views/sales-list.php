@@ -144,7 +144,7 @@ $(document).ready(function() {
         "order": [], //Initial no order.
         "responsive": true,
         // language: {
-        //     processing: '<div class="text-primary bg-primary" style="position: relative;z-index:100;overflow: visible;">Processing...</div>'
+        //     "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"   
         // },
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"           

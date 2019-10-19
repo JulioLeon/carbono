@@ -199,17 +199,17 @@ $(document).ready(function() {
         buttons: [
             {
                 className: 'btn bg-red color-palette btn-flat hidden delete_btn pull-left',
-                text: 'Delete',
+                text: 'Borrar',
                 action: function ( e, dt, node, config ) {
                     multi_delete();
                 }
             },
-            { extend: 'copy', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [0,1,2,3]} },
+            { extend: 'copy', className: 'btn bg-teal color-palette btn-flat',text: 'Copiar',exportOptions: { columns: [0,1,2,3]} },
             { extend: 'excel', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [0,1,2,3]} },
             { extend: 'pdf', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [0,1,2,3]} },
-            { extend: 'print', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [0,1,2,3]} },
+            { extend: 'print', className: 'btn bg-teal color-palette btn-flat',text:'Imprimir',exportOptions: { columns: [0,1,2,3]} },
             { extend: 'csv', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [0,1,2,3]} },
-            { extend: 'colvis', className: 'btn bg-teal color-palette btn-flat',text:'Columns' },  
+            { extend: 'colvis', className: 'btn bg-teal color-palette btn-flat',text:'Ver' },  
 
             ]
         },
