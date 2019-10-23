@@ -234,7 +234,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button  onclick= "agregar_almacen();" type="button" class="btn btn-primary">Agregar Almacén</button>
+          <button  onclick= "actualizar_almacen();" type="button" class="btn btn-primary">Actualizar Almacén</button>
         </div>
       </div>
       </div>
@@ -305,7 +305,7 @@ $(document).ready(function() {
           return "<div class='btn-group' title='Ver acciones'> " +
 		      "<a class='btn btn-primary btn-o dropdown-toggle' data-toggle='dropdown' href='#' aria-haspopup='true' aria-expanded='false'>Acción <span class='caret'></span></a>" +
           "<ul role='menu' class='dropdown-menu dropdown-light pull-right'>" + 
-          "<li><a title='Editar registro ?' href='#' onclick=\"editarAlmacen('"+data.cod_alm+"','" + data.nom_alm + "');\"   data-toggle='modal' data-target='#updatealmacen'>" +
+          "<li><a title='Editar registro ?' href='#' onclick=\"editarAlmacen('"+data.cod_alm+"','" + data.nom_alm + "','" + data.sucursal_id + "','" + data.estado + "');\"   data-toggle='modal' data-target='#updatealmacen'>" +
           "<i class='fa fa-fw fa-edit text-blue'></i>Editar	</a>	</li>" + 
           "<li><a style='cursor:pointer' title='Borrar registro ?' onclick='delete_items(999)'>	<i class='fa fa-fw fa-trash text-red'></i>Borrar</a></li></ul>" + 
 	        "</div>";

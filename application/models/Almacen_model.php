@@ -28,5 +28,13 @@ class Almacen_model extends CI_Model {
         $query = $this->db->query("SELECT @outalmacen as rpta;");
         return $query->result();
     }
+
+    public function actualiza_almacen($codigo,$nombre,$tienda,$estado)
+    {
+        $opc = 3;
+        $this->db->query(" CALL SP_ALMACEN($opc, '".$codigo."','".$nombre."','".$tienda."','".$estado."',@outalmacen);");
+        $query = $this->db->query("SELECT @outalmacen as rpta;");
+        return $query->result();
+    }
     
 }

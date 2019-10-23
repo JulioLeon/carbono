@@ -56,4 +56,14 @@ class Almacen extends MY_Controller {
 		echo json_encode($consulta[0]->rpta);
 	}
 
+	public function upd_almacen()
+	{
+		$codigo = $this->input->post('codigo');
+		$nombre = $this->input->post('nombre');
+		$tienda = $this->input->post('tienda');
+		$estado = $this->input->post('estado');
+		$consulta = $this->Almacen_model->actualiza_almacen($codigo,$nombre,$tienda,$estado);		
+		echo json_encode($consulta[0]->rpta);
+	}
+
 }
