@@ -35,7 +35,7 @@ $('#save,#update').click(function (e) {
 	
     if(flag==false)
     {
-		toastr["warning"]("You have Missed Something to Fillup!");
+		toastr["warning"]("Te ha faltado un dato necesario!");
 		return;
     }
 
@@ -44,7 +44,7 @@ $('#save,#update').click(function (e) {
     if(this_id=="save")  //Save start
     {
 
-					if(confirm("Do You Wants to Save Record ?")){
+					if(confirm("¿Desea guardar el registro?")){
 						e.preventDefault();
 						data = new FormData($('#items-form')[0]);//form name
 						/*Check XSS Code*/
@@ -69,7 +69,7 @@ $('#save,#update').click(function (e) {
 							}
 							else if(result=="failed")
 							{
-							   toastr["error"]("Sorry! Failed to save Record.Try again!");
+							   toastr["error"]("Hemos fallado al guardar el registro. Intenta de nuevo!");
 							   //	return;
 							}
 							else
@@ -92,7 +92,7 @@ $('#save,#update').click(function (e) {
 	else if(this_id=="update")  //Save start
     {
 				
-					if(confirm("Do You Wants to Update Record ?")){
+					if(confirm("¿Desea actualizar el registro?")){
 						e.preventDefault();
 						data = new FormData($('#items-form')[0]);//form name3
 						/*Check XSS Code*/
@@ -115,7 +115,7 @@ $('#save,#update').click(function (e) {
 							}
 							else if(result=="failed")
 							{
-							   toastr["error"]("Sorry! Failed to save Record.Try again!");
+							   toastr["error"]("Hemos fallado al guardar el registro. Intenta de nuevo!");
 							}
 							else
 							{
@@ -153,7 +153,7 @@ function update_status(id,status)
 	$.post("items/update_status",{id:id,status:status},function(result){
 		if(result=="success")
 				{
-					 toastr["success"]("Status Updated Successfully!");
+					 toastr["success"]("Estado actualizado!");
 				  //alert("Status Updated Successfully!");
 				  success.currentTime = 0; 
 				  success.play();
@@ -174,7 +174,7 @@ function update_status(id,status)
 				  return false;
 				}
 				else if(result=="failed"){
-					toastr["error"]("Failed to Update Status.Try again!");
+					toastr["error"]("Hemos fallado al actualizar el estado. Intente de nuevo!");
 				  failed.currentTime = 0; 
 				  failed.play();
 
@@ -194,17 +194,17 @@ function update_status(id,status)
 function delete_items(q_id)
 {
 	
-   if(confirm("Do You Wants to Delete Record ?")){
+   if(confirm("¿Desea eliminar el registro?")){
    	$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
     $.post("items/delete_items",{q_id:q_id},function(result){
    //alert(result);return;
 	   if(result=="success")
 				{
-				  toastr["success"]("Record Deleted Successfully!");
+				  toastr["success"]("Registro a sido borrado correctamente!");
 				  $('#example2').DataTable().ajax.reload();
 				}
 				else if(result=="failed"){
-				  toastr["error"]("Failed to Delete .Try again!");
+				  toastr["error"]("¡Error al borrar!. El registro está siendo usado");
 				}
 				else{
 				   toastr["error"](result);
@@ -219,7 +219,7 @@ function multi_delete(){
 	//var base_url=$("#base_url").val().trim();
     var this_id=this.id;
     
-		if(confirm("Are you sure ?")){
+		if(confirm("Está seguro de borrar todos los registros ?")){
 			$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
 			$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 			
@@ -236,7 +236,7 @@ function multi_delete(){
   //alert(result);return;
 				if(result=="success")
 				{
-					toastr["success"]("Record Deleted Successfully!");
+					toastr["success"]("Registro a sido borrado correctamente!");
 					success.currentTime = 0; 
 				  	success.play();
 					$('#example2').DataTable().ajax.reload();
@@ -245,7 +245,7 @@ function multi_delete(){
 				}
 				else if(result=="failed")
 				{
-				   toastr["error"]("Sorry! Failed to save Record.Try again!");
+				   toastr["error"](" Hemos fallado al grabar el registro. Intente de nuevo!");
 				   failed.currentTime = 0; 
 				   failed.play();
 				}
