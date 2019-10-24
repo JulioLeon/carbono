@@ -46,6 +46,12 @@
         <input type="password" class="form-control" placeholder="Contraseña" id="pass" name="pass">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="form-group has-feedback">
+        <select  id="sucursal" class="form-control">
+          
+         
+        </select>
+      </div>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -91,8 +97,28 @@
   });
 </script>
 <script type="text/javascript" >
-$(function($) { // this script needs to be loaded on every page where an ajax POST may happen
-    $.ajaxSetup({ data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }  }); });
+$(function($) {
+   // this script needs to be loaded on every page where an ajax POST may happen
+    $.ajaxSetup({ data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }  }); 
+
+    carga_sucursal();
+
+    });
+
+ function carga_sucursal() {
+   $.ajax({
+     type: "post",
+     url: "Login/loadsucu",
+     data: {},
+ 
+     success: function (response) {
+                $("#sucursal").append(response);
+               
+      }
+   });
+ }
+
+
 </script>
 
 </body>

@@ -12,6 +12,18 @@ class Login_model extends CI_Model
 		parent::__construct();
 	}
 
+	//load sucursales 
+    public function loadsucursal()
+	{
+		$query = $this->db->query("CALL SP_SUCURSAL()");
+
+		return $query->result();
+		
+	}
+
+
+
+
 	public function verify_credentials($username,$password)
 	{
 		//Filtering XSS and html escape from user inputs 

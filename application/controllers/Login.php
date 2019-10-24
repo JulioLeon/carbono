@@ -12,6 +12,21 @@ class Login extends MY_Controller {
 		$data = $this->data;
 		$this->load->view('login',$data);
 	}
+
+	 //  agregando seleccion de sucursal
+	 
+	  public function loadsucu()
+	  {
+		$this->load->model('login_model');//Model
+		$query = $this->login_model->loadsucursal();
+		echo "<option value=''>[------ Seleccione sucursal ------]</option>";
+		foreach ($query as $row) {
+			echo "<option value='".$row->id_sucursal."'>".$row->nom_suc."</option>";
+		}
+		
+	  }
+
+
 	public function verify()
 	{
 		$this->form_validation->set_rules('username','Username','required');
