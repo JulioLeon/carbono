@@ -19,6 +19,16 @@
             <a href="#" class="btn navbar-btn btn-success dropdown-toggle "   data-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-plus"></i> 
             </a>
+            <?php  
+              if ($this->session->userdata('sucursal')=="") {
+                
+              }
+             else{
+            ?>
+            <a href="#" class="btn navbar-btn btn-warning   "  style="margin-left: 5px;">
+                <i class="glyphicon glyphicon-hand-right"></i> <?= $this->session->userdata('sucursal') ?>
+            </a>
+             <?php }?>
             <ul class="dropdown-menu" >
                   <?php if($CI->permissions('sales_add')) { ?>
                   <li class="border_bottom">

@@ -21,7 +21,7 @@ class Login extends MY_Controller {
 		$query = $this->login_model->loadsucursal();
 		echo "<option value=''>[------ Seleccione sucursal ------]</option>";
 		foreach ($query as $row) {
-			echo "<option value='".$row->id_sucursal."'>".$row->nom_suc."</option>";
+			echo "<option value='".$row->id_sucursal."->".$row->nom_suc."'>".$row->nom_suc."</option>";
 		}
 		
 	  }
@@ -29,29 +29,61 @@ class Login extends MY_Controller {
 
 	public function verify()
 	{
-		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('pass','Password','required');
-		$this->form_validation->set_rules('sucursal','sucursal','required');
-		if($this->form_validation->run()==FALSE){
-		$this->form_validation->set_rules('sucursal','sucursal','required');
-			$this->session->set_flashdata('failed', 'Porfavor se requiere todo los campos digitados!');
-			redirect('login');
-		}
-		else{
+		// $this->form_validation->set_rules('username','Username','required');
+		// $this->form_validation->set_rules('pass','Password','required');
+		// $this->form_validation->set_rules('sucursal','sucursal','required');
+		// if($this->form_validation->run()==FALSE){
+		// // $this->form_validation->set_rules('sucursal','sucursal','required');
+		// 	$this->session->set_flashdata('failed', 'Porfavor se requiere seleccionar todos los campos!');
+		// 	redirect('login');
+		// }
+		// else{
 
 			$username=$this->input->post('username');
 			$password=$this->input->post('pass');
 			$sucursal=$this->input->post('sucursal');
-			print_r($sucursal);
+			$partes = explode("->",$sucursal);
+			
 			$this->load->model('login_model');//Model
-			if($this->login_model->verify_credentials($username,$password)){//Model->Method
-				redirect(base_url().'dashboard');
+			if($this->login_model->verify_credentials($username,$password))
+			{
+				//Model->Method
+				 // inicio mis cambios para al acceso de sucursal
+			
+				if($this->session->userdata('role_id')!=1)
+				{
+
+					if ($partes[1]=="") {
+						session_destroy();
+					    redirect('login');
+					}
+					else{
+						$data = array 
+						(
+						'sucursal'     => $partes[1]
+						);
+						$this->session->set_userdata($data);
+					   
+						redirect(base_url().'dashboard');
+					}
+				 }else{
+					$this->session->set_userdata("sucursal")=="";
+					redirect(base_url().'dashboard');
+				 }
+			}else{
+
+			redirect('login');
 			}
-			else{
-				$this->session->set_flashdata('failed', 'Usuario / contraseña invalida.');
-				redirect('login');
-			}			
-		}
+
+
+
+				
+			
+			// else{
+			// 	$this->session->set_flashdata('failed', 'Usuario / contraseña invalida.');
+			// 	redirect('login');
+			// }			
+		
 	}
 	public function forgot_password(){
 		if($this->session->userdata('logged_in')==1){ redirect(base_url().'dashboard','refresh');	}
