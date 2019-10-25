@@ -31,21 +31,24 @@ class Login extends MY_Controller {
 	{
 		$this->form_validation->set_rules('username','Username','required');
 		$this->form_validation->set_rules('pass','Password','required');
+		$this->form_validation->set_rules('sucursal','sucursal','required');
 		if($this->form_validation->run()==FALSE){
-			$this->session->set_flashdata('failed', 'Please enter username & password!');
+		$this->form_validation->set_rules('sucursal','sucursal','required');
+			$this->session->set_flashdata('failed', 'Porfavor se requiere todo los campos digitados!');
 			redirect('login');
 		}
 		else{
 
 			$username=$this->input->post('username');
 			$password=$this->input->post('pass');
-
+			$sucursal=$this->input->post('sucursal');
+			print_r($sucursal);
 			$this->load->model('login_model');//Model
 			if($this->login_model->verify_credentials($username,$password)){//Model->Method
 				redirect(base_url().'dashboard');
 			}
 			else{
-				$this->session->set_flashdata('failed', 'Invalid username & password.');
+				$this->session->set_flashdata('failed', 'Usuario / contraseña invalida.');
 				redirect('login');
 			}			
 		}

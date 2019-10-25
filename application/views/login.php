@@ -47,9 +47,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <select  id="sucursal" class="form-control">
-          
-         
+        <select  id="sucursal" name="sucursal" class="form-control">
         </select>
       </div>
       <div class="row">
