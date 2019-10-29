@@ -474,7 +474,10 @@
       "searching": false,
       "ordering": true,
       "info": true,
-      "autoWidth": false
+      "autoWidth": false,
+      "language": {
+         "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
+     }
     });
   });
 </script>

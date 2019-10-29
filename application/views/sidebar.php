@@ -13,7 +13,7 @@
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">Barra de navegación</span>
       </a>
       <div class="btn-group hidden-xs">
             <a href="#" class="btn navbar-btn btn-success dropdown-toggle "   data-toggle="dropdown" aria-expanded="false">
@@ -143,7 +143,7 @@
         </div>
         <div class="pull-left info">
           <p><?php print ucfirst($this->session->userdata('inv_username')); ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fa fa-circle text-success"></i> Activo</a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -259,7 +259,7 @@
             <?php if($CI->permissions('brand_add')) { ?>
             <li class="brand-active-li"><a href="<?php echo $base_url; ?>brands/add"><i class="fa fa-plus-square-o "></i> <span><?= $this->lang->line('new_brand'); ?></span>
             <span class="pull-right-container">
-                  <small class="label pull-right bg-green">new</small>
+                  <small class="label pull-right bg-green">nuevo</small>
                 </span>
               </a></li>
             <?php } ?>
@@ -269,6 +269,7 @@
             <?php if($CI->permissions('print_labels')) { ?>
             <li class="labels-active-li"><a href="<?php echo $base_url; ?>items/labels"><i class="fa fa-barcode "></i> <span><?= $this->lang->line('print_labels'); ?></span></a></li>
             <?php } ?>
+            <!-- Validar permisos nuevos para lista de almacenes -->
             <?php if($CI->permissions('print_labels')) { ?>
             <li class="labels-active-li"><a href="<?php echo $base_url; ?>almacen"><i class="glyphicon glyphicon-folder-close"></i> <span>Almacen</span></a></li>
             <?php } ?>
@@ -394,9 +395,9 @@
               <a href="<?php echo $base_url; ?>roles/view">
                 <i class="fa fa-list "></i> 
                 <span><?= $this->lang->line('roles_list'); ?></span>
-                <span class="pull-right-container">
+                <!-- <span class="pull-right-container">
                   <small class="label pull-right bg-green">new</small>
-                </span>
+                </span> -->
               </a>
             </li>
             <?php } ?>
@@ -441,7 +442,11 @@
             <?php if($CI->permissions('site_edit')) { ?>
             <li class="site-settings-active-li"><a href="<?php echo $base_url; ?>site"><i class="fa fa-shield  "></i> <span><?= $this->lang->line('site_settings'); ?></span></a></li>
             <?php } ?>
-
+            
+            <!-- Validar permisos nuevos para lista de locales -->
+            <?php if($CI->permissions('tax_view')) { ?>
+            <li class="tax-active-li  tax-list-active-li"><a href="<?php echo $base_url; ?>sucursal"><i class="fa fa-institution  "></i> <span>Lista de Sucursales</span></a></li>
+            <?php } ?>
             
             <?php if($CI->permissions('tax_view')) { ?>
             <li class="tax-active-li  tax-list-active-li"><a href="<?php echo $base_url; ?>tax"><i class="fa fa-percent  "></i> <span><?= $this->lang->line('tax_list'); ?></span></a></li>
@@ -450,18 +455,20 @@
             <li class="units-list-active-li unit-active-li"><a href="<?php echo $base_url; ?>units/"><i class="fa fa-list "></i> <span><?= $this->lang->line('units_list'); ?></span></a></li>
             <?php } ?>
             <?php if($CI->permissions('currency_view')) { ?>
-            <li class="currency-view-active-li currency-active-li"><a href="<?php echo $base_url; ?>currency/view"><i class="fa fa-gg "></i> <span><?= $this->lang->line('currency_list'); ?></span>
-            <span class="pull-right-container">
+            <li class="currency-view-active-li currency-active-li"><a href="<?php echo $base_url; ?>currency/view"><i class="fa fa-gg "></i> <span><?= $this->lang->line('currencies_list'); ?></span>
+                <!-- <span class="pull-right-container">
                   <small class="label pull-right bg-green">new</small>
-                </span></a></li>
+                </span> -->
+              </a></li>
             <?php } ?>
             <li class="change-pass-active-li"><a href="<?php echo $base_url; ?>users/password_reset"><i class="fa fa-lock "></i> <span><?= $this->lang->line('change_password'); ?></span></a></li>
 
             <?php if($CI->permissions('database_update')) { ?>
             <li class="database_updater-active-li"><a href="<?php echo $base_url; ?>/updates"><i class="fa fa-circle-o-notch "></i> <span><?= $this->lang->line('database_updater'); ?></span>
-            <span class="pull-right-container">
+                <!-- <span class="pull-right-container">
                   <small class="label pull-right bg-green">new</small>
-                </span></a></li>
+                </span> -->
+              </a></li>
             <?php } ?>
 
             <?php if($CI->permissions('database_backup')) { ?>

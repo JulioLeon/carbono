@@ -31,6 +31,8 @@ class Login extends MY_Controller {
 	{
 		$this->form_validation->set_rules('username','Username','required');
 		$this->form_validation->set_rules('pass','Password','required');
+
+     
 		$this->form_validation->set_rules('sucursal','sucursal','required');
 		if($this->form_validation->run()==FALSE){
 		$this->form_validation->set_rules('sucursal','sucursal','required');
@@ -41,10 +43,13 @@ class Login extends MY_Controller {
 
 			$username=$this->input->post('username');
 			$password=$this->input->post('pass');
+
 			$sucursal=$this->input->post('sucursal');
-			print_r($sucursal);
+			// print_r($sucursal);
 			$this->load->model('login_model');//Model
 			if($this->login_model->verify_credentials($username,$password)){//Model->Method
+
+				
 				redirect(base_url().'dashboard');
 			}
 			else{
