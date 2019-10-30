@@ -29,15 +29,8 @@ class Login extends MY_Controller {
 
 	public function verify()
 	{
-		// $this->form_validation->set_rules('username','Username','required');
-		// $this->form_validation->set_rules('pass','Password','required');
-		// $this->form_validation->set_rules('sucursal','sucursal','required');
-		// if($this->form_validation->run()==FALSE){
-		// // $this->form_validation->set_rules('sucursal','sucursal','required');
-		// 	$this->session->set_flashdata('failed', 'Porfavor se requiere seleccionar todos los campos!');
-		// 	redirect('login');
-		// }
-		// else{
+		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('pass','Password','required');
 
      
 		$this->form_validation->set_rules('sucursal','sucursal','required');
@@ -47,43 +40,17 @@ class Login extends MY_Controller {
 			redirect('login');
 		}
 		else{
->>>>>>> master
 
 			$username=$this->input->post('username');
 			$password=$this->input->post('pass');
 
 			$sucursal=$this->input->post('sucursal');
-			$partes = explode("->",$sucursal);
-			
+			// print_r($sucursal);
 			$this->load->model('login_model');//Model
-			if($this->login_model->verify_credentials($username,$password))
-			{
-				//Model->Method
-				 // inicio mis cambios para al acceso de sucursal
-			
-				if($this->session->userdata('role_id')!=1)
-				{
+			if($this->login_model->verify_credentials($username,$password)){//Model->Method
 
-					if ($partes[1]=="") {
-						session_destroy();
-					    redirect('login');
-					}
-					else{
-						$data = array 
-						(
-						'sucursal'     => $partes[1]
-						);
-						$this->session->set_userdata($data);
-					   
-						redirect(base_url().'dashboard');
-					}
-				 }else{
-					$this->session->set_userdata("sucursal")=="";
-					redirect(base_url().'dashboard');
-				 }
-			}else{
-
-			redirect('login');
+				
+				redirect(base_url().'dashboard');
 			}
 
 
@@ -93,7 +60,8 @@ class Login extends MY_Controller {
 			// else{
 			// 	$this->session->set_flashdata('failed', 'Usuario / contraseña invalida.');
 			// 	redirect('login');
-			// }			
+			// }
+			}			
 		
 	}
 	public function forgot_password(){
