@@ -120,35 +120,31 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Código</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="codalm">
+                    <input type="text" class="form-control" id="codsuc" value="0" disabled>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Ubicacion</label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Nombre</label>
                   <div class="col-sm-8">
-                    <!-- <input type="text" class="form-control" id="tiendaalm"> -->
-                    <select class="form-control" name="tiendaalm"  id="tiendaalm">
-                         
-                    </select>
+                    <input type="text" class="form-control" id="nomsuc">                    
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Nombre Sucursal </label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Dirección </label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="nomalm">
+                    <input type="text" class="form-control" id="dirsuc">
                   </div>
                 </div>
-              </div>
-                      
+              </div>                                    
               <div class="col-md-6">
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
                   <div class="col-sm-8">
-                    <select class="form-control" id="estalm">
+                    <select class="form-control" id="estsuc">
                         <option>--[ seleccione estado ]--</option>
                         <option selected value="1">Activo</option>
                         <option value="0">Inactivo</option>                        
@@ -164,7 +160,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button  onclick= "agregar_sucursal();" type="button" class="btn btn-primary">Agregar Almacén</button>
+          <button  onclick= "agregar_sucursal();" type="button" class="btn btn-primary">Agregar Sucursal</button>
         </div>
       </div>
       </div>
@@ -190,35 +186,31 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Código</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="ucodalm">
+                    <input type="text" class="form-control" id="ucodsuc" disabled>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Tienda</label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Nombre</label>
                   <div class="col-sm-8">
-                    <!-- <input type="text" class="form-control" id="tiendaalm"> -->
-                    <select class="form-control" name="tiendaalm"  id="utiendaalm">
-                         
-                    </select>
+                    <input type="text" class="form-control" id="unomsuc">                    
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Nombre Almacén </label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Dirección </label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="unomalm">
+                    <input type="text" class="form-control" id="udirsuc">
                   </div>
                 </div>
-              </div>
-                      
+              </div>                                    
               <div class="col-md-6">
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
                   <div class="col-sm-8">
-                    <select class="form-control" id="uestalm">
+                    <select class="form-control" id="uestsuc">
                         <option>--[ seleccione estado ]--</option>
                         <option selected value="1">Activo</option>
                         <option value="0">Inactivo</option>                        
@@ -234,7 +226,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button  onclick= "actualizar_sucursal();" type="button" class="btn btn-primary">Actualizar Almacén</button>
+          <button  onclick= "actualizar_sucursal();" type="button" class="btn btn-primary">Actualizar Sucursal</button>
         </div>
       </div>
       </div>

@@ -3,24 +3,24 @@ $(document).ready(function () {
 	
 });
 
-function cargotiendas() {
-	$.ajax({
-		type: "post",
-		url: "Sucursal/tiendas",
-		data: {},
-		success: function (response) {
-		    console.log(response);
-		  $("#tiendaalm").html(response);
-		  $("#utiendaalm").html(response);
-		}
-	});
-}
+// function cargotiendas() {
+// 	$.ajax({
+// 		type: "post",
+// 		url: "Sucursal/tiendas",
+// 		data: {},
+// 		success: function (response) {
+// 		    console.log(response);
+// 		  $("#tiendaalm").html(response);
+// 		  $("#utiendaalm").html(response);
+// 		}
+// 	});
+// }
 
 function agregar_sucursal() {
-    var codigo = $("#codalm").val();
-    var nombre = $("#nomalm").val();
-    var tienda = $("#tiendaalm").val();
-    var estado = $("#estalm").val();
+    var codigo = $("#codsuc").val();
+    var nombre = $("#nomsuc").val();
+    var tienda = $("#dirsuc").val();
+    var estado = $("#estsuc").val();
     $.ajax ({
         type: "post",
         url : "Sucursal/crea_sucursal",
@@ -50,17 +50,17 @@ function agregar_sucursal() {
 
 function editarSucursal(codigo, nombre,id_sucu,estado) {
     //alert("valor: " + codigo + " - " + nombre);
-    $("#ucodalm").val(codigo);    
-    $("#unomalm").val(nombre);
-    $("#utiendaalm").val(id_sucu);
-    $("#uestalm").val(estado);
+    $("#ucodsuc").val(codigo);    
+    $("#unomsuc").val(nombre);
+    $("#udirsuc").val(id_sucu);
+    $("#uestsuc").val(estado);
 }
 
 function actualizar_sucursal() {
-    var codigo = $("#ucodalm").val();
-    var nombre = $("#unomalm").val();
-    var tienda = $("#utiendaalm").val();
-    var estado = $("#uestalm").val();
+    var codigo = $("#ucodsuc").val();
+    var nombre = $("#unomsuc").val();
+    var tienda = $("#udirsuc").val();
+    var estado = $("#uestsuc").val();
     $.ajax({
         type: "post",
         url : "Sucursal/upd_sucursal",
