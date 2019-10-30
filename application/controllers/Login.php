@@ -29,19 +29,6 @@ class Login extends MY_Controller {
 
 	public function verify()
 	{
-<<<<<<< HEAD
-		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('pass','Password','required');
-
-     
-		$this->form_validation->set_rules('sucursal','sucursal','required');
-		if($this->form_validation->run()==FALSE){
-		$this->form_validation->set_rules('sucursal','sucursal','required');
-			$this->session->set_flashdata('failed', 'Porfavor se requiere todo los campos digitados!');
-			redirect('login');
-		}
-		else{
-=======
 		// $this->form_validation->set_rules('username','Username','required');
 		// $this->form_validation->set_rules('pass','Password','required');
 		// $this->form_validation->set_rules('sucursal','sucursal','required');
@@ -51,20 +38,21 @@ class Login extends MY_Controller {
 		// 	redirect('login');
 		// }
 		// else{
+
+     
+		$this->form_validation->set_rules('sucursal','sucursal','required');
+		if($this->form_validation->run()==FALSE){
+		$this->form_validation->set_rules('sucursal','sucursal','required');
+			$this->session->set_flashdata('failed', 'Porfavor se requiere todo los campos digitados!');
+			redirect('login');
+		}
+		else{
 >>>>>>> master
 
 			$username=$this->input->post('username');
 			$password=$this->input->post('pass');
 
 			$sucursal=$this->input->post('sucursal');
-<<<<<<< HEAD
-			// print_r($sucursal);
-			$this->load->model('login_model');//Model
-			if($this->login_model->verify_credentials($username,$password)){//Model->Method
-
-				
-				redirect(base_url().'dashboard');
-=======
 			$partes = explode("->",$sucursal);
 			
 			$this->load->model('login_model');//Model
@@ -96,7 +84,6 @@ class Login extends MY_Controller {
 			}else{
 
 			redirect('login');
->>>>>>> master
 			}
 
 

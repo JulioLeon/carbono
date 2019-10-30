@@ -19,7 +19,7 @@
             <a href="#" class="btn navbar-btn btn-success dropdown-toggle "   data-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-plus"></i> 
             </a>
-            <?php  
+            <?php  //ss
               if ($this->session->userdata('sucursal')=="") {
                 
               }
