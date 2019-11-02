@@ -457,6 +457,10 @@
             <?php if($CI->permissions('tax_view')) { ?>
             <li class="tax-active-li  tax-list-active-li"><a href="<?php echo $base_url; ?>sucursal"><i class="fa fa-institution  "></i> <span>Lista de Sucursales</span></a></li>
             <?php } ?>
+            <!-- Validar permisos nuevos para lista de locales -->
+            <?php if($CI->permissions('tax_view')) { ?>
+            <li class="tax-active-li  tax-list-active-li"><a href="<?php echo $base_url; ?>Comprobantes"><i class="fa fa-file-archive-o  "></i> <span>Lista de Comprobantes</span></a></li>
+            <?php } ?>
             
             <?php if($CI->permissions('tax_view')) { ?>
             <li class="tax-active-li  tax-list-active-li"><a href="<?php echo $base_url; ?>tax"><i class="fa fa-percent  "></i> <span><?= $this->lang->line('tax_list'); ?></span></a></li>
