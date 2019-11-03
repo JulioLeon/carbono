@@ -53,12 +53,12 @@
     <section class="content-header">
          <h1>
             <?=$page_title;?>
-            <small>Add/Update Sales</small>
+            <small>Agregar/Actualizar Venta</small>
          </h1>
          <ol class="breadcrumb">
             <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li><a href="<?php echo $base_url; ?>sales"><?= $this->lang->line('sales_list'); ?></a></li>
-            <li><a href="<?php echo $base_url; ?>sales/add">New Sales</a></li>
+            <li><a href="<?php echo $base_url; ?>sales/add">Nueva Venta</a></li>
             <li class="active"><?=$page_title;?></li>
          </ol>
       </section>
@@ -115,6 +115,7 @@
                                     <span id="customer_id_msg" style="display:none" class="text-danger"></span>
                                  </div>
                                  <label for="sales_date" class="col-sm-2 control-label"><?= $this->lang->line('sales_date'); ?> <label class="text-danger">*</label></label>
+
                                  <div class="col-sm-3">
                                     <div class="input-group date">
                                        <div class="input-group-addon">
@@ -124,7 +125,69 @@
                                     </div>
                                     <span id="sales_date_msg" style="display:none" class="text-danger"></span>
                                  </div>
+                      
+
+
                               </div>
+
+                                <!-- inicio-->
+
+                                <div class="form-group">
+                                 <label for="customer_id" class="col-sm-2 control-label">Moneda<label class="text-danger">*</label></label>
+                                 <div class="col-sm-3">
+                                    <div class="input-group">
+                                       <select class="form-control "  style="width: 100%;" >
+                                          <option value="">seleccione</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                   
+                                 
+
+                                 <label for="sales_date" class="col-sm-2 control-label">Fecha de vencimiento <label class="text-danger">*</label></label>
+
+                                 <div class="col-sm-3">
+                                    <div class="input-group date">
+                                       <div class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                       </div>
+                                       <input type="text" class="form-control pull-right datepicker"  id="sales_date33" name="sales_date33" readonly onkeyup="shift_cursor(event,'sales_status')" value="<?= $sales_date;?>">
+                                    </div>
+                                    <span id="sales_date_msg" style="display:none" class="text-danger"></span>
+                                 </div>
+                      
+
+
+                              </div>
+
+                                  <!--fin -->
+
+                                   <!-- inicio2-->
+
+                                <div class="form-group">
+                                 <label for="customer_id" class="col-sm-2 control-label">Condición<label class="text-danger">*</label></label>
+                                 <div class="col-sm-3">
+                                    <div class="input-group">
+                                       <select class="form-control "  style="width: 100%;" >
+                                          <option value="">seleccione</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                   
+                                 
+
+                                 <label for="reference_no" class="col-sm-2 control-label"><?= $this->lang->line('reference_no'); ?> </label>
+
+                                 <div class="col-sm-3">
+                                    <input type="text" value="" class="form-control " id="reference_no" name="reference_no" placeholder="">
+                  <span id="reference_no_msg" style="display:none" class="text-danger"></span>
+                                 </div>
+
+
+                              </div>
+
+                                  <!--fin2 -->
+
                               <div class="form-group">
                                  <label for="sales_status" class="col-sm-2 control-label"><?= $this->lang->line('status'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -138,13 +201,14 @@
                                        </select>
                                     <span id="sales_status_msg" style="display:none" class="text-danger"></span>
                                  </div>
-                                 <label for="reference_no" class="col-sm-2 control-label"><?= $this->lang->line('reference_no'); ?> </label>
-                                 <div class="col-sm-3">
-                                    <input type="text" value="<?php echo  $reference_no; ?>" class="form-control " id="reference_no" name="reference_no" placeholder="" >
-                  <span id="reference_no_msg" style="display:none" class="text-danger"></span>
-                                 </div>
                                 
-                              </div>
+                                 <label for="reference_no" class="col-sm-2 control-label">Nro Doc. </label>
+
+                                 <div class="col-sm-3">
+                                    <input type="text" value="" class="form-control " id="" name="" placeholder="">
+                                 <span id="reference_no_msg" style="display:none" class="text-danger"></span>
+                                 </div>
+                                    </div>
                               <!-- <div class="form-group">
                                 <label for="warehouse_id" class="col-sm-2 control-label"><?= $this->lang->line('warehouse'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -204,7 +268,8 @@
                                             <div class="col-md-8 col-md-offset-2 d-flex justify-content" >
                                               <div class="input-group">
                                                 <span class="input-group-addon" title="Select Items"><i class="fa fa-barcode"></i></span>
-                                                 <input type="text" class="form-control " placeholder="Item name/Barcode/Itemcode" id="item_search">
+                                                 <input type="text" class="form-control " placeholder="Digite nombre o código de producto..." id="item_search">
+                                                <span class="input-group-addon btn navbar-btn btn-success" title="buscaritem"><i class="fa fa-search"></i></span>                                                
                                               </div>
                                             </div>
                                             <br>
@@ -236,7 +301,7 @@
                               <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-12">
-                                       <div class="form-group">
+                                       <div class="form-group" style="display:none">
                                           <label for="" class="col-sm-4 control-label"><?= $this->lang->line('price_including_tax'); ?></label>    
                                           <div class="col-sm-4">
                                              <label class="control-label total_quantity text-success" style="font-size: 15pt;">0</label>
@@ -268,7 +333,7 @@
                                                     else
                                                     {
                                                        ?>
-                                                <option value="">No Records Found</option>
+                                                <option value="">No se encontró registro</option>
                                                 <?php
                                                    }
                                                    ?>
@@ -347,7 +412,13 @@
                                                 </th>
                                              </tr>
                                              <tr>
-                                                <th class="text-right" style="font-size: 17px;"><?= $this->lang->line('grand_total'); ?></th>
+                                                <th class="text-right" style="font-size: 17px;">Igv 18% </th>
+                                                <th class="text-right" style="padding-left:10%;font-size: 17px;">
+                                                   <h4><b id="total_amt" name="total_iva">0.00</b></h4>
+                                                </th>
+                                             </tr>
+                                             <tr>
+                                                <th class="text-right" style="font-size: 17px;"><?= $this->lang->line('total_amount2'); ?></th>
                                                 <th class="text-right" style="padding-left:10%;font-size: 17px;">
                                                    <h4><b id="total_amt" name="total_amt">0.00</b></h4>
                                                 </th>
@@ -485,25 +556,24 @@
 
                               ?>
                              
-                              <div class="col-xs-12 ">
+                              <!-- <div class="col-xs-12 ">
                                  <div class="col-sm-12">
-                                       <div class="box-body ">
-                                          <div class="col-md-12">
-                                            <div class="checkbox icheck">
-                                      <label>
-                                        <input type="checkbox" <?=$send_sms_checkbox;?> class="form-control" id="send_sms" name="send_sms" > <label for="sales_discount" class=" control-label"><?= $this->lang->line('send_sms_to_customer'); ?>
-                                          <i class="hover-q " data-container="body" data-toggle="popover" data-placement="top" data-content="If checkbox is Disabled! You need to enable it from SMS -> SMS API <br><b>Note:<i>Walk-in Customer will not receive SMS!</i></b>" data-html="true" data-trigger="hover" data-original-title="" title="Do you wants to send SMS ?">
-                                  <i class="fa fa-info-circle text-maroon text-black hover-q"></i>
-                                </i>
-                                        </label>
-                                      </label>
-                                    </div>
-                                        </div><!-- col-md-12 -->
+                                    <div class="box-body ">
+                                       <div class="col-md-12">
+                                          <div class="checkbox icheck">
+                                             <label>
+                                                <input type="checkbox" <?=$send_sms_checkbox;?> class="form-control" id="send_sms" name="send_sms" > 
+                                                <label for="sales_discount" class=" control-label"><?= $this->lang->line('send_sms_to_customer'); ?>
+                                                   <i class="hover-q " data-container="body" data-toggle="popover" data-placement="top" data-content="Necesita habilitar el envío de SMS -> SMS API <br><b>Note:<i>Walk-in Customer will not receive SMS!</i></b>" data-html="true" data-trigger="hover" data-original-title="" title="Quiere enviar el mensaje SMS ?">
+                                                      <i class="fa fa-info-circle text-maroon text-black hover-q"></i>
+                                                   </i>
+                                                </label>
+                                             </label>
+                                          </div>
                                        </div>
-                                       <!-- /.box-body -->
-                                    </div>
-                                 <!-- /.box -->
-                              </div> 
+                                    </div>                                    
+                                 </div>                                 
+                              </div>  -->
                            </div>
                            
                            <!-- /.box-body -->

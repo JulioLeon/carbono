@@ -1,4 +1,5 @@
 <?php
+$lang['total_amount2']		    		=		'Monto total';
 $lang['copy']		    				=		'copiar';
 $lang['print']  						=		'imprimir';
 $lang['dashboard']						=		'Tablero';
