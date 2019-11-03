@@ -63,8 +63,9 @@
                                    
                   <th>Código</th>
                   <th>Nombre Comprobantes</th>
-                  <th>Ubicación</th>  
-                  <th>estado</th>                                        	         	  	  
+                  <th>Tipo Doc.</th>  
+                  <th>Tipo Mov.</th>                                        	         	  	  
+                  <th>estado</th> 
                   <th><?= $this->lang->line('action'); ?></th>
                 </tr>
                 </thead>
@@ -281,9 +282,10 @@ $(document).ready(function() {
      },dom: "Bfrtip",
      columns: [
        
-        { data: 'id_comprobantes' },
-        { data: 'nom_suc' },
-        { data: 'ubicacion' },
+        { data: 'cod_doc' },
+        { data: 'nom_doc' },
+        { data: 'tip_doc' },
+        { data: 'tip_mov' },
         { data: null,"render" : function(data){
               if (data.estado==1) {
                   return "<span class='label label-success'>Activo</span>";                
@@ -297,7 +299,7 @@ $(document).ready(function() {
           return "<div class='btn-group' title='Ver acciones'> " +
 		      "<a class='btn btn-primary btn-o dropdown-toggle' data-toggle='dropdown' href='#' aria-haspopup='true' aria-expanded='false'>Acción <span class='caret'></span></a>" +
           "<ul role='menu' class='dropdown-menu dropdown-light pull-right'>" + 
-          "<li><a title='Editar registro ?' href='#' onclick=\"editarComprobantes('"+data.id_sucursal+"','" + data.nom_suc + "','" + data.ubicacion + "','" + data.estado + "');\"   data-toggle='modal' data-target='#updatecomprobantes'>" +
+          "<li><a title='Editar registro ?' href='#' onclick=\"editarComprobantes('"+data.cod_doc+"','" + data.nom_doc + "','" + data.tip_doc + "','" + data.tip_mov + "','" + data.estado + "');\"   data-toggle='modal' data-target='#updatecomprobantes'>" +
           "<i class='fa fa-fw fa-edit text-blue'></i>Editar	</a>	</li>" + 
           "<li><a style='cursor:pointer' title='Borrar registro ?' onclick='delete_items(999)'>	<i class='fa fa-fw fa-trash text-red'></i>Borrar</a></li></ul>" + 
 	        "</div>";

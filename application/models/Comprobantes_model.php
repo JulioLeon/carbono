@@ -8,7 +8,7 @@ class Comprobantes_model extends CI_Model {
 	{
 
         $opc = 1;
-        $query = $this->db->query(" CALL SP_COMPROBANTES($opc,'','','','',@outcomprobantes); ");
+        $query = $this->db->query(" CALL SP_COMPROBANTES($opc,'','','','','','',@outcomprobantes); ");
         //$query = $this->db->query("Select @outcomprobantes  as mensaje;"); 
         return $query->result(); 
     }    
@@ -17,7 +17,7 @@ class Comprobantes_model extends CI_Model {
     {
         $opc = 5;
         $estado = "1";
-        $query = $this->db->query(" CALL SP_COMPROBANTES($opc, '','','','".$estado."',@outcomprobantes);");
+        $query = $this->db->query(" CALL SP_COMPROBANTES($opc, '','','','','','".$estado."',@outcomprobantes);");
         return $query->result();
     }
 

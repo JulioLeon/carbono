@@ -48,7 +48,7 @@ function agregar_comprobantes() {
     })
 }
 
-function editarComprobantes(codigo, nombre,id_sucu,estado) {
+function editarComprobantes(codigo, nombre,tipodoc, tipomov,estado) {
     //alert("valor: " + codigo + " - " + nombre);
     $("#ucodsuc").val(codigo);    
     $("#unomsuc").val(nombre);
