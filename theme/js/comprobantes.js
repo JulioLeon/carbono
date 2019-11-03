@@ -16,19 +16,19 @@ $(document).ready(function () {
 // 	});
 // }
 
-function agregar_comprobantes() {
-    var codigo = $("#codsuc").val();
-    var nombre = $("#nomsuc").val();
-    var tienda = $("#dirsuc").val();
-    var estado = $("#estsuc").val();
+function agregar_comprobante() {
+    var codigo = $("#codcom").val();
+    var nombre = $("#nomcom").val();
+    var tipcom = $("#tipcom").val();
+    var tipmov = $("#tipmov").val();
     $.ajax ({
         type: "post",
         url : "Comprobantes/crea_comprobantes",
         data : {
             codigo:codigo,
             nombre:nombre,
-            tienda:tienda,
-            estado:estado
+            tipcom:tipcom,
+            tipmov:tipmov
         },
         success: function (response) {
             let jason = JSON.parse(response)
@@ -48,26 +48,29 @@ function agregar_comprobantes() {
     })
 }
 
-function editarComprobantes(codigo, nombre,tipodoc, tipomov,estado) {
+function editarComprobantes(codigo,nombre,tipcom, tipmov,estado) {
     //alert("valor: " + codigo + " - " + nombre);
-    $("#ucodsuc").val(codigo);    
-    $("#unomsuc").val(nombre);
-    $("#udirsuc").val(id_sucu);
-    $("#uestsuc").val(estado);
+    $("#ucodcom").val(codigo);    
+    $("#unomcom").val(nombre);
+    $("#utipcom").val(tipcom);
+    $("#utipmov").val(tipmov);
+    $("#uestacom").val(estado);
 }
 
 function actualizar_comprobantes() {
-    var codigo = $("#ucodsuc").val();
-    var nombre = $("#unomsuc").val();
-    var tienda = $("#udirsuc").val();
-    var estado = $("#uestsuc").val();
+    var codigo = $("#ucodcom").val();
+    var nombre = $("#unomcom").val();
+    var tipcom = $("#utipcom").val();
+    var tipmov = $("#utipmov").val();
+    var estado = $("#uestacom").val();
     $.ajax({
         type: "post",
-        url : "Comprobantes/upd_comprobantes",
+        url : "Comprobantes/upd_comprobante",
         data : {
             codigo:codigo,
             nombre:nombre,
-            tienda:tienda,
+            tipcom:tipcom,
+            tipmov:tipmov,
             estado:estado
         },
         success: function (response) {
@@ -86,4 +89,22 @@ function actualizar_comprobantes() {
 	
 		}
     })
+}
+function borrar_registro(cod) {
+    var rpta = window.confirm("¿Desea eliminar el registro?");
+    if (rpta == true) {
+        $.ajax({
+            type: "post",
+            url: "Comprobantes/del_comprobante",
+            data: {
+                cod : cod            
+            },
+            success: function (response) {
+                alert (response) ;
+                window.location.href='Comprobantes';              
+            }
+        });
+    } else {
+        window.location.href='Comprobantes';   
+    }    
 }

@@ -32,37 +32,35 @@ class Comprobantes extends MY_Controller {
 		$list = $this->Comprobantes_model->load_comprobantes();
 		echo json_encode($list);
 		                		
-	}
-
-	public function tiendas ()
-	{
-		$consulta = $this->Comprobantes_model->load_tienda();
-		echo "<option value=''> --[ Seleccione ]--</option>";
-		foreach ($consulta as $data) 
-		{
-			echo "<option value='$data->id_sucursal'>".$data->nom_suc."</option>";
-		}
-	}
+	}	
 
 	public function crea_comprobantes ()
 	{
 		$codigo = $this->input->post('codigo');
 		$nombre = $this->input->post('nombre');
-		$tienda = $this->input->post('tienda');
-		$estado = $this->input->post('estado');
-		$consulta = $this->Comprobantes_model->graba_comprobantes($codigo,$nombre,$tienda,$estado);
+		$tipcom = $this->input->post('tipcom');
+		$tipmov = $this->input->post('tipmov');
+		$consulta = $this->Comprobantes_model->graba_comprobantes($codigo,$nombre,$tipcom,$tipmov);
 		//$rpta = $consulta[0]->rpta;
 		//echo $consulta[0]->rpta;
 		echo json_encode($consulta[0]->rpta);
 	}
 
-	public function upd_comprobantes()
+	public function upd_comprobante()
 	{
 		$codigo = $this->input->post('codigo');
 		$nombre = $this->input->post('nombre');
-		$tienda = $this->input->post('tienda');
+		$tipcom = $this->input->post('tipcom');
+		$tipmov = $this->input->post('tipmov');
 		$estado = $this->input->post('estado');
-		$consulta = $this->Comprobantes_model->actualiza_comprobantes($codigo,$nombre,$tienda,$estado);		
+		$consulta = $this->Comprobantes_model->actualiza_comprobante($codigo,$nombre,$tipcom,$tipmov,$estado);		
+		echo json_encode($consulta[0]->rpta);
+	}
+
+	public function del_comprobante()
+	{
+		$codigo = $this->input->post('cod');
+		$consulta = $this->Comprobantes_model->borra_comprobante($codigo);		
 		echo json_encode($consulta[0]->rpta);
 	}
 

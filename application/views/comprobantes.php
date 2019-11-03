@@ -46,7 +46,7 @@
               <!-- Aqui el primero -->
               <div class="box-tools">                
                 <!-- <button data-toggle="modal"  data-toggle="modal" data-target="#modaladdcomprobantes" class="btn btn-warning"><i class="fa fa-plus "></i> Nuevo Almacén</button> -->
-                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal"><i class="fa fa-plus "></i>Nuevo Comprobantes</button>
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal"><i class="fa fa-plus "></i>Nuevo Tipo de Comprobante</button>
               </div>
 
               <div class="card-header " style=" background-color: #00a65a;">           
@@ -62,7 +62,7 @@
                 <tr>
                                    
                   <th>Código</th>
-                  <th>Nombre Comprobantes</th>
+                  <th>Nombre Comprobante</th>
                   <th>Tipo Doc.</th>  
                   <th>Tipo Mov.</th>                                        	         	  	  
                   <th>estado</th> 
@@ -112,7 +112,7 @@
         <div class="modal-header header-custom" style="position:relative;">          
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="color:white;">×</span></button>
-          <h4 class="modal-title text-center">Agregar Comprobantes</h4>          
+          <h4 class="modal-title text-center">Agregar Tipo de Comprobante</h4>          
         </div>
         <div class="modal-body">
           <!-- formulario -->
@@ -121,7 +121,7 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Código</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="codsuc" value="0" disabled>
+                    <input type="text" class="form-control" id="codcom" value="">
                   </div>
                 </div>
               </div>
@@ -129,30 +129,32 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Nombre</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="nomsuc">                    
+                    <input type="text" class="form-control" id="nomcom">                    
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Dirección </label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Codigo Tipo Comprobante </label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="dirsuc">
+                    <input type="text" class="form-control" id="tipcom">
                   </div>
                 </div>
-              </div>                                    
+              </div> 
+
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Tipo de movimiento </label>
                   <div class="col-sm-8">
-                    <select class="form-control" id="estsuc">
+                    <select class="form-control" id="tipmov">
                         <option>--[ seleccione estado ]--</option>
-                        <option selected value="1">Activo</option>
-                        <option value="0">Inactivo</option>                        
+                        <option selected value="1">Venta</option>
+                        <option value="0">Compra</option>                        
                     </select>
                   </div>
                 </div>
-              </div>            
+              </div>   
+
             </div>
 
             <small id="passwordHelpBlock" class="form-text text-muted">
@@ -161,7 +163,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button  onclick= "agregar_comprobantes();" type="button" class="btn btn-primary">Agregar Comprobantes</button>
+          <button  onclick= "agregar_comprobante();" type="button" class="btn btn-primary">Agregar Tipo Comprobante</button>
         </div>
       </div>
       </div>
@@ -178,7 +180,7 @@
         <div class="modal-header header-custom" style="position:relative;">          
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="color:white;">×</span></button>
-          <h4 class="modal-title text-center">Actualizar Comprobantes</h4>          
+          <h4 class="modal-title text-center">Actualizar Comprobante</h4>          
         </div>
         <div class="modal-body">
           <!-- formulario -->
@@ -187,7 +189,7 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Código</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="ucodsuc" disabled>
+                    <input type="text" class="form-control" id="ucodcom" value="" disable>
                   </div>
                 </div>
               </div>
@@ -195,30 +197,43 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Nombre</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="unomsuc">                    
+                    <input type="text" class="form-control" id="unomcom">                    
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Dirección </label>
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Codigo Tipo Comprobante </label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="udirsuc">
+                    <input type="text" class="form-control" id="utipcom">
                   </div>
                 </div>
-              </div>                                    
+              </div> 
+
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Tipo de movimiento </label>
+                  <div class="col-sm-8">
+                    <select class="form-control" id="utipmov">
+                        <option>--[ seleccione estado ]--</option>
+                        <option selected value="1">Venta</option>
+                        <option value="0">Compra</option>                        
+                    </select>
+                  </div>
+                </div>
+              </div>   
               <div class="col-md-6">
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
                   <div class="col-sm-8">
-                    <select class="form-control" id="uestsuc">
+                    <select class="form-control" id="uestacom">
                         <option>--[ seleccione estado ]--</option>
                         <option selected value="1">Activo</option>
                         <option value="0">Inactivo</option>                        
                     </select>
                   </div>
                 </div>
-              </div>            
+              </div>           
             </div>
 
             <small id="passwordHelpBlock" class="form-text text-muted">
@@ -227,7 +242,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button  onclick= "actualizar_comprobantes();" type="button" class="btn btn-primary">Actualizar Comprobantes</button>
+          <button  onclick= "actualizar_comprobantes();" type="button" class="btn btn-primary">Actualizar Comprobante</button>
         </div>
       </div>
       </div>
@@ -301,7 +316,7 @@ $(document).ready(function() {
           "<ul role='menu' class='dropdown-menu dropdown-light pull-right'>" + 
           "<li><a title='Editar registro ?' href='#' onclick=\"editarComprobantes('"+data.cod_doc+"','" + data.nom_doc + "','" + data.tip_doc + "','" + data.tip_mov + "','" + data.estado + "');\"   data-toggle='modal' data-target='#updatecomprobantes'>" +
           "<i class='fa fa-fw fa-edit text-blue'></i>Editar	</a>	</li>" + 
-          "<li><a style='cursor:pointer' title='Borrar registro ?' onclick='delete_items(999)'>	<i class='fa fa-fw fa-trash text-red'></i>Borrar</a></li></ul>" + 
+          "<li><a style='cursor:pointer' title='Borrar registro ?' onclick=\"borrar_registro('"+data.cod_doc+"');\">	<i class='fa fa-fw fa-trash text-red'></i>Borrar</a></li></ul>" + 
 	        "</div>";
         }  }
      ],
