@@ -40,7 +40,7 @@ class Login_model extends CI_Model
 				        	 'role_name' => trim($query->row()->role_name),
 				        	);
 			$this->session->set_userdata($logdata);
-			$this->session->set_flashdata('success', 'Welcome '.ucfirst($query->row()->username)." !");
+			$this->session->set_flashdata('Realizado', 'Bienvenido '.ucfirst($query->row()->username)." !");
 			return true;
 		}
 		else{
@@ -51,7 +51,7 @@ class Login_model extends CI_Model
 	{
 		$q1=$this->db->query("select email,company_name from db_company where email<>''");
 		if($q1->num_rows()==0){
-			$this->session->set_flashdata('failed', 'Failed to send OTP! Contact admin :(');
+			$this->session->set_flashdata('Error', 'Error al enviar! Contacte con el admin :(');
 			return false;
 			exit();
 		}
@@ -64,13 +64,15 @@ class Login_model extends CI_Model
 
 			$server_subject = "OTP for Password Change | OTP: ".$otp;
 			$ready_message="---------------------------------------------------------
-Hello User,
+Hola Usuario,
 
-You are requested for Password Change,
-Please enter ".$otp." as a OTP.
 
-Note: Don't share this OTP with anyone.
-Thank you
+Se solicita el cambio de contraseña,
+Por favor ingrese ".$otp.".
+
+Nota: No comparta su contraseña con nadie.
+
+Gracias.
 ---------------------------------------------------------
 		";
 		
@@ -82,7 +84,7 @@ Thank you
 
 			if($this->email->send()){
 				//redirect('contact/success');
-				$this->session->set_flashdata('success', 'OTP has been sent to your email ID!');
+				$this->session->set_flashdata('Exito', 'El cambio a sido enviado a su correo!');
 				$otpdata = array('email'  => $email,'otp'  => $otp );
 				$this->session->set_userdata($otpdata);
 				//echo "Email Sent";
