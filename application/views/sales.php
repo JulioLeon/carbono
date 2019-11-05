@@ -208,9 +208,14 @@
                                 
                                  <label for="reference_no" class="col-sm-2 control-label">Nro Doc. </label>
 
-                                 <div class="col-sm-3">
-                                    <input type="text" value="" class="form-control " id="" name="" placeholder="">
-                                 <span id="reference_no_msg" style="display:none" class="text-danger"></span>
+                                 <div class="col-sm-3 ">
+                                    
+                                 <div class="form-inline">
+                                       <select class="form-control "  style="width: 25%;" id="neocomprobante" name="neocomprobante" onchange="sigla1(this.value)">
+                                       </select>
+                                       <select class="form-control "  style="width: 25%;" id="neoserie" onchange='verycorrelativo(this.value)'>
+                                       </select>
+                                       <input type="text" class="form-control"  style="width: 35%;" id="correlativo" name="correlativo">
                                  </div>
                                     </div>
                               <!-- <div class="form-group">
@@ -637,6 +642,8 @@
 $( document ).ready(function() {
    cargomonedas();
    cargocondiciones();
+   loadcompro();
+  
 });
 
  function loaddesc(e) {
@@ -671,6 +678,54 @@ var porciones = pizza.split('-');
        }
     });
  }
+
+ function loadcompro() {
+    $.ajax({
+       type: "post",
+       url: "loadneocomprobantes",
+       data: {},
+       success: function (response) {
+         $("#neocomprobante").append(response);
+          
+       }
+    });
+ }
+
+
+function sigla1(e) {
+   var valor = e;
+   $.ajax({
+      type: "post",
+      url: "verificarcod",
+      data: {
+         valor: valor
+      },
+    
+      success: function (response) {
+        
+         $("#neoserie").html(response);
+
+      }
+   });
+}
+
+function verycorrelativo(e) {
+  var corre  = e ;
+  $.ajax({
+     type: "post",
+     url: "verycorre",
+     data: {
+        corre: corre
+     },
+     success: function (response) {
+       console.log(response);
+       var corre  =  JSON.parse(response)
+       $("#correlativo").val(corre);
+     }
+  });
+}
+
+
 
 
 </script>

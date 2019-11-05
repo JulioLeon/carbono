@@ -30,6 +30,26 @@ class Sales_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function loadneocomprobante()
+	{
+		$query = $this->db->query('CALL SP_NEOCOMPROBANTE()');
+		return $query->result();
+	}
+
+   public function verycode($codigo)
+   {
+	  $query = $this->db->query("CALL SP_NUMERACION('".$codigo."')");
+	  return $query->result();
+   }
+
+  public function verycorrelativo($corre)
+  {
+	$query = $this->db->query("CALL SP_CORRELATIVO('".$corre."')");
+	return $query->result(); 
+  }
+
+
+
    //FIN DE CAMBIOS
 
 
