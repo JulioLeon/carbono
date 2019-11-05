@@ -23,6 +23,12 @@ class Sales_model extends CI_Model {
 		return $query->result();
 	}
 
+  
+    public function loadcondicion()
+	{
+		$query = $this->db->query('CALL SP_CONDICION()');
+		return $query->result();
+	}
 
    //FIN DE CAMBIOS
 

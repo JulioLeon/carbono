@@ -172,8 +172,8 @@
                                  <label for="customer_id" class="col-sm-2 control-label">Condición<label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
                                     <div class="input-group">
-                                       <select class="form-control "  style="width: 100%;" >
-                                          <option value="">seleccione</option>
+                                       <select class="form-control "  style="width: 100%;" id="addcondicion" >
+                                         
                                        </select>
                                     </div>
                                  </div>
@@ -636,7 +636,7 @@
 <script>
 $( document ).ready(function() {
    cargomonedas();
-  
+   cargocondiciones();
 });
 
  function loaddesc(e) {
@@ -658,6 +658,20 @@ var porciones = pizza.split('-');
        }
     });
  }
+
+
+ function cargocondiciones() {
+    $.ajax({
+       type: "post",
+       url: "loadcondiciones",
+       data: {},
+       success: function (response) {
+         $("#addcondicion").append(response);
+          
+       }
+    });
+ }
+
 
 </script>
 

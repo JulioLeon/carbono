@@ -20,6 +20,18 @@ class Sales extends MY_Controller {
 	   }
 	}
 
+
+	public function loadcondiciones()
+	{
+		$result = $this->sales->loadcondicion();
+		echo "<option value=''>[Seleccione]</option>";
+       foreach ($result as $row) {
+		   echo "<option value='".$row->id."'>".$row->payment_type."</option>";
+	   }
+	}
+
+
+
    //FIN CAMBIOS
 
 
