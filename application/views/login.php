@@ -36,7 +36,7 @@
      <div class="text-danger tex-center"><?php echo $this->session->flashdata('failed'); ?></div>
 	   <div class="text-success tex-center"><?php echo $this->session->flashdata('success'); ?></div>
          
-    
+ 
     <form action="<?php echo $base_url; ?>login/verify" method="post">
       <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
       <div class="form-group has-feedback">
@@ -100,7 +100,7 @@ $(function($) {
     $.ajaxSetup({ data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }  }); 
 
     carga_sucursal();
-
+   
     });
 
  function carga_sucursal() {
@@ -115,6 +115,7 @@ $(function($) {
       }
    });
  }
+
 
 
 </script>

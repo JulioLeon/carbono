@@ -132,14 +132,18 @@
 
                                 <!-- inicio-->
 
-                                <div class="form-group">
+                                <div class="form-group ">
                                  <label for="customer_id" class="col-sm-2 control-label">Moneda<label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
                                     <div class="input-group">
-                                       <select class="form-control "  style="width: 100%;" >
-                                          <option value="">seleccione</option>
+                                       <select class="form-control "  style="width: 100%;" id="addmoneda" onchange="loaddesc(this.value)">
+                                          
                                        </select>
+                                       <div class="input-group-addon">
+                                        <input  type="text" id="ver"  style="border: 0px;">
+                                       </div>
                                     </div>
+                                    
                                  </div>
                                    
                                  
@@ -628,8 +632,43 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- INICIO MIS CAMBIOS -->
+<script>
+$( document ).ready(function() {
+   cargomonedas();
+  
+});
+
+ function loaddesc(e) {
+   var pizza = e;
+var porciones = pizza.split('-');
+  $("#ver").val(porciones[1]);
+// alert(porciones[1]); //porción3
+
+ }
+
+ function cargomonedas() {
+    $.ajax({
+       type: "post",
+       url: "loadmonedas",
+       data: {},
+       success: function (response) {
+         $("#addmoneda").append(response);
+          
+       }
+    });
+ }
+
+</script>
+
+<!--FIN DE CAMBIOS -->
+
       <script src="<?php echo $theme_link; ?>js/sales.js"></script>  
       <script>
+
+
+
+
          $(".close_btn").click(function(){
            if(confirm('Are you sure you want to navigate away from this page?')){
                window.location='<?php echo $base_url; ?>dashboard';

@@ -8,6 +8,20 @@ class Sales extends MY_Controller {
 		$this->load->model('sales_model','sales');
 		$this->load->helper('sms_template_helper');
 	}
+	
+	//INICIO CAMBIOS
+   
+	public function loadmonedas()
+	{
+		$result = $this->sales->loadmoneda();
+		echo "<option value=''>[Seleccione]</option>";
+       foreach ($result as $row) {
+		   echo "<option value='".$row->id."-".$row->currency_name."'>".$row->currency_code."</option>";
+	   }
+	}
+
+   //FIN CAMBIOS
+
 
 	public function is_sms_enabled(){
 		return is_sms_enabled();

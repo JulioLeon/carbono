@@ -15,6 +15,21 @@ class Sales_model extends CI_Model {
 		$CI =& get_instance();
 	}
 
+   //INICIO MIS CAMBIOS
+   
+    public function loadmoneda()
+	{
+		$query = $this->db->query('CALL SP_MONEDAS()');
+		return $query->result();
+	}
+
+
+   //FIN DE CAMBIOS
+
+
+
+
+
 	private function _get_datatables_query()
 	{
 		

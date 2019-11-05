@@ -52,10 +52,12 @@ class Login extends MY_Controller {
 			  
 				  if($this->session->userdata('role_id')!=1)
 				  {
-  
-					  if ($partes[1]=="") {
-						  session_destroy();
-						  redirect('login');
+
+					  if ($partes[1]==""  ) {
+						
+						session_destroy();
+						redirect('Login');
+                     
 					  }
 					  else{
 						  $data = array 
@@ -71,7 +73,7 @@ class Login extends MY_Controller {
 					  redirect(base_url().'dashboard');
 				   }
 			  }else{
-  
+				$this->session->set_flashdata('failed', 'Usuario / contraseña invalida.');
 			  redirect('login');
 			  }
   

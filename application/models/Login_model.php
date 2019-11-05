@@ -22,7 +22,7 @@ class Login_model extends CI_Model
 	}
 
 
-//s
+
 
 	public function verify_credentials($username,$password)
 	{
