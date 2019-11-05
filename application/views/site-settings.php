@@ -137,8 +137,8 @@
                                                    <label for="currency_placement" class="col-sm-4 control-label"><?= $this->lang->line('currency_symbol_placement'); ?><label class="text-danger">*</label> </label>
                                                    <div class="col-sm-8">
                                                       <select class="form-control select2" id="currency_placement" name="currency_placement"  style="width: 100%;">
-                                                         <option value="Right">After Amount</option>
-                                                         <option value="Left">Before Amount</option>
+                                                         <option value="Right">Después del monto</option>
+                                                         <option value="Left">Antes del monto</option>
                                                       </select>
                                                       <span id="currency_placement_msg" style="display:none" class="text-danger"></span>
                                                    </div>
@@ -210,8 +210,8 @@
                                                    <label for="sales_invoice_formats" class="col-sm-4 control-label"><?= $this->lang->line('sales_invoice_formats'); ?><label class="text-danger">*</label> </label>
                                                    <div class="col-sm-4">
                                                       <select class="form-control select2" id="sales_invoice_format_id" name="sales_invoice_format_id"  style="width: 100%;">
-                                                         <option value="1">Default</option>
-                                                         <option value="2">Format 2</option>
+                                                         <option value="1">Estandar</option>
+                                                         <option value="2">Formato 2</option>
                                                       </select>
                                                       <span id="sales_invoice_format_id_msg" style="display:none" class="text-danger"></span>
                                                    </div>
