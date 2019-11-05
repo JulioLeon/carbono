@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title><?= $page_title;?>- Format 2</title>
+<title><?= $page_title;?>- Formato 2</title>
 <head>
 <link rel='shortcut icon' href='<?php echo $theme_link; ?>images/favicon.ico' />
 
