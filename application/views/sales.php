@@ -276,7 +276,7 @@
                                           
                                             <div class="col-md-8 col-md-offset-2 d-flex justify-content" >
                                               <div class="input-group">
-                                                <span class="input-group-addon" title="Select Items"><i class="fa fa-barcode"></i></span>
+                                                <span class="input-group-addon" title="Digite nombre o código de producto"><i class="fa fa-cart-plus"></i></span>
                                                  <input type="text" class="form-control " placeholder="Digite nombre o código de producto..." id="item_search">
                                                 <span class="input-group-addon btn navbar-btn btn-success" title="buscaritem"><i class="fa fa-search"></i></span>                                                
                                               </div>
@@ -704,7 +704,7 @@ function sigla1(e) {
       success: function (response) {
         
          $("#neoserie").html(response);
-
+         $("#correlativo").val("");
       }
    });
 }
@@ -718,7 +718,7 @@ function verycorrelativo(e) {
         corre: corre
      },
      success: function (response) {
-       console.log(response);
+      
        var corre  =  JSON.parse(response)
        $("#correlativo").val(corre);
      }
