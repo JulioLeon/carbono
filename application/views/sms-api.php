@@ -20,7 +20,7 @@ $sms_status = $this->db->query("select sms_status from db_company where id=1")->
     <section class="content-header">
       <h1>
          <?= $this->lang->line('sms_api'); ?>
-        <small>Add/Update SMS API</small>
+        <small>Agregar/Actualizar SMS API</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i>Inicio</a></li>
@@ -147,7 +147,7 @@ $sms_status = $this->db->query("select sms_status from db_company where id=1")->
               <!-- /.box-body -->
 			  
 			  <?php
-                        $btn_name="Update";
+                        $btn_name="Actualizar";
                             $btn_id="update";
                         ?>
 						
@@ -159,7 +159,7 @@ $sms_status = $this->db->query("select sms_status from db_company where id=1")->
 					<button type="button" class="btn btn-success" id="<?php echo $btn_id; ?>"><?php echo $btn_name; ?></button>
 					
 						
-						<a href='<?php echo $base_url; ?>dashboard'><button type="button" class="btn btn-danger" title="Go Dashboard">Close</button></a>
+						<a href='<?php echo $base_url; ?>dashboard'><button type="button" class="btn btn-danger" title="Go Dashboard">Cerrar</button></a>
 					 </div>  
 				   </div>  
               </div>

@@ -23,7 +23,7 @@ if(!isset($state)){
     <section class="content-header">
       <h1>
         <?= $this->lang->line('state'); ?>
-        <small>Add/Update State</small>
+        <small>Agregar/Actualizar Estado</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -40,7 +40,7 @@ if(!isset($state)){
           <!-- Horizontal Form -->
           <div class="box box-info ">
             <div class="box-header with-border">
-              <h3 class="box-title">Please Enter Valid Data</h3>
+              <h3 class="box-title">Ingrese datos validos</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -92,14 +92,14 @@ if(!isset($state)){
                    <!-- <div class="col-sm-4"></div> -->
                    <?php
                       if($state!=""){
-                           $btn_name="Update";
+                           $btn_name="Actualizar";
                            $btn_id="update";
                           ?>
                             <input type="hidden" name="q_id" id="q_id" value="<?php echo $q_id;?>"/>
                             <?php
                       }
                                 else{
-                                    $btn_name="Save";
+                                    $btn_name="Guardar";
                                     $btn_id="save";
                                 }
                       
@@ -110,7 +110,7 @@ if(!isset($state)){
                    </div>
                    <div class="col-sm-3">
                     <a href="<?=base_url('dashboard');?>">
-                      <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Close</button>
+                      <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Cerrar</button>
                     </a>
                    </div>
                 </div>

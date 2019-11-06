@@ -329,7 +329,7 @@
 
                             }
                             else{
-                              echo "<tr><td colspan='5' class='text-center text-bold'>Payments Pending!!</td></tr>";
+                              echo "<tr><td colspan='5' class='text-center text-bold'>Pagos pendientes!!</td></tr>";
                             }
                           ?>
                        </tbody>

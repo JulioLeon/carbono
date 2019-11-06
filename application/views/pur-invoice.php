@@ -17,7 +17,7 @@
     <section class="content-header">
       <h1>
         <?= $this->lang->line('invoice'); ?>
-        <small>Add/Update Invoice</small>
+        <small>Agregar/Actualizar Factura</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -312,7 +312,7 @@
 
                             }
                             else{
-                              echo "<tr><td colspan='5' class='text-center text-bold'>Payments Pending!!</td></tr>";
+                              echo "<tr><td colspan='5' class='text-center text-bold'>Pagos pendientes!!</td></tr>";
                             }
                           ?>
                        </tbody>

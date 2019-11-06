@@ -24,7 +24,7 @@
          <section class="content-header">
             <h1>
                <?= $page_title;?>
-               <small>Add/Update Items</small>
+               <small>Agregar/Actualizar Items</small>
             </h1>
             <ol class="breadcrumb">
                <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i>Inicio</a></li>
@@ -160,7 +160,7 @@
                            <div class="row">
                               <div class="form-group col-md-4">
                                  <label for="price"><?= $this->lang->line('price'); ?><span class="text-danger">*</span></label>
-                                 <input type="text" class="form-control only_currency" id="price" name="price" placeholder="Price of Item without Tax"  value="<?php print $price; ?>" >
+                                 <input type="text" class="form-control only_currency" id="price" name="price" placeholder="Precio de item sin IGV"  value="<?php print $price; ?>" >
                                  <span id="price_msg" style="display:none" class="text-danger"></span>
                               </div>
                               <div class="form-group col-md-4">
@@ -190,7 +190,7 @@
                               </div>
                               <div class="form-group col-md-4">
                                  <label for="purchase_price"><?= $this->lang->line('purchase_price'); ?><span class="text-danger">*</span></label>
-                                 <input type="text" class="form-control only_currency" id="purchase_price" name="purchase_price" placeholder="Total Price with Tax Amount"  value="<?php print $purchase_price; ?>" readonly='' >
+                                 <input type="text" class="form-control only_currency" id="purchase_price" name="purchase_price" placeholder="Precio Total con IGV"  value="<?php print $purchase_price; ?>" readonly='' >
                                  <span id="purchase_price_msg" style="display:none" class="text-danger"></span>
                               </div>
                            </div>
@@ -243,14 +243,14 @@
                                  <!-- <div class="col-sm-4"></div> -->
                                  <?php
                                     if($item_name!=""){
-                                         $btn_name="Update";
+                                         $btn_name="Actualizar";
                                          $btn_id="update";
                                          ?>
                                  <input type="hidden" name="q_id" id="q_id" value="<?php echo $q_id;?>"/>
                                  <?php
                                     }
                                               else{
-                                                  $btn_name="Save";
+                                                  $btn_name="Guardar";
                                                   $btn_id="save";
                                               }
                                     
@@ -259,7 +259,7 @@
                                     <button type="button" id="<?php echo $btn_id;?>" class=" btn btn-block btn-success" title="Save Data"><?php echo $btn_name;?></button>
                                  </div>
                                  <div class="col-sm-3">
-                                    <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Close</button>
+                                    <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Cerrar</button>
                                  </div>
                               </div>
                            </div>

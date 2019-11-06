@@ -36,7 +36,7 @@
     <section class="content-header">
          <h1>
             <?=$page_title;?>
-            <small>Add/Update Sales</small>
+            <small>Agregar/Actualizar Ventas</small>
          </h1>
          <ol class="breadcrumb">
             <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -143,7 +143,7 @@
                                                 <button type="button" id="preview" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Preview Labels">Preview</button>
                                              </div>
                                              <div class="col-sm-3"><a href="<?= base_url()?>dashboard">
-                                                <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Close</button>
+                                                <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Cerrar</button>
                                               </a>
                                             </div>
                                           </center>

@@ -423,7 +423,7 @@
                                              <tr>
                                                 <th class="text-right" style="font-size: 17px;">Igv 18% </th>
                                                 <th class="text-right" style="padding-left:10%;font-size: 17px;">
-                                                   <h4><b id="total_amt" name="total_iva">0.00</b></h4>
+                                                   <h4><b id="total_iva" name="total_iva">0.00</b></h4>
                                                 </th>
                                              </tr>
                                              <tr>
@@ -475,12 +475,12 @@
                                                       echo "<tr class='text-right text-bold'><td colspan='4' >Total</td><td data-rowcount='$i' id='paid_amt_tot'>".number_format($total_paid,2,'.','')."</td><td></td></tr>";
                                                     }
                                                     else{
-                                                      echo "<tr><td colspan='6' class='text-center text-bold'>No Previous Payments Found!!</td></tr>";
+                                                      echo "<tr><td colspan='6' class='text-center text-bold'>No se encuentra pago!!</td></tr>";
                                                     }
 
                                                   }
                                                   else{
-                                                    echo "<tr><td colspan='6' class='text-center text-bold'>Payments Pending!!</td></tr>";
+                                                    echo "<tr><td colspan='6' class='text-center text-bold'>Pagos pendientes!!</td></tr>";
                                                   }
                                                 ?>
                                              </tbody>
@@ -591,12 +591,12 @@
                                 <?php
                                 if(isset($sales_id)){
                                   $btn_id='update';
-                                  $btn_name="Update";
+                                  $btn_name="Actualizar";
                                   echo '<input type="hidden" name="sales_id" id="sales_id" value="'.$sales_id.'"/>';
                                 }
                                 else{
                                   $btn_id='save';
-                                  $btn_name="Save";
+                                  $btn_name="Guardar";
                                 }
 
                                 ?>
@@ -604,7 +604,7 @@
                                     <button type="button" id="<?php echo $btn_id;?>" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Save Data"><?php echo $btn_name;?></button>
                                  </div>
                                  <div class="col-sm-3"><a href="<?= base_url()?>dashboard">
-                                    <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Close</button>
+                                    <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Cerrar</button>
                                   </a>
                                 </div>
                               </center>
@@ -739,7 +739,7 @@ function verycorrelativo(e) {
 
 
          $(".close_btn").click(function(){
-           if(confirm('Are you sure you want to navigate away from this page?')){
+           if(confirm('Esta seguro que quiere navegar fuera de esta página?')){
                window.location='<?php echo $base_url; ?>dashboard';
              }
          });

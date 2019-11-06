@@ -53,7 +53,7 @@
     <section class="content-header">
          <h1>
             <?=$page_title;?>
-            <small>Add/Update Purchase</small>
+            <small>Agregar/Actualizar Compra..</small> <!--purchase-->
          </h1>
          <ol class="breadcrumb">
             <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -417,7 +417,7 @@
 
                                                   }
                                                   else{
-                                                    echo "<tr><td colspan='6' class='text-center text-bold'>Payments Pending!!</td></tr>";
+                                                    echo "<tr><td colspan='6' class='text-center text-bold'>!!</td></tr>";
                                                   }
                                                 ?>
                                              </tbody>
@@ -498,12 +498,12 @@
                                 <?php
                                 if(isset($purchase_id)){
                                   $btn_id='update';
-                                  $btn_name="Update";
+                                  $btn_name="Actualizar";
                                   echo '<input type="hidden" name="purchase_id" id="purchase_id" value="'.$purchase_id.'"/>';
                                 }
                                 else{
                                   $btn_id='save';
-                                  $btn_name="Save";
+                                  $btn_name="Guardar";
                                 }
 
                                 ?>
@@ -511,7 +511,7 @@
                                     <button type="button" id="<?php echo $btn_id;?>" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Save Data"><?php echo $btn_name;?></button>
                                  </div>
                                  <div class="col-sm-3"><a href="<?= base_url()?>dashboard">
-                                    <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Close</button>
+                                    <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Cerrar</button>
                                   </a>
                                 </div>
                               </center>

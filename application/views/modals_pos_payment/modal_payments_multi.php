@@ -219,7 +219,7 @@
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn bg-maroon btn-lg make_sale btn-lg">Complete <i class="fa  fa-check "></i></button>
       </div>
     </div>

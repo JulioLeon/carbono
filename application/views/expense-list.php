@@ -19,7 +19,7 @@
     <section class="content-header">
       <h1>
         <?= $this->lang->line('expenses_list'); ?>
-        <small>View/Search Expenses</small>
+        <small>Vista/Buscar Compras</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>

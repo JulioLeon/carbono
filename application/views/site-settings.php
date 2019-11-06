@@ -325,14 +325,14 @@
                            <center>
                               <?php
                                  if($site_name!=""){
-                                      $btn_name="Update";
+                                      $btn_name="Actualizar";
                                       $btn_id="update";
                                       ?>
                               <input type="hidden" name="q_id" id="q_id" value="<?php echo $q_id;?>"/>
                               <?php
                                  }
                                  else{
-                                     $btn_name="Save";
+                                     $btn_name="Guardar";
                                      $btn_id="save";
                                  }
                                  
@@ -342,7 +342,7 @@
                               </div>
                               <div class="col-sm-3">
                                 <a href="<?=base_url('dashboard');?>">
-                                 <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Close</button>
+                                 <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Cerrar</button>
                                </a>
                               </div>
                            </center>

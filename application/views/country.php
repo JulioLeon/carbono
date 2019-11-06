@@ -22,11 +22,11 @@
     <section class="content-header">
       <h1>
         <?= $this->lang->line('country'); ?>
-        <small>Add/Update Country</small>
+        <small>Agregar/Actualizar Paisy</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="<?php echo $base_url; ?>country">Countrys List</a></li>
+        <li><a href="<?php echo $base_url; ?>country">Lista de paises</a></li>
         <li class="active"><?= $this->lang->line('country'); ?></li>
       </ol>
     </section>
@@ -39,7 +39,7 @@
           <!-- Horizontal Form -->
           <div class="box box-info ">
             <div class="box-header with-border">
-              <h3 class="box-title">Please Enter Valid Data</h3>
+              <h3 class="box-title">Ingrese datos validos</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -64,14 +64,14 @@
                    <!-- <div class="col-sm-4"></div> -->
                    <?php
                       if($country!=""){
-                           $btn_name="Update";
+                           $btn_name="Actualizar";
                            $btn_id="update";
                           ?>
                             <input type="hidden" name="q_id" id="q_id" value="<?php echo $q_id;?>"/>
                             <?php
                       }
                                 else{
-                                    $btn_name="Save";
+                                    $btn_name="Guardar";
                                     $btn_id="save";
                                 }
                       
@@ -82,7 +82,7 @@
                    </div>
                    <div class="col-sm-3">
                     <a href="<?=base_url('dashboard');?>">
-                      <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Close</button>
+                      <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Cerrar</button>
                     </a>
                    </div>
                 </div>

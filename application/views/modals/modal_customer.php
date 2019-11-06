@@ -144,7 +144,7 @@
                        
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
                       <button type="button" class="btn btn-primary add_customer">Save</button>
                     </div>
                   </div>
