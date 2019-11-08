@@ -105,7 +105,7 @@
                                               else
                                               {
                                                  ?>
-                                          <option value="">No Records Found</option>
+                                          <option value="">No existen registros</option>
                                           <?php
                                              }
                                              ?>
@@ -135,9 +135,9 @@
                                                $pending_select = ($purchase_status=='Pending') ? 'selected' : ''; 
                                                $ordered_select = ($purchase_status=='Ordered') ? 'selected' : ''; 
                                           ?>
-              							                <option <?= $received_select; ?> value="Received">Received</option>
-              							                <option <?= $pending_select; ?> value="Pending">Pending</option>
-              							                <option <?= $ordered_select; ?> value="Ordered">Ordered</option>
+              							                <option <?= $received_select; ?> value="Received">Recibido</option>
+              							                <option <?= $pending_select; ?> value="Pending">Pendiente</option>
+              							                <option <?= $ordered_select; ?> value="Ordered">Ordenado</option>
                                        </select>
                                     <span id="purchase_status_msg" style="display:none" class="text-danger"></span>
                                  </div>

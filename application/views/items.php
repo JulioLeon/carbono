@@ -53,7 +53,7 @@
                                  <span id="item_name_msg" style="display:none" class="text-danger"></span>
                               </div>
                               <div class="form-group col-md-4">
-                                 <label for="brand_id">Brand</label>
+                                 <label for="brand_id">Marca</label>
                                  <select class="form-control select2" id="brand_id" name="brand_id"  style="width: 100%;"  value="<?php print $brand_id; ?>">
                                     <?php
                                        $query1="select * from db_brands where status=1";
@@ -69,7 +69,7 @@
                                         else
                                         {
                                            ?>
-                                    <option value="">No Records Found</option>
+                                    <option value="">No existen registros</option>
                                     <?php
                                        }
                                        ?>
@@ -77,7 +77,7 @@
                                  <span id="brand_id_msg" style="display:none" class="text-danger"></span>
                               </div>
                               <div class="form-group col-md-4">
-                                 <label for="category_id">Category <span class="text-danger">*</span></label>
+                                 <label for="category_id">Categoria <span class="text-danger">*</span></label>
                                  <select class="form-control select2" id="category_id" name="category_id"  style="width: 100%;"  value="<?php print $category_id; ?>">
                                     <?php
                                        $query1="select * from db_category where status=1";
@@ -93,7 +93,7 @@
                                         else
                                         {
                                            ?>
-                                    <option value="">No Records Found</option>
+                                    <option value="">No existen registros</option>
                                     <?php
                                        }
                                        ?>
@@ -118,7 +118,7 @@
                                         else
                                         {
                                            ?>
-                                    <option value="">No Records Found</option>
+                                    <option value="">No existen registros</option>
                                     <?php
                                        }
                                        ?>
@@ -181,7 +181,7 @@
                                         else
                                         {
                                            ?>
-                                    <option value="">No Records Found</option>
+                                    <option value="">No existen registros</option>
                                     <?php
                                        }
                                        ?>
@@ -205,8 +205,8 @@
                                     if($tax_type =='Exclusive') { $exclusive_selected='selected'; }
 
                                   ?>
-                                    <option <?= $inclusive_selected ?> value="Inclusive">Inclusive</option>
-                                    <option <?= $exclusive_selected ?> value="Exclusive">Exclusive</option>
+                                    <option <?= $inclusive_selected ?> value="Inclusive">Incluido</option>
+                                    <option <?= $exclusive_selected ?> value="Exclusive">Exonerado</option>
                                  </select>
                                  <span id="tax_type_msg" style="display:none" class="text-danger"></span>
                                  
