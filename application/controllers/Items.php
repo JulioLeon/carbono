@@ -103,9 +103,9 @@ class Items extends MY_Controller {
 			$row[] = $items->tax_name."<br>(".$items->tax."%)";
 
 			 		if($items->status==1){ 
-			 			$str= "<span onclick='update_status(".$items->id.",0)' id='span_".$items->id."'  class='label label-success' style='cursor:pointer'>Active </span>";}
+			 			$str= "<span onclick='update_status(".$items->id.",0)' id='span_".$items->id."'  class='label label-success' style='cursor:pointer'>Activo </span>";}
 					else{ 
-						$str = "<span onclick='update_status(".$items->id.",1)' id='span_".$items->id."'  class='label label-danger' style='cursor:pointer'> Inactive </span>";
+						$str = "<span onclick='update_status(".$items->id.",1)' id='span_".$items->id."'  class='label label-danger' style='cursor:pointer'> Inactivo </span>";
 					}
 			$row[] = $str;		
 

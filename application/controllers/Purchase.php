@@ -8,6 +8,62 @@ class Purchase extends MY_Controller {
 		$this->load->model('purchase_model','purchase');
 	}
 
+	//INICIO CAMBIOS
+   
+	public function loadmonedas2()
+	{
+		print("dentro de controler");
+		$result = $this->purchase->loadmoneda();
+		echo "<option value=''>[Seleccione]</option>";
+       foreach ($result as $row) {
+		   echo "<option value='".$row->id."-".$row->currency_name."'>".$row->currency_code."</option>";
+	   }
+	}
+
+
+	public function loadcondiciones2()
+	{
+		$result = $this->purchase->loadcondicion();
+		echo "<option value=''>[Seleccione]</option>";
+       foreach ($result as $row) {
+		   echo "<option value='".$row->id."'>".$row->payment_type."</option>";
+	   }
+	}
+
+	public function loadneocomprobantes2()
+	{
+		$result = $this->purchase->loadneocomprobante();
+		echo "<option value=''>[Seleccione]</option>";
+       foreach ($result as $row) {
+		   echo "<option value='".$row->cod_doc."'>".$row->cod_doc." - ".$row->nom_doc."</option>";
+	   }
+	}
+
+     public function verificarcod2()
+	 {
+		 $codigo =  $this->input->post('valor');
+		 $query = $this->purchase->verycode($codigo);
+		 echo "<option value=''>[Seleccione]</option>";
+		 foreach ($query as $row) {
+			 
+			echo "<option value='".$row->serie."'  >".$row->serie."</option>";
+		}
+	 }
+
+    public function verycorre2()
+	{
+		$corre =  $this->input->post('corre');
+		$query = $this->purchase->verycorrelativo($corre);
+		foreach ($query as $row) {
+			 
+		   echo json_encode($row->correlativo);
+		}
+		
+	}
+
+
+   //FIN CAMBIOS
+
 	public function index()
 	{
 		$this->permission_check('purchase_view');

@@ -124,7 +124,69 @@
                                     </div>
                                     <span id="pur_date_msg" style="display:none" class="text-danger"></span>
                                  </div>
+
                               </div>
+
+                              <!-- new objet -->
+                              <div class="form-group ">
+                                 <label for="customer_id" class="col-sm-2 control-label">Moneda<label class="text-danger">*</label></label>
+                                 <div class="col-sm-3">
+                                    <div class="input-group">
+                                       <select class="form-control "  style="width: 100%;" id="addmoneda2" onchange="loaddesc2(this.value)">
+                                          
+                                       </select>
+                                       <div class="input-group-addon">
+                                        <input  type="text" id="verpizza"  style="border: 0px;">
+                                       </div>
+                                    </div>
+                                    
+                                 </div>
+                                   
+                                 
+
+                                 <label for="sales_date" class="col-sm-2 control-label">Fecha de vencimiento <label class="text-danger">*</label></label>
+
+                                 <div class="col-sm-3">
+                                    <div class="input-group date">
+                                       <div class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                       </div>
+                                       <input type="text" class="form-control pull-right datepicker"  id="sales_date33" name="sales_date33" readonly onkeyup="shift_cursor(event,'sales_status')" value="<?= $sales_date;?>">
+                                    </div>
+                                    <span id="sales_date_msg" style="display:none" class="text-danger"></span>
+                                 </div>
+                      
+
+
+                              </div>
+
+                                  <!--fin -->
+
+                                   <!-- inicio2-->
+
+                                <div class="form-group">
+                                 <label for="customer_id" class="col-sm-2 control-label">Condición<label class="text-danger">*</label></label>
+                                 <div class="col-sm-3">
+                                    <div class="input-group">
+                                       <select class="form-control "  style="width: 100%;" id="addcondicion2" >
+                                         
+                                       </select>
+                                    </div>
+                                 </div>
+                                   
+                                 
+
+                                 <label for="reference_no" class="col-sm-2 control-label"><?= $this->lang->line('reference_no'); ?> </label>
+
+                                 <div class="col-sm-3">
+                                    <input type="text" value="" class="form-control " id="reference_no2" name="reference_no2" placeholder="">
+                                    <span id="reference_no_msg" style="display:none" class="text-danger"></span>
+                                 </div>
+
+
+                              </div>           
+                              <!-- Fin new object -->
+
                               <div class="form-group">
                                  <label for="purchase_status" class="col-sm-2 control-label"><?= $this->lang->line('status'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -141,13 +203,21 @@
                                        </select>
                                     <span id="purchase_status_msg" style="display:none" class="text-danger"></span>
                                  </div>
-                                  <label for="reference_no" class="col-sm-2 control-label"><?= $this->lang->line('reference_no'); ?> </label>
+
+                                  <label for="reference_no" class="col-sm-2 control-label">Nro Doc. </label>
                                  <div class="col-sm-3">
-                                    <input type="text" value="<?php echo  $reference_no; ?>" class="form-control " id="reference_no" name="reference_no" placeholder="" >
-                  <span id="reference_no_msg" style="display:none" class="text-danger"></span>
-                                 </div>
+                                    <div class="form-inline">
+                                          <select class="form-control "  style="width: 25%;" id="neocomprobante2" name="neocomprobante2" onchange="sigla2(this.value)">
+                                          </select>
+                                          <select class="form-control "  style="width: 25%;" id="neoserie2" onchange='verycorrelativo2(this.value)'>
+                                          </select>
+                                          <input type="text" class="form-control"  style="width: 35%;" id="correlativo2" name="correlativo2">
+                                    </div>
+                                    
+                                 </div>                                       
                                  
                               </div>
+
                               <!-- <div class="form-group">
                                 <label for="warehouse_id" class="col-sm-2 control-label"><?= $this->lang->line('warehouse'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -204,10 +274,17 @@
                                              }
                                           </style>
                                           
-                                            <div class="col-md-8 col-md-offset-2 d-flex justify-content" >
+                                            <!-- <div class="col-md-8 col-md-offset-2 d-flex justify-content" >
                                               <div class="input-group">
                                                 <span class="input-group-addon" title="Select Items"><i class="fa fa-barcode"></i></span>
                                                  <input type="text" class="form-control " placeholder="Item name/Barcode/Itemcode" id="item_search">
+                                              </div>
+                                            </div> -->
+                                            <div class="col-md-8 col-md-offset-2 d-flex justify-content" >
+                                              <div class="input-group">
+                                                <span class="input-group-addon" title="Digite nombre o código de producto"><i class="fa fa-cart-plus"></i></span>
+                                                 <input type="text" class="form-control " placeholder="Digite nombre o código de producto..." id="item_search">
+                                                <span class="input-group-addon btn navbar-btn btn-success" title="buscaritem"><i class="fa fa-search"></i></span>                                                
                                               </div>
                                             </div>
                                             <br>
@@ -536,18 +613,18 @@
 <?php include"comman/code_js_sound.php"; ?>
 <!-- GENERAL CODE -->
 <?php include"comman/code_js_form.php"; ?>
-
+ <script src="<?php echo $theme_link; ?>js/purchaseneo.js"></script>                               
  <script src="<?php echo $theme_link; ?>js/modals.js"></script>
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+                                                             
       <script src="<?php echo $theme_link; ?>js/purchase.js"></script>  
       <script>
          $(".close_btn").click(function(){
-           if(confirm('Are you sure you want to navigate away from this page?')){
+           if(confirm('Desea navegar fuera de esta página?')){
                window.location='<?php echo $base_url; ?>dashboard';
              }
          });
