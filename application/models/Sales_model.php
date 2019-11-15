@@ -137,12 +137,14 @@ class Sales_model extends CI_Model {
 	//Save Sales
 	public function verify_save_and_update(){
 		//Filtering XSS and html escape from user inputs 
-		extract($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));
+		extract($this->xss_html_filter(array_merge($this->data,$_POST,$_GET))); // aqui recoge los post y get
 		//echo "<pre>";print_r($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));exit();
 		
+
+		//aqui abajo estan los datos de la vista sale los imput que se reciben post o get
 		$this->db->trans_begin();
 		$sales_date=date('Y-m-d',strtotime($sales_date));
-
+             
 		if($other_charges_input=='' || $other_charges_input==0){$other_charges_input=null;}
 	    if($other_charges_tax_id=='' || $other_charges_tax_id==0){$other_charges_tax_id=null;}
 	    if($other_charges_amt=='' || $other_charges_amt==0){$other_charges_amt=null;}
@@ -166,7 +168,10 @@ class Sales_model extends CI_Model {
 		    				'reference_no' 				=> $reference_no, 
 		    				'sales_date' 				=> $sales_date,
 		    				'sales_status' 				=> $sales_status,
-		    				'customer_id' 				=> $customer_id,
+							'customer_id' 				=> $customer_id,
+							// pongo mi campo enviado
+							'mon_bas' 			     	=> $idmonenita,
+
 		    				/*'warehouse_id' 				=> $warehouse_id,*/
 		    				/*Other Charges*/
 		    				'other_charges_input' 		=> $other_charges_input,

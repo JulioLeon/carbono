@@ -141,9 +141,10 @@
                                        </select>
                                        <div class="input-group-addon">
                                         <input  type="text" id="ver"  style="border: 0px;">
+                                        
                                        </div>
                                     </div>
-                                    
+                                    <input type="hidden" id=idmonenita name="idmonenita">
                                  </div>
                                    
                                  
@@ -651,7 +652,7 @@ $( document ).ready(function() {
 var porciones = pizza.split('-');
   $("#ver").val(porciones[1]);
 // alert(porciones[1]); //porción3
-
+   $("#idmonenita").val(porciones[0]);
  }
 
  function cargomonedas() {

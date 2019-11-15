@@ -69,8 +69,12 @@ $('#save,#update').click(function (e) {
     var tot_discount_to_all_amt=$("#discount_to_all_amt").text();
     var tot_round_off_amt=$("#round_off_amt").text();
     var tot_total_amt=$("#total_amt").text();
+   //inicio mis imput id personalidados
 
-    var this_id=this.id;
+   var idmonenita=$("#idmonenita").val();//puse val ya que el .text() no lo reconoce. envialo asi
+   //finalizo mis imput id personalizados
+
+    var this_id=this.id;  // comando save
     
 			if(confirm("Do You Wants to Save Record ?")){
 				e.preventDefault();
@@ -82,7 +86,9 @@ $('#save,#update').click(function (e) {
         $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 				$.ajax({
 				type: 'POST',
-				url: base_url+'sales/sales_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+"&other_charges_amt="+other_charges_amt,
+        url: base_url+'sales/sales_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+
+        tot_subtotal_amt+'&tot_discount_to_all_amt='+tot_discount_to_all_amt+'&tot_round_off_amt='+
+        tot_round_off_amt+'&tot_total_amt='+tot_total_amt+'&idmonenita='+idmonenita+"&other_charges_amt="+other_charges_amt,
 				data: data,
 				cache: false,
 				contentType: false,
