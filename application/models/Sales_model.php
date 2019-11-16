@@ -32,7 +32,7 @@ class Sales_model extends CI_Model {
 
 	public function loadneocomprobante()
 	{
-		$query = $this->db->query('CALL SP_NEOCOMPROBANTE()');
+		$query = $this->db->query('CALL SP_NEOCOMPROBANTE2()');
 		return $query->result();
 	}
 
