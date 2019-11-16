@@ -44,7 +44,7 @@ class Sales_model extends CI_Model {
 
   public function verycorrelativo($corre)
   {
-	$query = $this->db->query("CALL SP_CORRELATIVO('".$corre."')");
+	$query = $this->db->query("CALL SP_CORRELATIVO2('".$corre."')");
 	return $query->result(); 
   }
 
