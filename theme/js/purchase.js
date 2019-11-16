@@ -44,7 +44,7 @@ $('#save,#update').click(function (e) {
     }*/
 	if(flag==false)
 	{
-		toastr["error"]("You have missed Something to Fillup!");
+		toastr["error"]("Falta llenar un dato!");
 		return;
 	}
 
@@ -58,7 +58,7 @@ $('#save,#update').click(function (e) {
 	}
 	
     if(flag1==false){
-    	toastr["warning"]("Please Select Item!!");
+    	toastr["warning"]("Por favor seleccione o item!!");
         $("#item_search").focus();
 		return;
     }
@@ -69,10 +69,11 @@ $('#save,#update').click(function (e) {
     var tot_discount_to_all_amt=$("#discount_to_all_amt").text();
     var tot_round_off_amt=$("#round_off_amt").text();
     var tot_total_amt=$("#total_amt").text();
+    var tot_total_amt2=$("#addmoneda2").text();
 
     var this_id=this.id;
     
-			if(confirm("Do You Wants to Save Record ?")){
+			if(confirm("Quiere guardar el registro?")){
 				e.preventDefault();
 				data = new FormData($('#purchase-form')[0]);//form name
         /*Check XSS Code*/
@@ -82,7 +83,8 @@ $('#save,#update').click(function (e) {
         $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 				$.ajax({
 				type: 'POST',
-				url: base_url+'purchase/purchase_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+"&other_charges_amt="+other_charges_amt,
+        url: base_url+'purchase/purchase_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+
+        tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+'&tot_total_amt2='+tot_total_amt2+"&other_charges_amt="+other_charges_amt,
 				data: data,
 				cache: false,
 				contentType: false,
@@ -96,7 +98,7 @@ $('#save,#update').click(function (e) {
 					}
 					else if(result[0]=="failed")
 					{
-					   toastr['error']("Sorry! Failed to save Record.Try again");
+					   toastr['error']("No se a podido guardar. Intente otra vez");
 					}
 					else
 					{

@@ -131,13 +131,14 @@
                               <div class="form-group ">
                                  <label for="customer_id" class="col-sm-2 control-label">Moneda<label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
-                                    <div class="input-group">
-                                       <select class="form-control "  style="width: 100%;" id="addmoneda2" onchange="loaddesc2(this.value)">
+                                    <div class="form-inline">
+                                       <select class="form-control "  style="width: 35%; padding:0;" id="addmoneda2" name="addmoneda2" onchange="loaddesc2(this.value)">
                                           
                                        </select>
-                                       <div class="input-group-addon">
+                                       <!-- <div class="input-group-addon">
                                         <input  type="text" id="verpizza"  style="border: 0px;">
-                                       </div>
+                                       </div> -->
+                                       <input type="text" class="form-control"  style="width: 55%;" id="verpizza" name="verpizza" disabled>                                      
                                     </div>
                                     
                                  </div>
@@ -207,11 +208,10 @@
                                   <label for="reference_no" class="col-sm-2 control-label">Nro Doc. </label>
                                  <div class="col-sm-3">
                                     <div class="form-inline">
-                                          <select class="form-control "  style="width: 25%;" id="neocomprobante2" name="neocomprobante2" onchange="sigla2(this.value)">
+                                          <select class="form-control "  style="width: 25%; padding:0;" id="neocomprobante2" name="neocomprobante2" onchange="sigla2(this.value)">
                                           </select>
-                                          <select class="form-control "  style="width: 25%;" id="neoserie2" onchange='verycorrelativo2(this.value)'>
-                                          </select>
-                                          <input type="text" class="form-control"  style="width: 35%;" id="correlativo2" name="correlativo2">
+                                          <input type="text" class="form-control"  style="width: 30%;" id="seriecom" name="seriecom" placeholder="Serie">
+                                          <input type="text" class="form-control"  style="width: 40%;" id="correlativo2" name="correlativo2" placeholder="Número">
                                     </div>
                                     
                                  </div>                                       
