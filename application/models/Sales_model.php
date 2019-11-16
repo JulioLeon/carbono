@@ -38,7 +38,7 @@ class Sales_model extends CI_Model {
 
    public function verycode($codigo)
    {
-	  $query = $this->db->query("CALL SP_NUMERACION('".$codigo."')");
+	  $query = $this->db->query("CALL SP_NUMERACION2('".$codigo."')");
 	  return $query->result();
    }
 
