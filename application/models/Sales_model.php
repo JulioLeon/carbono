@@ -26,7 +26,7 @@ class Sales_model extends CI_Model {
   
     public function loadcondicion()
 	{
-		$query = $this->db->query('CALL SP_CONDICION()');
+		$query = $this->db->query('CALL SP_CONDICION2()');
 		return $query->result();
 	}
 
