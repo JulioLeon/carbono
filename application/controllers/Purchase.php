@@ -76,6 +76,7 @@ class Purchase extends MY_Controller {
 	{
 		$this->permission_check('purchase_add');
 		$data=$this->data;
+		print_r($data);
 		$data['page_title']=$this->lang->line('purchase');
 		$this->load->view('purchase',$data);
 	}
@@ -88,7 +89,7 @@ class Purchase extends MY_Controller {
 	    	$result = $this->purchase->verify_save_and_update();
 	    	echo $result;
 		} else {
-			echo "Please Fill Compulsory(* marked) Fields.";
+			echo "Los campos con * son requeridos.";
 		}
 	}
 	
@@ -141,6 +142,7 @@ class Purchase extends MY_Controller {
 			$row[] = $purchase->purchase_status;
 			$row[] = $purchase->reference_no;
 			$row[] = $purchase->supplier_name;
+			$row[] = $purchase->addmoneda2;
 			/*$row[] = $purchase->warehouse_name;*/
 			$row[] = $this->currency($purchase->grand_total);
 			$row[] = $this->currency($purchase->paid_amount);

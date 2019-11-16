@@ -20,8 +20,7 @@ $( document ).ready(function() {
        type: "post",
        url: "loadmonedas2",
        data: {},
-       success: function (response) {
-            alert("cargomoneda");
+       success: function (response) {            
             console.log(response);
             $("#addmoneda2").append(response);         
        }
