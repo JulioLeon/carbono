@@ -12,7 +12,7 @@ class Purchase extends MY_Controller {
    
 	public function loadmonedas2()
 	{
-		print("dentro de controler");
+		//print("dentro de controler");
 		$result = $this->purchase->loadmoneda();
 		echo "<option value=''>[Seleccione]</option>";
        foreach ($result as $row) {
@@ -76,7 +76,7 @@ class Purchase extends MY_Controller {
 	{
 		$this->permission_check('purchase_add');
 		$data=$this->data;
-		print_r($data);
+		//print_r($data);
 		$data['page_title']=$this->lang->line('purchase');
 		$this->load->view('purchase',$data);
 	}

@@ -70,7 +70,7 @@ $('#save,#update').click(function (e) {
     var tot_round_off_amt=$("#round_off_amt").text();
     var tot_total_amt=$("#total_amt").text();
     var tot_total_amt2=$("#addmoneda2").text();
-
+    var mon_bas = $("#idmonbas").val();
     var this_id=this.id;
     
 			if(confirm("Quiere guardar el registro?")){
@@ -84,7 +84,7 @@ $('#save,#update').click(function (e) {
 				$.ajax({
 				type: 'POST',
         url: base_url+'purchase/purchase_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+
-        tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+'&tot_total_amt2='+tot_total_amt2+"&other_charges_amt="+other_charges_amt,
+        tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+'&tot_total_amt2='+tot_total_amt2+'&mon_bas='+mon_bas+"&other_charges_amt="+other_charges_amt,
 				data: data,
 				cache: false,
 				contentType: false,
@@ -135,7 +135,7 @@ $("#item_search").autocomplete({
                 result = [
                     {
                         //label: 'No Records Found '+data.term,
-                        label: 'No Records Found ',
+                        label: 'No se encuentra registro ',
                         value: ''
                     }
                 ];
@@ -194,8 +194,8 @@ function increment_qty(rowcount){
     item_qty=parseFloat(item_qty)+1;
     $("#td_data_"+rowcount+"_3").val(item_qty);
   //}
-  console.log(item_qty);
-  console.log(available_qty);
+  //console.log(item_qty);
+  //console.log(available_qty);
   calculate_tax(rowcount);
 }
 //DECREMENT ITEM

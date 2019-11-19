@@ -140,21 +140,20 @@
                                        </div> -->
                                        <input type="text" class="form-control"  style="width: 55%;" id="verpizza" name="verpizza" disabled>                                      
                                     </div>
-                                    
+                                    <input type="hidden" id="idmonbas" name="idmonbas">                                    
                                  </div>
-                                   
-                                 
+                                                                   
 
-                                 <label for="sales_date" class="col-sm-2 control-label">Fecha de vencimiento <label class="text-danger">*</label></label>
+                                 <label for="purchase_date" class="col-sm-2 control-label">Fecha vcto. <label class="text-danger">*</label></label>
 
                                  <div class="col-sm-3">
                                     <div class="input-group date">
                                        <div class="input-group-addon">
                                           <i class="fa fa-calendar"></i>
                                        </div>
-                                       <input type="text" class="form-control pull-right datepicker"  id="sales_date33" name="sales_date33" readonly onkeyup="shift_cursor(event,'sales_status')" value="<?= $sales_date;?>">
+                                       <input type="text" class="form-control pull-right datepicker"  id="pur_fecvto" name="pur_fecvto" onkeyup="shift_cursor(event,'purchase_status')" value="<?= $pur_fecvto;?>">
                                     </div>
-                                    <span id="sales_date_msg" style="display:none" class="text-danger"></span>
+                                    <span id="purchase_date_msg" style="display:none" class="text-danger"></span>
                                  </div>
                       
 
@@ -169,7 +168,7 @@
                                  <label for="customer_id" class="col-sm-2 control-label">Condición<label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
                                     <div class="input-group">
-                                       <select class="form-control "  style="width: 100%;" id="addcondicion2" >
+                                       <select class="form-control "  style="width: 100%;" id="addcondicion2" name="addcondicion2" >
                                          
                                        </select>
                                     </div>
@@ -208,10 +207,10 @@
                                   <label for="reference_no" class="col-sm-2 control-label">Nro Doc. </label>
                                  <div class="col-sm-3">
                                     <div class="form-inline">
-                                          <select class="form-control "  style="width: 25%; padding:0;" id="neocomprobante2" name="neocomprobante2" onchange="sigla2(this.value)">
+                                          <select class="form-control "  style="width: 25%; padding:0;" id="pur_tipdoc" name="pur_tipdoc">
                                           </select>
-                                          <input type="text" class="form-control"  style="width: 30%;" id="seriecom" name="seriecom" placeholder="Serie">
-                                          <input type="text" class="form-control"  style="width: 40%;" id="correlativo2" name="correlativo2" placeholder="Número">
+                                          <input type="text" class="form-control"  style="width: 30%;" id="pur_serie" name="pur_serie" placeholder="Serie">
+                                          <input type="text" class="form-control"  style="width: 40%;" id="pur_correlativo" name="pur_correlativo" placeholder="Número">
                                     </div>
                                     
                                  </div>                                       
@@ -817,8 +816,7 @@
 
       var rowcount=$("#hidden_rowcount").val();
       for(k=1;k<=rowcount;k++){
-       if(document.getElementById("tr_item_id_"+k)){
-         console.log("Hello="+k);
+       if(document.getElementById("tr_item_id_"+k)){        
          calculate_tax(k);
        }//if end
      }//for end

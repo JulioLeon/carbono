@@ -12,7 +12,7 @@ $( document ).ready(function() {
     var porciones = pizza.split('-');
     $("#verpizza").val(porciones[1]);
     // alert(porciones[1]); //porción3
-
+    $("#idmonbas").val(porciones[0]);
  }
 
  function cargomonedas2() {     
@@ -20,8 +20,7 @@ $( document ).ready(function() {
        type: "post",
        url: "loadmonedas2",
        data: {},
-       success: function (response) {            
-            console.log(response);
+       success: function (response) {                       
             $("#addmoneda2").append(response);         
        }
     });
@@ -33,8 +32,7 @@ $( document ).ready(function() {
        type: "post",
        url: "loadcondiciones2",
        data: {},
-       success: function (response) {
-        console.log(response); 
+       success: function (response) {        
         $("#addcondicion2").html(response);          
        }
     });
@@ -46,45 +44,12 @@ $( document ).ready(function() {
        url: "loadneocomprobantes2",
        data: {},
        success: function (response) {
-         $("#neocomprobante2").append(response);
+         $("#pur_tipdoc").append(response);
           
        }
     });
  }
 
-
-function sigla2(e) {
-   var valor = e;
-   $.ajax({
-      type: "post",
-      url: "verificarcod2",
-      data: {
-         valor: valor
-      },
-    
-      success: function (response) {
-        
-         $("#neoserie2").html(response);
-         $("#correlativo2").val("");
-      }
-   });
-}
-
-function verycorrelativo2(e) {
-  var corre  = e ;
-  $.ajax({
-     type: "post",
-     url: "verycorre2",
-     data: {
-        corre: corre
-     },
-     success: function (response) {
-      
-       var corre  =  JSON.parse(response)
-       $("#correlativo2").val(corre);
-     }
-  });
-}
 
 
 // FIN DE CAMBIOS 
