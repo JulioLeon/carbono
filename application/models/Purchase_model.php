@@ -29,25 +29,25 @@ class Purchase_model extends CI_Model {
 
     public function loadcondicion()
 	{
-		$query = $this->db->query('CALL SP_CONDICION()');
+		$query = $this->db->query('CALL SP_CONDICION2()');
 		return $query->result();
 	}
 
 	public function loadneocomprobante()
 	{
-		$query = $this->db->query('CALL SP_NEOCOMPROBANTE()');
+		$query = $this->db->query('CALL SP_NEOCOMPROBANTE2()');
 		return $query->result();
 	}
 
    public function verycode($codigo)
    {
-	  $query = $this->db->query("CALL SP_NUMERACION('".$codigo."')");
+	  $query = $this->db->query("CALL SP_NUMERACION2('".$codigo."')");
 	  return $query->result();
    }
 
   public function verycorrelativo($corre)
   {
-	$query = $this->db->query("CALL SP_CORRELATIVO('".$corre."')");
+	$query = $this->db->query("CALL SP_CORRELATIVO2('".$corre."')");
 	return $query->result();
   }
 
@@ -136,10 +136,11 @@ class Purchase_model extends CI_Model {
 	public function verify_save_and_update(){
 		//Filtering XSS and html escape from user inputs
 		extract($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));
-		echo "<pre>";print_r($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));exit();
+		//echo "<pre>";print_r($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));exit();
 
 		$this->db->trans_begin();
 		$pur_date=date('Y-m-d',strtotime($pur_date));
+		$pur_fecvto=date('Y-m-d',strtotime($pur_fecvto));
 
 		if($other_charges_input=='' || $other_charges_input==0){$other_charges_input=null;}
 	    if($other_charges_tax_id=='' || $other_charges_tax_id==0){$other_charges_tax_id=null;}
@@ -159,11 +160,16 @@ class Purchase_model extends CI_Model {
 
 		    $purchase_entry = array(
 		    				'purchase_code' 			=> $purchase_code,
-		    				'reference_no' 				=> $reference_no,
+		    				'reference_no' 				=> $reference_no2,
 		    				'purchase_date' 			=> $pur_date,
 		    				'purchase_status' 			=> $purchase_status,
 							'supplier_id' 				=> $supplier_id,
-							'mon_bas'					=> $addmoneda2,
+							'mon_bas'					=> $mon_bas,
+							'fec_vto'					=> $pur_fecvto,
+							'con_ven'					=> $addcondicion2,
+							'tip_doc'					=> $pur_tipdoc,
+							'ser_doc'					=> $pur_serie,
+							'num_doc'					=> $pur_correlativo,
 		    				/*'warehouse_id' 				=> $warehouse_id,*/
 		    				/*Other Charges*/
 		    				'other_charges_input' 		=> $other_charges_input,
