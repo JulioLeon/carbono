@@ -9,7 +9,7 @@ class Sales extends MY_Controller {
 		$this->load->helper('sms_template_helper');
 	}
 	
-	//INICIO CAMBIOS
+	//INICIO CAMBIOS  22
    
 	public function loadmonedas()
 	{
