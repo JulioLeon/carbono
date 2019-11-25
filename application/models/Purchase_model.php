@@ -50,6 +50,12 @@ class Purchase_model extends CI_Model {
 	$query = $this->db->query("CALL SP_CORRELATIVO2('".$corre."')");
 	return $query->result();
   }
+  public function agregar_stock($valor01,$valor02,$valor03) {
+	$opc = 3;  	
+	$query = $this->db->query(" CALL SP_STOCKS('".$opc."','".$valor01."','".$valor02."','".$valor03."','','','','',@outstock); ");   
+	$query = $this->db->query("Select @outstock  as mensaje;"); 
+	return $query->result();
+  }
 
 
 
@@ -566,11 +572,29 @@ class Purchase_model extends CI_Model {
                <td id="td_<?=$rowcount;?>_9"><input type="text" name="td_data_<?=$rowcount;?>_9" id="td_data_<?=$rowcount;?>_9" class="form-control text-right no-padding only_currency text-center" readonly value="<?=$item_amount;?>"></td>
 
                <!-- Profit Margin -->
-               <td id="td_<?=$rowcount;?>_12"><input type="text" name="td_data_<?=$rowcount;?>_12" id="td_data_<?=$rowcount;?>_12" class="form-control no-padding text-center" value="<?=$item_profit_margin;?>" readonly ></td>
+               <!-- <td id="td_<?=$rowcount;?>_12"><input type="text" name="td_data_<?=$rowcount;?>_12" id="td_data_<?=$rowcount;?>_12" class="form-control no-padding text-center" value="<?=$item_profit_margin;?>" readonly ></td> -->
 
                <!-- sales price -->
-               <td id="td_<?=$rowcount;?>_13"><input type="text" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13" class="form-control text-right no-padding only_currency text-center" value="<?=$item_sales_price;?>" readonly ></td>
-
+			   <!-- <td id="td_<?=$rowcount;?>_13"><input type="text" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13" class="form-control text-right no-padding only_currency text-center" value="<?=$item_sales_price;?>" readonly ></td> -->
+			   <td id="td_<?=$rowcount;?>_13">
+					<!-- <input type="text" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13" class="form-control text-right no-padding only_currency text-center" value="<?=$item_sales_price;?>" readonly > -->					
+						<select class="form-control select2 text-right no-padding only_currency text-center" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13"  style="width: 100%;">
+							<!-- <option value="">-Select-</option> -->
+							<?php 
+								$received_select = ($purchase_status=='Received') ? 'selected' : ''; 
+								$pending_select = ($purchase_status=='Pending') ? 'selected' : ''; 
+								$ordered_select = ($purchase_status=='Ordered') ? 'selected' : ''; 
+							?>
+										<option  value="ALM01">ALMACEN 01</option>
+										<option  value="ALM02">ALMACEN 02</option>
+										<option  value="ALM03">ALMACEN 03</option>
+						</select>
+					<!-- <span id="purchase_status_msg" style="display:none" class="text-danger"></span> -->
+					
+				</td>
+				<!-- agregando -->
+			   
+								 
                <!-- ADD button -->
                <td id="td_<?=$rowcount;?>_16" style="text-align: center;">
                   <a class=" fa fa-fw fa-minus-square text-red" style="cursor: pointer;font-size: 34px;" onclick="removerow(<?=$rowcount;?>)" title="Delete ?" name="td_data_<?=$rowcount;?>_16" id="td_data_<?=$rowcount;?>_16"></a>

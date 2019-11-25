@@ -9,6 +9,14 @@ class Purchase extends MY_Controller {
 	}
 
 	//INICIO CAMBIOS
+	public function ingreso_stock(){
+		$valor01 = $this->input->post('valor01');
+        $valor02 = $this->input->post('valor02');
+		$valor03 = $this->input->post('valor03');	
+		$this->purchase->agregar_stock($valor01,$valor02,$valor03);
+		//echo $this->purchase->delete_purchase($ids);		
+        echo json_encode (1);
+	}
    
 	public function loadmonedas2()
 	{
@@ -341,4 +349,5 @@ class Purchase extends MY_Controller {
 		$purchase_id=$this->input->post('purchase_id');
 		echo $this->purchase->view_payments_modal($purchase_id);
 	}
+	
 }

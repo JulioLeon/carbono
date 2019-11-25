@@ -57,10 +57,24 @@ $( document ).ready(function() {
       var n1 = $("#tr_item_id_"+i).val();
       var n2 = $("#td_data_"+i+"_1").val();
       var n3 = $("#td_data_"+i+"_3").val();
-      //var n2 = $('#td_data_'+i+'_1').val();
-      //$.post()
-      console.log("entrando---");
-      console.log(n1 + " /" +  n2 + " /" + n3);
+      var n4 = $("#td_data_"+i+"_13").val();
+      console.log(n1 + " /" +  n2 + " /" + n3 + " / " + n4);
+      $.ajax({
+         type: "post",
+         url : "Purchase/ingreso_stock",
+         data: {
+            valor01 : n4,
+            valor02 : n1,
+            valor03 : n3
+         },
+      success: function (response) {
+         alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
+         //window.location.href='Impuesto';  
+         //console.log(response);
+               
+         }
+
+      });      
       //alert("dentro: N1" + n1 + " / N2: " + n2);
       i++;
     });
