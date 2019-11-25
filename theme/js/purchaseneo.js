@@ -50,6 +50,39 @@ $( document ).ready(function() {
     });
  }
 
+ function add_stock() {
+    //alert("probando");
+    var i = 1;
+    $("#purchase_table .detalle_item").each(function(){
+      var n1 = $("#tr_item_id_"+i).val();
+      var n2 = $("#td_data_"+i+"_1").val();
+      var n3 = $("#td_data_"+i+"_3").val();
+      //var n2 = $('#td_data_'+i+'_1').val();
+      //$.post()
+      console.log("entrando---");
+      console.log(n1 + " /" +  n2 + " /" + n3);
+      //alert("dentro: N1" + n1 + " / N2: " + n2);
+      i++;
+    });
+   // var valor16 = $("#celcon2").val();        
+   // var valor17 = $("#notemp").val();             
+   //  $.ajax({
+   //      type: "post",
+   //      url: "Proveedor/addproveedor",
+   //      data: {           
+   //         valor01 : valor01,
+   //         valor02 : valor02,                      
+   //      },  
+   //      success: function (response) {
+   //         alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
+   //         window.location.href='Proveedor';  
+   //         // console.log(response);
+            
+   //      }
+   //  });
+
+ }
+
 
 
 // FIN DE CAMBIOS 

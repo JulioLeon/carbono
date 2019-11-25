@@ -49,6 +49,7 @@
                            coalesce(b.grand_total,0) as grand_total,
                            coalesce(b.subtotal,0) as subtotal,
                            coalesce(b.paid_amount,0) as paid_amount,
+                           b.total_igv as total_igv,
                            coalesce(b.other_charges_input,0) as other_charges_input,
                            other_charges_tax_id,
                            coalesce(b.other_charges_amt,0) as other_charges_amt,
@@ -87,6 +88,7 @@
     
     $subtotal=$res3->subtotal;
     $grand_total=$res3->grand_total;
+    $total_igv = $res3->total_igv;
     $other_charges_input=$res3->other_charges_input;
     $other_charges_tax_id=$res3->other_charges_tax_id;
     $other_charges_amt=$res3->other_charges_amt;
@@ -185,7 +187,7 @@
               <th><?= $this->lang->line('tax_amount'); ?></th>
               <th><?= $this->lang->line('discount'); ?></th>
               <th><?= $this->lang->line('discount_amount'); ?></th>
-              <th><?= $this->lang->line('unit_cost'); ?></th>
+              <th><?= $this->lang->line('unit_cost'); ?></th>              
               <th><?= $this->lang->line('total_amount'); ?></th>
             </tr>
             </thead>
@@ -346,14 +348,20 @@
                              <h4><b id="discount_to_all_amt" name="discount_to_all_amt"><?=$CI->currency($tot_discount_to_all_amt);?></b></h4>
                           </th>
                        </tr>
-                       <tr>
+                       <!-- <tr>
                           <th class="text-right" style="font-size: 17px;"><?= $this->lang->line('round_off'); ?></th>
                           <th class="text-right" style="padding-left:10%;font-size: 17px;">
                              <h4><b id="round_off_amt" name="tot_round_off_amt"><?=$CI->currency($round_off);?></b></h4>
                           </th>
+                       </tr> -->
+                       <tr>
+                          <th class="text-right" style="font-size: 17px;">IGV.</th>
+                          <th class="text-right" style="padding-left:10%;font-size: 17px;">
+                             <h4><b id="tot_purivamnt" name="tot_purivamnt"><?=$CI->currency(number_format($total_igv,2,'.',''));?></b></h4>                             
+                          </th>
                        </tr>
                        <tr>
-                          <th class="text-right" style="font-size: 17px;"><?= $this->lang->line('grand_total'); ?></th>
+                          <th class="text-right" style="font-size: 17px;">Monto total</th>
                           <th class="text-right" style="padding-left:10%;font-size: 17px;">
                              <h4><b id="total_amt" name="total_amt"><?=$CI->currency($grand_total);?></b></h4>
                           </th>

@@ -33,7 +33,7 @@ $('#save,#update').click(function (e) {
     }
 
 
-   //Validate Input box or selection box should not be blank or empty
+   //Los inputs o select no deben estar vacios
 	  check_field("supplier_id");
     check_field("pur_date");
     check_field("purchase_status");
@@ -48,7 +48,7 @@ $('#save,#update').click(function (e) {
 		return;
 	}
 
-	//Atleast one record must be added in purchase table 
+	//Al menos agregar un registro
     var rowcount=document.getElementById("hidden_rowcount").value;
 	var flag1=false;
 	for(var n=1;n<=rowcount;n++){
@@ -58,7 +58,7 @@ $('#save,#update').click(function (e) {
 	}
 	
     if(flag1==false){
-    	toastr["warning"]("Por favor seleccione o item!!");
+    	toastr["warning"]("Por favor seleccione un item!!");
         $("#item_search").focus();
 		return;
     }
@@ -70,6 +70,7 @@ $('#save,#update').click(function (e) {
     var tot_round_off_amt=$("#round_off_amt").text();
     var tot_total_amt=$("#total_amt").text();
     var tot_total_amt2=$("#addmoneda2").text();
+    var total_puriva=$("#total_puriva").text();
     var mon_bas = $("#idmonbas").val();
     var this_id=this.id;
     
@@ -84,7 +85,7 @@ $('#save,#update').click(function (e) {
 				$.ajax({
 				type: 'POST',
         url: base_url+'purchase/purchase_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+
-        tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+'&tot_total_amt2='+tot_total_amt2+'&mon_bas='+mon_bas+"&other_charges_amt="+other_charges_amt,
+        tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+'&tot_total_amt2='+tot_total_amt2+'&mon_bas='+mon_bas+"&other_charges_amt="+other_charges_amt+'&total_puriva='+total_puriva,
 				data: data,
 				cache: false,
 				contentType: false,

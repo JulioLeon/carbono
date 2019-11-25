@@ -181,7 +181,8 @@ class Purchase_model extends CI_Model {
 		    				'tot_discount_to_all_amt' 	=> $tot_discount_to_all_amt,
 		    				/*Subtotal & Total */
 		    				'subtotal' 					=> $tot_subtotal_amt,
-		    				'round_off' 				=> $tot_round_off_amt,
+							'round_off' 				=> $tot_round_off_amt,
+							'total_igv'					=> $total_puriva,
 		    				'grand_total' 				=> $tot_total_amt,
 		    				'purchase_note' 			=> $purchase_note,
 		    				/*System Info*/
@@ -508,7 +509,7 @@ class Purchase_model extends CI_Model {
 			$item_purchase_price=$item_price;
 		}
 		?>
-            <tr id="row_<?=$rowcount;?>" data-row='<?=$rowcount;?>'>
+            <tr id="row_<?=$rowcount;?>" data-row='<?=$rowcount;?>' class="detalle_item">
                <td id="td_<?=$rowcount;?>_1">
                   <!-- item name  -->
                   <input type="text" style="font-weight: bold;" id="td_data_<?=$rowcount;?>_1" class="form-control no-padding" value='<?=$item_name;?>' readonly >

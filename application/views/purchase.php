@@ -437,7 +437,14 @@
                                                 </th>
                                              </tr>
                                              <tr>
-                                                <th class="text-right" style="font-size: 17px;"><?= $this->lang->line('grand_total'); ?></th>
+                                                <th class="text-right" style="font-size: 17px;">IGV. </th>
+                                                <th class="text-right" style="padding-left:10%;font-size: 17px;">
+                                                   <h4>
+                                                   <?= $CI->currency('<b id="total_puriva" name="total_puriva">0.00</b>'); ?> </h4>
+                                                </th>
+                                             </tr>
+                                             <tr>
+                                                <th class="text-right" style="font-size: 17px;">Monto total</th>
                                                 <th class="text-right" style="padding-left:10%;font-size: 17px;">
                                                    <h4>
                                                     <?= $CI->currency('<b id="total_amt" name="total_amt">0.00</b>'); ?></h4>
@@ -584,7 +591,7 @@
 
                                 ?>
                                  <div class="col-md-3 col-md-offset-3">
-                                    <button type="button" id="<?php echo $btn_id;?>" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Save Data"><?php echo $btn_name;?></button>
+                                    <button type="button" id="<?php echo $btn_id;?>" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Save Data" onclick="add_stock();"><?php echo $btn_name;?></button>
                                  </div>
                                  <div class="col-sm-3"><a href="<?= base_url()?>dashboard">
                                     <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Cerrar</button>
@@ -637,7 +644,7 @@
              });
           
        
-         
+
          /* ---------- CALCULATE TAX -------------*/
          function calculate_tax(i){ //i=Row
            var qty=$("#td_data_"+i+"_3").val().trim();
@@ -708,6 +715,8 @@
            var tax_amt=0;
            var actual_taxable=0;
            var total_quantity=0;
+           var taxabletot = 0;
+           var totgravado = 0;
          
            for(i=1;i<=rowcount;i++){
          
@@ -716,6 +725,8 @@
                if($("#td_data_"+i+"_1").val()!=null && $("#td_data_"+i+"_1").val()!=''){
                     actual_taxable=actual_taxable+ + +(parseFloat($("#td_data_"+i+"_13").val()).toFixed(2) * parseFloat($("#td_data_"+i+"_3").val()));
                     subtotal=subtotal+ + +parseFloat($("#td_data_"+i+"_9").val()).toFixed(2);
+                    taxabletot = taxabletot+ + +$("#td_data_"+i+"_5").val();
+                    totgravado = subtotal - taxabletot;
                     if($("#td_data_"+i+"_7").val()>=0){
                       tax_amt=tax_amt+ + +$("#td_data_"+i+"_7").val();
                     }   
@@ -734,14 +745,13 @@
            if((subtotal!=null || subtotal!='') && (subtotal!=0)){
              
              //subtotal
-             $("#subtotal_amt").html(subtotal.toFixed(2));
+             $("#subtotal_amt").html(totgravado.toFixed(2));
              
              //other charges total amount
              $("#other_charges_amt").html(parseFloat(other_charges_total_amt).toFixed(2));
-             
+            // $("#pur_iva").html(parseFloat(per_unit_tax)).toFixed(2));
              //other charges total amount
-            
-
+                         
              taxable=taxable+subtotal;
              
              //discount_to_all_amt
@@ -770,12 +780,14 @@
                     $("#discount_to_all_amt").html(discount);  
                     $("#hidden_discount_to_all_amt").val(discount);  
              //}
-             subtotal_round=Math.round(taxable);
+             //subtotal_round=Math.round(taxable);
+             subtotal_round=taxable;
              subtotal_diff=subtotal_round-taxable;
          
              $("#round_off_amt").html(parseFloat(subtotal_diff).toFixed(2)); 
              $("#total_amt").html(parseFloat(subtotal_round).toFixed(2)); 
              $("#hidden_total_amt").val(parseFloat(subtotal_round).toFixed(2)); 
+             $("#total_puriva").html(parseFloat(taxabletot).toFixed(2));
            }
            else{
              $("#subtotal_amt").html('0.00'); 
@@ -822,7 +834,6 @@
      }//for end
 
       //final_total();
-      //comentario
     }
 
 
