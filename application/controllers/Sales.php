@@ -19,7 +19,7 @@ class Sales extends MY_Controller {
           foreach ($result as $row) {
 			echo"<div class='list-group'>";
 			echo"<button type='button' class='list-group-item'
-			 onclick=\"asignar_nombre_ruc('".$row->id."','".$row->customer_name."','".$row->num_doc."');\" >".$row->num_doc."</button>";
+			 onclick=\"asignar_nombre_ruc($row->id,'".$row->customer_name."','".$row->num_doc."');\" >".$row->num_doc."</button>";
 		    echo "</div>"; 
 		  }
 		

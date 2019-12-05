@@ -85,6 +85,8 @@
                           
                            <div class="box-body">
                                 
+       
+
                               <div class="row" style=" padding-bottom: 15px;">
                               <label for="customer_id" class="col-sm-2 control-label">RUC / DNI <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -96,7 +98,7 @@
                          
                            <!-- separador-->
                               <div class="form-group">
-
+                                     <input type="hidden" name="customer_id" id="customer_id" value="">
                                  <label for="customer_id" class="col-sm-2 control-label">Nombre de cliente<label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
                                     <input type="text" value="" class="form-control " id="salescliente" name="salescliente" placeholder="" readonly>
@@ -203,8 +205,11 @@
                                  <div class="form-inline">
                                        <select class="form-control "  style="width: 25%;" id="neocomprobante" name="neocomprobante" onchange="sigla1(this.value)">
                                        </select>
+                                        <input type="hidden" name="salestipo" id="salestipo"value="">
                                        <select class="form-control "  style="width: 25%;" id="neoserie" onchange='verycorrelativo(this.value)'>
                                        </select>
+                                       <input type="hidden" name="salesserie" id="salesserie"value="">
+
                                        <input type="text" class="form-control"  style="width: 35%;" id="correlativo" name="correlativo" readonly>
                                  </div>
                                     </div>
@@ -683,6 +688,7 @@ var porciones = pizza.split('-');
 
 
 function sigla1(e) {
+     $("#salestipo").val(e);
    var valor = e;
    $.ajax({
       type: "post",
@@ -700,6 +706,7 @@ function sigla1(e) {
 }
 
 function verycorrelativo(e) {
+   $("#salesserie").val(e);
   var corre  = e ;
   $.ajax({
      type: "post",
@@ -736,6 +743,8 @@ function salesruc(e){
 
 function asignar_nombre_ruc(id,name,doc) {
   //alert(id+name);
+ 
+  $("#customer_id").val(id);
   $("#ruc").val(doc);
   $("#salescliente").val(name);
   $("#salida").hide();

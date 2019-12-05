@@ -150,7 +150,7 @@ class Sales_model extends CI_Model {
 		//aqui abajo estan los datos de la vista sale los imput que se reciben post o get
 		$this->db->trans_begin();
 		$sales_date=date('Y-m-d',strtotime($sales_date));
-             
+		$sales_date33=date('Y-m-d',strtotime($sales_date33));  
 		if($other_charges_input=='' || $other_charges_input==0){$other_charges_input=null;}
 	    if($other_charges_tax_id=='' || $other_charges_tax_id==0){$other_charges_tax_id=null;}
 	    if($other_charges_amt=='' || $other_charges_amt==0){$other_charges_amt=null;}
@@ -170,14 +170,18 @@ class Sales_model extends CI_Model {
 			$sales_code=$sales_init.str_pad($maxid, 4, '0', STR_PAD_LEFT);
 
 		    $sales_entry = array(
-		    				'sales_code' 				=> $sales_code, 
+							'sales_code' 				=> $sales_code,
+							'tip_doc' 			     	=> $salestipo, 
+							'ser_doc' 				    => $salesserie, 
+							'num_doc' 				    => $correlativo,
 		    				'reference_no' 				=> $reference_no, 
 		    				'sales_date' 				=> $sales_date,
 		    				'sales_status' 				=> $sales_status,
 							'customer_id' 				=> $customer_id,
+							'ruc_dni' 				    => $ruc	,
 							// pongo mi campo enviado
 							'mon_bas' 			     	=> $idmonenita,
-
+							'fec_vto' 			     	=> $sales_date33,
 		    				/*'warehouse_id' 				=> $warehouse_id,*/
 		    				/*Other Charges*/
 		    				'other_charges_input' 		=> $other_charges_input,
