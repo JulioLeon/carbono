@@ -9,7 +9,23 @@ class Sales extends MY_Controller {
 		$this->load->helper('sms_template_helper');
 	}
 	
-	//INICIO CAMBIOS  22
+	//INICIO CAMBIOS 
+
+      public function validaruc()
+	  {
+		  $ruc =  $this->input->post("ruc");
+		  $result = $this->sales->loadruc($ruc);
+
+          foreach ($result as $row) {
+			echo"<div class='list-group'>";
+			echo"<button type='button' class='list-group-item'
+			 onclick=\"asignar_nombre_ruc('".$row->id."','".$row->customer_name."','".$row->num_doc."');\" >".$row->num_doc."</button>";
+		    echo "</div>"; 
+		  }
+		
+	  }
+
+
    
 	public function loadmonedas()
 	{

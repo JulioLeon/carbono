@@ -84,36 +84,25 @@
 
                           
                            <div class="box-body">
-                              <div class="form-group">
-                                 <label for="customer_id" class="col-sm-2 control-label"><?= $this->lang->line('customer_name'); ?><label class="text-danger">*</label></label>
+                                
+                              <div class="row" style=" padding-bottom: 15px;">
+                              <label for="customer_id" class="col-sm-2 control-label">RUC / DNI <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
-                                    <div class="input-group">
-                                       <select class="form-control select2" id="customer_id" name="customer_id"  style="width: 100%;" onkeyup="shift_cursor(event,'mobile')">
-                                          <?php
-                                             
-                                             $query1="select * from db_customers where status=1";
-                                             $q1=$this->db->query($query1);
-                                             if($q1->num_rows($q1)>0)
-                                                { 
-                                                 // echo "<option value=''>-Select-</option>";
-                                                  foreach($q1->result() as $res1)
-                                                {
-                                                  $selected=($customer_id==$res1->id) ? 'selected' : '';
-                                                  echo "<option $selected  value='".$res1->id."'>".$res1->customer_name ."</option>";
-                                                }
-                                              }
-                                              else
-                                              {
-                                                 ?>
-                                          <option value="">No Records Found</option>
-                                          <?php
-                                             }
-                                             ?>
-                                       </select>
-                                       <span class="input-group-addon pointer" data-toggle="modal" data-target="#customer-modal" title="New Customer?"><i class="fa fa-user-plus text-primary fa-lg"></i></span>
-                                    </div>
-                                    <span id="customer_id_msg" style="display:none" class="text-danger"></span>
+                                    <input type="text" value="" class="form-control " id="ruc" name="ruc" placeholder=""  onkeypress="salesruc(this.value)">
+                                    <div id="salida"></div>
                                  </div>
+                              </div>
+                               <!-- separador-->
+                         
+                           <!-- separador-->
+                              <div class="form-group">
+
+                                 <label for="customer_id" class="col-sm-2 control-label">Nombre de cliente<label class="text-danger">*</label></label>
+                                 <div class="col-sm-3">
+                                    <input type="text" value="" class="form-control " id="salescliente" name="salescliente" placeholder="" readonly>
+                                    
+                                 </div>
+
                                  <label for="sales_date" class="col-sm-2 control-label"><?= $this->lang->line('sales_date'); ?> <label class="text-danger">*</label></label>
 
                                  <div class="col-sm-3">
@@ -216,7 +205,7 @@
                                        </select>
                                        <select class="form-control "  style="width: 25%;" id="neoserie" onchange='verycorrelativo(this.value)'>
                                        </select>
-                                       <input type="text" class="form-control"  style="width: 35%;" id="correlativo" name="correlativo">
+                                       <input type="text" class="form-control"  style="width: 35%;" id="correlativo" name="correlativo" readonly>
                                  </div>
                                     </div>
                               <!-- <div class="form-group">
@@ -727,6 +716,30 @@ function verycorrelativo(e) {
 }
 
 
+
+function salesruc(e){
+   var ruc = e;
+   $.ajax({
+      type: "post",
+      url: "validaruc",
+      data: {
+         ruc:ruc
+      },
+      success: function (response) {
+         $("#salida").html(response);
+         $("#salida").show();
+      }
+   });
+   
+}
+
+
+function asignar_nombre_ruc(id,name,doc) {
+  //alert(id+name);
+  $("#ruc").val(doc);
+  $("#salescliente").val(name);
+  $("#salida").hide();
+  }
 
 
 </script>

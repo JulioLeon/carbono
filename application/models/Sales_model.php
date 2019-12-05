@@ -16,7 +16,13 @@ class Sales_model extends CI_Model {
 	}
 
    //INICIO MIS CAMBIOS
-   
+   public function loadruc($ruc)
+   {
+	   $query = $this->db->query('CALL SP_RUC_DNI("'.$ruc.'");');
+	   return $query->result();
+   }
+
+  
     public function loadmoneda()
 	{
 		$query = $this->db->query('CALL SP_MONEDAS()');
