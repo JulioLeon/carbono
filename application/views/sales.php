@@ -419,7 +419,8 @@
                                              <tr>
                                                 <th class="text-right" style="font-size: 17px;">Igv 18% </th>
                                                 <th class="text-right" style="padding-left:10%;font-size: 17px;">
-                                                   <h4><b id="total_iva" name="total_iva">0.00</b></h4>
+                                                <h4><b id="subtotal_amt2" name="subtotal_amt2">0.00</b></h4>
+                                                <input type="hidden" name="salesigv" id="salesigv"value="">
                                                 </th>
                                              </tr>
                                              <tr>
@@ -895,8 +896,12 @@ function asignar_nombre_ruc(id,name,doc) {
            if((subtotal!=null || subtotal!='') && (subtotal!=0)){
              
              //subtotal
+             var igv = 0.18;
+             var totaligv = (subtotal*igv).toFixed(2);
              $("#subtotal_amt").html(subtotal.toFixed(2));
-             
+
+             $("#subtotal_amt2").html(totaligv); // igv
+             $("#salesigv").val(totaligv);
              //other charges total amount
              $("#other_charges_amt").html(parseFloat(other_charges_total_amt).toFixed(2));
              

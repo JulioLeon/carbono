@@ -194,7 +194,8 @@ class Sales_model extends CI_Model {
 		    				'tot_discount_to_all_amt' 	=> $tot_discount_to_all_amt,
 		    				/*Subtotal & Total */
 		    				'subtotal' 					=> $tot_subtotal_amt,
-		    				'round_off' 				=> $tot_round_off_amt,
+							'round_off' 				=> $tot_round_off_amt,
+							'total_igv' 				=> $salesigv,
 		    				'grand_total' 				=> $tot_total_amt,
 		    				'sales_note' 				=> $sales_note,
 		    				/*System Info*/
