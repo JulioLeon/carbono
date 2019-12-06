@@ -181,6 +181,7 @@ class Sales_model extends CI_Model {
 							'ruc_dni' 				    => $ruc	,
 							// pongo mi campo enviado
 							'mon_bas' 			     	=> $idmonenita,
+							'con_ven' 			     	=> $salescondicion,
 							'fec_vto' 			     	=> $sales_date33,
 		    				/*'warehouse_id' 				=> $warehouse_id,*/
 		    				/*Other Charges*/
@@ -207,6 +208,11 @@ class Sales_model extends CI_Model {
 
 			$q1 = $this->db->insert('db_sales', $sales_entry);
 			$sales_id = $this->db->insert_id();
+
+          
+		  $this->db->query("UPDATE db_numeracion SET correlativo=correlativo+1 WHERE serie='".$salesserie."' ;");
+		  
+
 		}
 		else if($command=='update'){	
 			$sales_entry = array(

@@ -90,7 +90,7 @@
                               <div class="row" style=" padding-bottom: 15px;">
                               <label for="customer_id" class="col-sm-2 control-label">RUC / DNI <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
-                                    <input type="text" value="" class="form-control " id="ruc" name="ruc" placeholder=""  onkeypress="salesruc(this.value)">
+                                    <input type="text" value="" class="form-control " id="ruc" name="ruc" placeholder=""  onkeyup="salesruc(this.value)">
                                     <div id="salida"></div>
                                  </div>
                               </div>
@@ -164,9 +164,10 @@
                                  <label for="customer_id" class="col-sm-2 control-label">Condición<label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
                                     <div class="input-group">
-                                       <select class="form-control "  style="width: 100%;" id="addcondicion" >
+                                       <select class="form-control "  style="width: 100%;" id="addcondicion" onchange="salcondicion(this.value)" >
                                          
                                        </select>
+                                       <input type="hidden" name="salescondicion" id="salescondicion" value="">
                                     </div>
                                  </div>
                                    
@@ -726,6 +727,13 @@ function verycorrelativo(e) {
 
 function salesruc(e){
    var ruc = e;
+   if (ruc=="") {
+      alert("DIGITE RUC O DNI...")
+      $("#salida").hide();
+      
+   } else {
+      
+   
    $.ajax({
       type: "post",
       url: "validaruc",
@@ -737,18 +745,33 @@ function salesruc(e){
          $("#salida").show();
       }
    });
-   
+}
 }
 
 
 function asignar_nombre_ruc(id,name,doc) {
   //alert(id+name);
- 
+   
   $("#customer_id").val(id);
   $("#ruc").val(doc);
   $("#salescliente").val(name);
   $("#salida").hide();
   }
+
+  function salcondicion(e) {
+    var condicion =  e;
+      if (condicion=="") {
+         alert("SELECCIONE CONDICION...");
+      } else {
+       $("#salescondicion").val(condicion);
+      }
+
+    }
+
+
+
+
+
 
 
 </script>
