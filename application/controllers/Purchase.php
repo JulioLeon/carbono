@@ -13,11 +13,28 @@ class Purchase extends MY_Controller {
 		$valor01 = $this->input->post('valor01');
         $valor02 = $this->input->post('valor02');
 		$valor03 = $this->input->post('valor03');	
-		$this->purchase->agregar_stock($valor01,$valor02,$valor03);
+		$result2 = $this->purchase->agregar_kardex();
+		$result = $this->purchase->agregar_stock($valor01,$valor02,$valor03);		
 		//echo $this->purchase->delete_purchase($ids);		
-        echo json_encode (1);
+		//echo json_encode ($result);		
+		echo json_enconde($result2);
+		// if ($result=="FALSE") {
+		// 	$this->purchase->agregar_kardex();
+		// 	echo json_encode(1);
+	   	// }else
+	   	// {
+		// 	$this->purchase->agregar_kardex();
+		// 	echo json_encode(2);
+	   	// }
 	}
-   
+	public function loadalmacen()
+	{
+		$result = $this->purchase->getalmacen();
+		echo "<option value=''>[Seleccione]</option>";
+		foreach ($result as $row){
+			echo "<option value='".$row->cod_alm."'>".$row->nom_alm."</option>";
+		}
+	}
 	public function loadmonedas2()
 	{
 		//print("dentro de controler");

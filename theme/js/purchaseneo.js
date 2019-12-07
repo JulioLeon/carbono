@@ -4,8 +4,11 @@ $( document ).ready(function() {
    cargomonedas2();
    cargocondiciones2();
    loadcompro2();
+  // cargo_almacen();
   
 });
+
+
 
  function loaddesc2(e) {
    var pizza = e;
@@ -15,6 +18,7 @@ $( document ).ready(function() {
     $("#idmonbas").val(porciones[0]);
  }
 
+ 
  function cargomonedas2() {     
     $.ajax({
        type: "post",
@@ -61,7 +65,7 @@ $( document ).ready(function() {
       console.log(n1 + " /" +  n2 + " /" + n3 + " / " + n4);
       $.ajax({
          type: "post",
-         url : "Purchase/ingreso_stock",
+         url : "ingreso_stock",
          data: {
             valor01 : n4,
             valor02 : n1,
@@ -70,10 +74,26 @@ $( document ).ready(function() {
       success: function (response) {
          alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
          //window.location.href='Impuesto';  
-         //console.log(response);
-               
-         }
-
+         console.log(response);
+         //console.log(JSON.parse(response));
+			
+			
+			// switch (JSON.parse(response)) {
+			// 	case 1:
+			// 	   alert ("inserto"); 
+			// 	//agregar_productos_validado(codigo,nombre,moneda,categoria,estado,unidad,lote,bien
+			// 	//	,impuesto,descripcion) ;          
+				           
+			//   break; 
+			// 	case 2:
+			// 		alert ("El codigo ya existe, digite otro!");               
+					                 
+			// 	  break; 
+			// 	default: 
+			// 	 alert("ERROR EN EL SISTEMA");
+			//   }      
+         // }
+      }
       });      
       //alert("dentro: N1" + n1 + " / N2: " + n2);
       i++;

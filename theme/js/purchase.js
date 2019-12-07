@@ -95,7 +95,8 @@ $('#save,#update').click(function (e) {
 				result=result.split("<<<###>>>");
 					if(result[0]=="success")
 					{
-						location.href=base_url+"purchase/invoice/"+result[1];
+            add_stock();
+            location.href=base_url+"purchase/invoice/"+result[1];
 					}
 					else if(result[0]=="failed")
 					{
@@ -114,6 +115,33 @@ $('#save,#update').click(function (e) {
   
 });
 
+function add_stock() {
+  alert("probando");
+  var i = 1;
+  $("#purchase_table .detalle_item").each(function(){
+    var n1 = $("#tr_item_id_"+i).val();
+    var n2 = $("#td_data_"+i+"_1").val();
+    var n3 = $("#td_data_"+i+"_3").val();
+    var n4 = $("#td_data_"+i+"_13").val();
+    console.log(n1 + " /" +  n2 + " /" + n3 + " / " + n4);
+    $.ajax({
+       type: "post",
+       url : "ingreso_stock",
+       data: {
+          valor01 : n4,
+          valor02 : n1,
+          valor03 : n3
+       },
+    success: function (response) {
+       alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
+       //window.location.href='Impuesto';  
+       console.log(response);
+       //console.log(JSON.parse(response));        
+    }
+    });          
+    i++;
+  }); 
+}
 
 $("#item_search").autocomplete({
     source: function(data, cb){
@@ -180,12 +208,24 @@ function return_row_with_data(item_id){
 	var rowcount=$("#hidden_rowcount").val();
 	$.post(base_url+"purchase/return_row_with_data/"+rowcount+"/"+item_id,{},function(result){
         //alert(result);
+        cargo_almacen(rowcount);
         $('#purchase_table tbody').append(result);
        	$("#hidden_rowcount").val(parseInt(rowcount)+1);
         success.currentTime = 0;
         success.play();
-        enable_or_disable_item_discount();
+        enable_or_disable_item_discount();        
     }); 
+}
+function cargo_almacen(rowcount) {
+  $.ajax({
+     type: "post",
+     url: "loadalmacen",
+     data: {},
+     success: function (response) {
+        //$("#pur_loadalm").html(response);
+        $("#td_data_"+rowcount+"_13").html(response);
+     }
+  });
 }
 //INCREMENT ITEM
 function increment_qty(rowcount){
@@ -298,7 +338,7 @@ function multi_delete(){
   //alert(result);return;
         if(result=="success")
         {
-          toastr["success"]("Record Deleted Successfully!");
+          toastr["success"]("Registro eliminado exitosamente!");
           success.currentTime = 0; 
             success.play();
           $('#example2').DataTable().ajax.reload();
@@ -307,7 +347,7 @@ function multi_delete(){
         }
         else if(result=="failed")
         {
-           toastr["error"]("Sorry! Failed to save Record.Try again!");
+           toastr["error"]("Lo sentimos, no se pudo guardar el registro. ¡Inténtalo de nuevo!");
            failed.currentTime = 0; 
            failed.play();
         }
@@ -397,14 +437,14 @@ function save_payment(purchase_id){
         if(result=="success")
         {
           $('#pay_now').modal('toggle');
-          toastr["success"]("Payment Recorded Successfully!");
+          toastr["success"]("¡Pago registrado con éxito!");
           success.currentTime = 0; 
           success.play();
           $('#example2').DataTable().ajax.reload();
         }
         else if(result=="failed")
         {
-           toastr["error"]("Sorry! Failed to save Record.Try again!");
+           toastr["error"]("Lo sentimos, no se pudo guardar el registro. ¡Inténtalo de nuevo!");
            failed.currentTime = 0; 
            failed.play();
         }

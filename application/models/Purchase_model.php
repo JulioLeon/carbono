@@ -26,7 +26,12 @@ class Purchase_model extends CI_Model {
         // return $query->result();
 	}
 
-
+	public function getalmacen()
+	{		
+		$opc = 6;
+        $query = $this->db->query(" CALL SP_ALMACEN($opc,'','','','',@outalmacen); ");        
+        return $query->result(); 
+	}
     public function loadcondicion()
 	{
 		$query = $this->db->query('CALL SP_CONDICION2()');
@@ -52,12 +57,28 @@ class Purchase_model extends CI_Model {
   }
   public function agregar_stock($valor01,$valor02,$valor03) {
 	$opc = 3;  	
-	$query = $this->db->query(" CALL SP_STOCKS('".$opc."','".$valor01."','".$valor02."','".$valor03."','','','','',@outstock); ");   
+	$query = $this->db->query(" CALL SP_STOCKS('".$opc."','".$valor01."','".$valor02."','".$valor03."','','0','','0',@outstock); ");   
 	$query = $this->db->query("Select @outstock  as mensaje;"); 
-	return $query->result();
+	if ($query->num_rows() > 0) {
+		return false;
+		}else {
+			
+			return true;
+		}
+	//return $query->result();
+
   }
 
-
+  public function agregar_kardex() {
+	$opc = 2;
+	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','10','2019-10-20 00:00:00','ALM02','2','99','0','Glosa x','2','0.69','2000','1650.00','350.00','PEN','01','FX01','777','l999','2020-10-20 00:00:00','1');");
+	//CALL SP_KARDEX_COMPRAS (2,'10','2019-10-20 00:00:00','ALM02','2','99','0','Glosa x','2','0.69','2000','1650.00','350.00','PEN','01','FX01','777','l999','2020-10-20 00:00:00','1');
+	if ($query) {
+		return TRUE;
+	}else {
+		return FALSE;
+	}
+  }
 
    //FIN DE CAMBIOS
 
@@ -323,7 +344,7 @@ class Purchase_model extends CI_Model {
 
 		$this->db->trans_commit();
 		$this->session->set_flashdata('success', 'Success!! Record Saved Successfully!');
-		return "success<<<###>>>$purchase_id";
+		return "success<<<###>>>$purchase_id"; //Lo que retorna para la vista dinamica.
 
 	}//verify_save_and_update() function end
 
@@ -551,7 +572,7 @@ class Purchase_model extends CI_Model {
                          else
                          {
                             ?>
-                     <option value="">None</option>
+                     <option value="">Exo</option>
                      <?php
                         }
                         ?>
@@ -578,16 +599,11 @@ class Purchase_model extends CI_Model {
 			   <!-- <td id="td_<?=$rowcount;?>_13"><input type="text" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13" class="form-control text-right no-padding only_currency text-center" value="<?=$item_sales_price;?>" readonly ></td> -->
 			   <td id="td_<?=$rowcount;?>_13">
 					<!-- <input type="text" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13" class="form-control text-right no-padding only_currency text-center" value="<?=$item_sales_price;?>" readonly > -->					
-						<select class="form-control select2 text-right no-padding only_currency text-center" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13"  style="width: 100%;">
-							<!-- <option value="">-Select-</option> -->
-							<?php 
-								$received_select = ($purchase_status=='Received') ? 'selected' : ''; 
-								$pending_select = ($purchase_status=='Pending') ? 'selected' : ''; 
-								$ordered_select = ($purchase_status=='Ordered') ? 'selected' : ''; 
-							?>
-										<option  value="ALM01">ALMACEN 01</option>
+						<select class="form-control select2 text-right no-padding only_currency text-center pur_loadalm" name="td_data_<?=$rowcount;?>_13" id="td_data_<?=$rowcount;?>_13"  style="width: 100%;">
+							<!-- <option value="">-Select-</option> -->							
+										<!-- <option  value="ALM01">ALMACEN 01</option>
 										<option  value="ALM02">ALMACEN 02</option>
-										<option  value="ALM03">ALMACEN 03</option>
+										<option  value="ALM03">ALMACEN 03</option> -->
 						</select>
 					<!-- <span id="purchase_status_msg" style="display:none" class="text-danger"></span> -->
 					
@@ -718,7 +734,7 @@ class Purchase_model extends CI_Model {
 		                           }
 		                         }
 		                         else{
-		                            echo "No Records Found";
+		                            echo "No se encontrarón archivos";
 		                         }
 		                        ?>
 		                    </select>
@@ -904,7 +920,7 @@ class Purchase_model extends CI_Model {
 										}
 									}
 									else{
-										echo "<tr><td colspan='7' class='text-danger text-center'>No Records Found</td></tr>";
+										echo "<tr><td colspan='7' class='text-danger text-center'>No se encontrarón archivos</td></tr>";
 									}
 									?>
                                 </tbody>
