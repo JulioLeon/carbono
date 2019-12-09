@@ -302,7 +302,7 @@
                                                    <th rowspan='2' style="width:7.5%"><?= $this->lang->line('unit_cost'); ?>(<?=$CURRENCY;?>)</th>
                                                    <th rowspan='2' style="width:7.5%"><?= $this->lang->line('total_amount'); ?>(<?=$CURRENCY;?>)</th>
                                                    <!-- <th rowspan='2' style="width:7.5%"><?= $this->lang->line('profit_margin'); ?>(%)</th> -->
-                                                   <th rowspan='2' style="width:7.5%"><?= $this->lang->line('unit_sales_price'); ?>(<?=$CURRENCY;?>)</th>
+                                                   <th rowspan='2' style="width:7.5%">Almacén</th>
                                                    <th rowspan='2' style="width:7.5%"><?= $this->lang->line('action'); ?></th>
                                                 </tr>
                                              </thead>
@@ -591,7 +591,7 @@
 
                                 ?>
                                  <div class="col-md-3 col-md-offset-3">
-                                    <button type="button" id="<?php echo $btn_id;?>" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Save Data" onclick="add_stock();"><?php echo $btn_name;?></button>
+                                    <button type="button" id="<?php echo $btn_id;?>" class="btn bg-maroon btn-block btn-flat btn-lg payments_modal" title="Save Data" ><?php echo $btn_name;?></button>
                                  </div>
                                  <div class="col-sm-3"><a href="<?= base_url()?>dashboard">
                                     <button type="button" class="btn bg-gray btn-block btn-flat btn-lg" title="Go Dashboard">Cerrar</button>

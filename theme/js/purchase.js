@@ -49,7 +49,7 @@ $('#save,#update').click(function (e) {
 	}
 
 	//Al menos agregar un registro
-    var rowcount=document.getElementById("hidden_rowcount").value;
+  var rowcount=document.getElementById("hidden_rowcount").value;
 	var flag1=false;
 	for(var n=1;n<=rowcount;n++){
 		if($("#td_data_"+n+"_1").val()!=null && $("#td_data_"+n+"_1").val()!=''){
@@ -72,16 +72,21 @@ $('#save,#update').click(function (e) {
     var tot_total_amt2=$("#addmoneda2").text();
     var total_puriva=$("#total_puriva").text();
     var mon_bas = $("#idmonbas").val();
-    var this_id=this.id;
+    var tip_doc = $("#pur_tipdoc").val();
+    var ser_doc = $("#pur_serie").val();
+    var num_doc = $("#pur_correlativo").val();
+    var fec_inp = $("#pur_date").val();
+    var glosa = $("#reference_no2").val();
+    var this_id=this.id;    
     
 			if(confirm("Quiere guardar el registro?")){
 				e.preventDefault();
-				data = new FormData($('#purchase-form')[0]);//form name
+        data = new FormData($('#purchase-form')[0]);//form name       
         /*Check XSS Code*/
-        if(!xss_validation(data)){ return false; }
-        
+        if(!xss_validation(data)){ return false; }        
         $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
+        add_stock(rowcount,fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc);
 				$.ajax({
 				type: 'POST',
         url: base_url+'purchase/purchase_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+
@@ -91,12 +96,11 @@ $('#save,#update').click(function (e) {
 				contentType: false,
 				processData: false,
 				success: function(result){
-         // alert(result);return;
+         // alert(result);return;        
 				result=result.split("<<<###>>>");
 					if(result[0]=="success")
-					{
-            add_stock();
-            location.href=base_url+"purchase/invoice/"+result[1];
+					{                        
+            //location.href=base_url+"purchase/invoice/"+result[1];
 					}
 					else if(result[0]=="failed")
 					{
@@ -115,32 +119,46 @@ $('#save,#update').click(function (e) {
   
 });
 
-function add_stock() {
-  alert("probando");
-  var i = 1;
-  $("#purchase_table .detalle_item").each(function(){
-    var n1 = $("#tr_item_id_"+i).val();
-    var n2 = $("#td_data_"+i+"_1").val();
-    var n3 = $("#td_data_"+i+"_3").val();
-    var n4 = $("#td_data_"+i+"_13").val();
-    console.log(n1 + " /" +  n2 + " /" + n3 + " / " + n4);
-    $.ajax({
-       type: "post",
-       url : "ingreso_stock",
-       data: {
-          valor01 : n4,
-          valor02 : n1,
-          valor03 : n3
-       },
-    success: function (response) {
-       alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
-       //window.location.href='Impuesto';  
-       console.log(response);
-       //console.log(JSON.parse(response));        
-    }
-    });          
-    i++;
-  }); 
+function add_stock(lineas, fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc) {  
+  var i = 1;  
+  //alert("probando... " + mon_bas + " / " + ser_doc);
+  //for(var i=1;i<=lineas;i++) {
+    $("#purchase_table .detalle_item").each(function(){
+      var codpro = $("#tr_item_id_"+i).val();
+      var n2 = $("#td_data_"+i+"_1").val();
+      var cantidad = $("#td_data_"+i+"_3").val();
+      var pre_uni = $("#td_data_"+i+"_4").val();
+      var mon_iva = $("#td_data_"+i+"_5").val();
+      var mon_tot = $("#td_data_"+i+"_9").val();
+      var almacen = $("#td_data_"+i+"_13").val();
+      //console.log(n1 + " /" +  n2 + " /" + n3 + " / " + n4);
+      $.ajax({
+        type: "post",
+        url : "ingreso_stock",
+        data: {
+            almacen : almacen,
+            codpro  : codpro,
+            monbas : mon_bas,
+            cantidad : cantidad,
+            pre_uni : pre_uni,
+            mon_iva : mon_iva,           
+            mon_tot : mon_tot,
+            tip_doc : tip_doc,
+            ser_doc : ser_doc,
+            num_doc : num_doc,
+            fec_inp : fec_inp,
+            glosa : glosa
+        },
+      success: function (response) {
+        alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
+        //window.location.href='Impuesto';  
+        console.log(response);
+        //console.log(JSON.parse(response));        
+      }
+      });          
+      i++;
+    }); 
+  //}
 }
 
 $("#item_search").autocomplete({

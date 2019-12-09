@@ -55,6 +55,7 @@ class Purchase_model extends CI_Model {
 	$query = $this->db->query("CALL SP_CORRELATIVO2('".$corre."')");
 	return $query->result();
   }
+
   public function agregar_stock($valor01,$valor02,$valor03) {
 	$opc = 3;  	
 	$query = $this->db->query(" CALL SP_STOCKS('".$opc."','".$valor01."','".$valor02."','".$valor03."','','0','','0',@outstock); ");   
@@ -69,9 +70,19 @@ class Purchase_model extends CI_Model {
 
   }
 
-  public function agregar_kardex() {
+  public function agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa) {
 	$opc = 2;
-	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','10','2019-10-20 00:00:00','ALM02','2','99','0','Glosa x','2','0.69','2000','1650.00','350.00','PEN','01','FX01','777','l999','2020-10-20 00:00:00','1');");
+	/*System Info*/
+	// 'created_date' 				=> $CUR_DATE,
+	// 'created_time' 				=> $CUR_TIME,
+	// 'created_by' 				=> $CUR_USERNAME,
+	// 'system_ip' 				=> $SYSTEM_IP,
+	// 'system_name' 				=> $SYSTEM_NAME,
+	//'tip_doc'					=> $pur_tipdoc,
+	//'ser_doc'					=> $pur_serie,
+	//'num_doc'					=> $pur_correlativo,
+	
+	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','12','2019-12-09 00:00:00','".$almacen."','".$codpro."','".$cantidad."','0','".$glosa."','2','0.69','2000','1650.00','350.00','".$moneda."','".$tip_doc."','".$serie."','".$num_doc."','l999','2020-10-20 00:00:00','1');");
 	//CALL SP_KARDEX_COMPRAS (2,'10','2019-10-20 00:00:00','ALM02','2','99','0','Glosa x','2','0.69','2000','1650.00','350.00','PEN','01','FX01','777','l999','2020-10-20 00:00:00','1');
 	if ($query) {
 		return TRUE;

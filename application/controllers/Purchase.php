@@ -10,14 +10,23 @@ class Purchase extends MY_Controller {
 
 	//INICIO CAMBIOS
 	public function ingreso_stock(){
-		$valor01 = $this->input->post('valor01');
-        $valor02 = $this->input->post('valor02');
-		$valor03 = $this->input->post('valor03');	
-		$result2 = $this->purchase->agregar_kardex();
-		$result = $this->purchase->agregar_stock($valor01,$valor02,$valor03);		
+		$almacen = $this->input->post('almacen');
+		$codpro = $this->input->post('codpro');
+		$moneda = $this->input->post('monbas');
+		$cantidad = $this->input->post('cantidad');	
+		$pre_uni = $this->input->post('pre_uni');
+		$mon_iva = $this->input->post('mon_iva');
+		$mon_tot = $this->input->post('mon_tot');
+		$tip_doc = $this->input->post('tip_doc');		
+		$serie = $this->input->post('ser_doc');
+		$num_doc = $this->input->post('num_doc');
+		$glosa = $this->input->post('glosa');
+		$fec_inp = $this->input->post('fec_inp');
+		$result2 = $this->purchase->agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa);
+		$result = $this->purchase->agregar_stock($almacen,$codpro,$cantidad);		
 		//echo $this->purchase->delete_purchase($ids);		
 		//echo json_encode ($result);		
-		echo json_enconde($result2);
+		//echo json_enconde($result);
 		// if ($result=="FALSE") {
 		// 	$this->purchase->agregar_kardex();
 		// 	echo json_encode(1);
