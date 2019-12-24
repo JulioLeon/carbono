@@ -62,7 +62,8 @@ class Login extends MY_Controller {
 					  else{
 						  $data = array 
 						  (
-						  'sucursal'     => $partes[1]
+						  'idsucursal'     => $partes[0],  // ID DE SUCURSAL
+						  'sucursal'     => $partes[1], // NOMBRE DE LA SURCURSA ESTO SE VE AL INICIAR COMO VENDEDOR
 						  );
 						  $this->session->set_userdata($data);
 						 

@@ -184,7 +184,7 @@
                               </div>
 
                                   <!--fin2 -->
-
+                                 
                               <div class="form-group">
                                  <label for="sales_status" class="col-sm-2 control-label"><?= $this->lang->line('status'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -284,8 +284,11 @@
                                           <table class="table table-hover table-bordered" style="width:100%" id="sales_table">
                                              <thead class="custom_thead">
                                                 <tr class="bg-primary" >
+                                                   <th rowspan='2' style="width:5%">IGV</th>
+                                                   <th rowspan='2' style="width:10%">Almacén</th>
                                                    <th rowspan='2' style="width:15%"><?= $this->lang->line('item_name'); ?></th>
                                                    <th rowspan='2' style="width:10%"><?= $this->lang->line('quantity'); ?></th>
+                                                   
                                                    <th rowspan='2' style="width:10%"><?= $this->lang->line('unit_price'); ?></th> 
                                                    <th rowspan='2' style="width:10%"><?= $this->lang->line('discount'); ?>(%)</th>
                                                    <th rowspan='2' style="width:7.5%"><?= $this->lang->line('total_amount'); ?></th>
@@ -356,7 +359,7 @@
                                           </div>
                                           <div class="col-sm-4">
                                              <select class="form-control" onchange="final_total();" id='discount_to_all_type' name="discount_to_all_type">
-                                                <option value='in_percentage'>Per%</option>
+                                                <option value='in_percentage'>Perú</option>
                                                 <option value='in_fixed'>Fixed</option>
                                              </select>
                                           </div>
@@ -839,6 +842,18 @@ function asignar_nombre_ruc(id,name,doc) {
         
          /* ---------- CALCULATE GST END -------------*/
 
+         //FUNCION PARA LA IGV
+         function elegirigv(e) {
+             
+              if(e==0){
+                  alert(e);
+              }else{
+               alert(e);
+              }
+           }
+          
+
+
         
          /* ---------- Final Description of amount ------------*/
          function final_total(){
@@ -887,7 +902,9 @@ function asignar_nombre_ruc(id,name,doc) {
              }//if end
            }//for end
            
-          
+
+
+           
           //Show total Sales Quantitys
            $(".total_quantity").html(total_quantity);
 
@@ -940,8 +957,15 @@ function asignar_nombre_ruc(id,name,doc) {
              subtotal_diff=subtotal_round-taxable;
          
              $("#round_off_amt").html(parseFloat(subtotal_diff).toFixed(2)); 
-             $("#total_amt").html(parseFloat(subtotal_round).toFixed(2)); 
-             $("#hidden_total_amt").val(parseFloat(subtotal_round).toFixed(2)); 
+             
+
+            //  var sumatotales =  parseFloat(totaligv)+parseFloat(subtotal_round);
+            //  $("#total_amt").html(sumatotales.toFixed(2)); 
+            //  $("#hidden_total_amt").val(parseFloat(subtotal_round).toFixed(2)); 
+               // CAMBIO DE TOTAL 
+            var sumatotales =  parseFloat(totaligv)+parseFloat(subtotal_round);
+             $("#total_amt").html(parseFloat(sumatotales).toFixed(2)); 
+             $("#hidden_total_amt").val(parseFloat(sumatotales).toFixed(2)); 
            }
            else{
              $("#subtotal_amt").html('0.00'); 

@@ -251,6 +251,9 @@ class Sales_model extends CI_Model {
 		
 			if(isset($_REQUEST['tr_item_id_'.$i]) && !empty($_REQUEST['tr_item_id_'.$i])){
 
+			
+				$almacen33 			=$this->xss_html_filter(trim($_REQUEST['td_data_'.$i.'_33']));
+
 				$item_id 			=$this->xss_html_filter(trim($_REQUEST['tr_item_id_'.$i]));
 				$sales_qty			=$this->xss_html_filter(trim($_REQUEST['td_data_'.$i.'_3']));
 				$price_per_unit 	=$this->xss_html_filter(trim($_REQUEST['td_data_'.$i.'_4']));
@@ -312,7 +315,8 @@ class Sales_model extends CI_Model {
 		    				'unit_discount_per' => $unit_discount_per,
 		    				'discount_amt' 		=> $discount_amt,
 		    				'unit_total_cost' 	=> $single_unit_total_cost,
-		    				'total_cost' 		=> $total_cost,
+							'total_cost' 		=> $total_cost,
+							'cod_alm' 		    => $almacen33,  //codigo_almacen
 		    				'status'	 		=> 1,
 
 		    			);
@@ -596,6 +600,36 @@ class Sales_model extends CI_Model {
 		$item_sales_price=number_format($item_sales_price,2,'.','');
 		?>
             <tr id="row_<?=$rowcount;?>" data-row='<?=$rowcount;?>'>
+
+			  <td >
+                  <!--INCION CAMBIOS PARA EL IGV DEL PRODUCTO -->
+				  <select class="form-control " onchange="elegirigv(this.value)">
+					<option value="0">No</option>
+					<option value="1">Si</option>
+				 </select>
+
+               </td>
+
+			   <td >
+                  <!--INCION CAMBIOS PARA EL IGV DEL PRODUCTO -->
+                  <?php
+				     $ide  =  $this->session->userdata('idsucursal') ;
+                     $sql1 =  $this->db->query("CALL SP_ALMACENSUCU(".$ide.");");
+					
+                      
+                  ?>
+
+				  <select class="form-control " name="td_data_<?=$rowcount;?>_33" id="td_data_<?=$rowcount;?>_33">
+				     <?php
+                        foreach ($sql1->result() as $row) {
+					 ?>
+						<option value="<?= $row->cod_alm ;?>"><?= $row->nom_alm ;?></option>
+					<?php
+						}
+					?>
+				 </select>
+
+               </td>
                <td id="td_<?=$rowcount;?>_1">
                   <!-- item name  -->
                   <input type="text" style="font-weight: bold;" id="td_data_<?=$rowcount;?>_1" class="form-control no-padding" value='<?=$item_name;?>' readonly >
