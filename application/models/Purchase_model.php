@@ -60,12 +60,12 @@ class Purchase_model extends CI_Model {
 	$opc = 3;  	
 	$query = $this->db->query(" CALL SP_STOCKS('".$opc."','".$valor01."','".$valor02."','".$valor03."','','0','','0',@outstock); ");   
 	$query = $this->db->query("Select @outstock  as mensaje;"); 
-	if ($query->num_rows() > 0) {
-		return false;
-		}else {
+	// if ($query->num_rows() > 0) {
+	// 	return false;
+	// 	}else {
 			
-			return true;
-		}
+	// 		return true;
+	// 	}
 	//return $query->result();
 
   }
@@ -82,7 +82,7 @@ class Purchase_model extends CI_Model {
 	//'ser_doc'					=> $pur_serie,
 	//'num_doc'					=> $pur_correlativo,
 	
-	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','12','2019-12-09 00:00:00','".$almacen."','".$codpro."','".$cantidad."','0','".$glosa."','2','0.69','2000','1650.00','350.00','".$moneda."','".$tip_doc."','".$serie."','".$num_doc."','l999','2020-10-20 00:00:00','1');");
+	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','01','2020-01-31 00:00:00','".$almacen."','".$codpro."','".$cantidad."','0','".$glosa."','2','0.69','2000','1650.00','350.00','".$moneda."','".$tip_doc."','".$serie."','".$num_doc."','l999','2020-12-31 00:00:00','1');");
 	//CALL SP_KARDEX_COMPRAS (2,'10','2019-10-20 00:00:00','ALM02','2','99','0','Glosa x','2','0.69','2000','1650.00','350.00','PEN','01','FX01','777','l999','2020-10-20 00:00:00','1');
 	if ($query) {
 		return TRUE;

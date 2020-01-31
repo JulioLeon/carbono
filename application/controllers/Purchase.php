@@ -23,7 +23,13 @@ class Purchase extends MY_Controller {
 		$glosa = $this->input->post('glosa');
 		$fec_inp = $this->input->post('fec_inp');
 		$result2 = $this->purchase->agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa);
-		$result = $this->purchase->agregar_stock($almacen,$codpro,$cantidad);		
+		if ($result2 == true){
+			$result = $this->purchase->agregar_stock($almacen,$codpro,$cantidad);		
+		}
+		else {
+			echo json_encode(2);
+		}
+
 		//echo $this->purchase->delete_purchase($ids);		
 		//echo json_encode ($result);		
 		//echo json_enconde($result);
@@ -176,7 +182,7 @@ class Purchase extends MY_Controller {
 			$row[] = $purchase->purchase_status;
 			$row[] = $purchase->reference_no;
 			$row[] = $purchase->supplier_name;
-			$row[] = $purchase->addmoneda2;
+			// $row[] = $purchase->addmoneda2;
 			/*$row[] = $purchase->warehouse_name;*/
 			$row[] = $this->currency($purchase->grand_total);
 			$row[] = $this->currency($purchase->paid_amount);

@@ -150,7 +150,7 @@ function add_stock(lineas, fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc) {
             glosa : glosa
         },
       success: function (response) {
-        alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
+        //alert (response) ; //Aqui recibo mi mensajede mivariable output. Insert, delete, update.
         //window.location.href='Impuesto';  
         console.log(response);
         //console.log(JSON.parse(response));        
