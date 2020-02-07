@@ -22,7 +22,8 @@ class Purchase extends MY_Controller {
 		$num_doc = $this->input->post('num_doc');
 		$glosa = $this->input->post('glosa');
 		$fec_inp = $this->input->post('fec_inp');
-		$result2 = $this->purchase->agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa);
+		$fec_vto = $this->input->post('fec_vto');
+		$result2 = $this->purchase->agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa,$fec_vto);
 		if ($result2 == true){
 			$result = $this->purchase->agregar_stock($almacen,$codpro,$cantidad);		
 		}

@@ -100,7 +100,7 @@ class Suppliers_model extends CI_Model {
 		$this->db->query("ALTER TABLE db_suppliers AUTO_INCREMENT = 1");
 		$qs4="select coalesce(max(id),0)+1 as maxid from db_suppliers";
 		$q1=$this->db->query($qs4);
-		$maxid=$q1->row()->maxid;
+		$maxid=$q1->row()->maxid;																																																														
 		$supplier_code=$supplier_init.str_pad($maxid, 4, '0', STR_PAD_LEFT);
 		//end
 

@@ -70,20 +70,31 @@ class Purchase_model extends CI_Model {
 
   }
 
-  public function agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa) {
+  public function agregar_kardex($fec_inp,$almacen,$codpro,$moneda,$cantidad,$pre_uni,$mon_iva,$mon_tot,$tip_doc,$serie,$num_doc,$glosa,$fec_vto) {
+	extract($this->security->xss_clean(html_escape(array_merge($this->data,$_POST))));
 	$opc = 2;
 	/*System Info*/
 	// 'created_date' 				=> $CUR_DATE,
 	// 'created_time' 				=> $CUR_TIME,
 	// 'created_by' 				=> $CUR_USERNAME,
 	// 'system_ip' 				=> $SYSTEM_IP,
-	// 'system_name' 				=> $SYSTEM_NAME,
+	// 'system_name' 				=> $SYSTEM_NAME,	
 	//'tip_doc'					=> $pur_tipdoc,
 	//'ser_doc'					=> $pur_serie,
 	//'num_doc'					=> $pur_correlativo,
-	
-	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','01','2020-01-31 00:00:00','".$almacen."','".$codpro."','".$cantidad."','0','".$glosa."','2','0.69','2000','1650.00','350.00','".$moneda."','".$tip_doc."','".$serie."','".$num_doc."','l999','2020-12-31 00:00:00','1');");
-	//CALL SP_KARDEX_COMPRAS (2,'10','2019-10-20 00:00:00','ALM02','2','99','0','Glosa x','2','0.69','2000','1650.00','350.00','PEN','01','FX01','777','l999','2020-10-20 00:00:00','1');
+	$dia = substr($fec_inp,0,2);
+	$mes = substr($fec_inp,3,2);
+	$anio = substr($fec_inp,6,4); 
+	$fecemi = $anio . "-" . $mes . "-" . $dia;
+	$lisprc = "";
+	$tipmov = 2; //Ventas: 1;Compras: 2
+	$codlot = "";
+	$basimp = $cantidad * $pre_uni;
+	$caninp = $cantidad;
+	$canout = "0";
+	$fecvto = substr($fec_vto,6,4)."-".substr($fec_vto,3,2)."-".substr($fec_vto,0,2);
+
+	$query = $this->db->query(" CALL SP_KARDEX_COMPRAS ('".$opc."','".$mes."','".$fecemi."','".$almacen."','".$codpro."','".$caninp."','".$canout."','".$fecvto.$fec_vto."','".$tipmov."','".$pre_uni."','".$mon_tot."','".$basimp."','".$mon_iva."','".$moneda."','".$tip_doc."','".$serie."','".$num_doc."','".$codlot."','".$CUR_DATE."','".$lisprc."');");	
 	if ($query) {
 		return TRUE;
 	}else {

@@ -76,6 +76,7 @@ $('#save,#update').click(function (e) {
     var ser_doc = $("#pur_serie").val();
     var num_doc = $("#pur_correlativo").val();
     var fec_inp = $("#pur_date").val();
+    var fec_vto = $("#pur_fecvto").val();
     var glosa = $("#reference_no2").val();
     var this_id=this.id;    
     
@@ -86,7 +87,7 @@ $('#save,#update').click(function (e) {
         if(!xss_validation(data)){ return false; }        
         $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
-        add_stock(rowcount,fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc);
+        add_stock(rowcount,fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc,fec_vto);
 				$.ajax({
 				type: 'POST',
         url: base_url+'purchase/purchase_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+
@@ -119,7 +120,7 @@ $('#save,#update').click(function (e) {
   
 });
 
-function add_stock(lineas, fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc) {  
+function add_stock(lineas, fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc,fec_vto) {  
   var i = 1;  
   //alert("probando... " + mon_bas + " / " + ser_doc);
   //for(var i=1;i<=lineas;i++) {
@@ -130,7 +131,7 @@ function add_stock(lineas, fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc) {
       var pre_uni = $("#td_data_"+i+"_4").val();
       var mon_iva = $("#td_data_"+i+"_5").val();
       var mon_tot = $("#td_data_"+i+"_9").val();
-      var almacen = $("#td_data_"+i+"_13").val();
+      var almacen = $("#td_data_"+i+"_13").val();      
       //console.log(n1 + " /" +  n2 + " /" + n3 + " / " + n4);
       $.ajax({
         type: "post",
@@ -147,6 +148,7 @@ function add_stock(lineas, fec_inp,glosa,mon_bas,tip_doc,ser_doc,num_doc) {
             ser_doc : ser_doc,
             num_doc : num_doc,
             fec_inp : fec_inp,
+            fec_vto : fec_vto,
             glosa : glosa
         },
       success: function (response) {
