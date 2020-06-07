@@ -15,8 +15,8 @@ class Login_model extends CI_Model
 	//load sucursales 
     public function loadsucursal()
 	{
-		$query = $this->db->query("CALL SP_SUCURSAL()");
-
+		$opc = 1;
+		$query = $this->db->query("CALL SP_SUCURSAL($opc,'','','','','',@outsucursal);");
 		return $query->result();
 		
 	}

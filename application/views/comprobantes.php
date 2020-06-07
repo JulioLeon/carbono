@@ -22,7 +22,7 @@
     <section class="content-header">
       <h1>
         <?=$page_title;?>
-        <small>suc_001</small>
+        <small>docs_001</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>

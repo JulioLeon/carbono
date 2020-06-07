@@ -41,7 +41,7 @@ $('#update').click(function (e) {
     }
 
     var this_id=this.id;
-			if(confirm("Do you wants to update ?")){
+			if(confirm("¿ Desea guardar los cambios ?")){
 				e.preventDefault();
 				data = new FormData($('#site-form')[0]);//form name
 				/*Check XSS Code*/
@@ -142,7 +142,7 @@ function update_status(id,status)
 function delete_suppliers(q_id)
 {
 	
-   if(confirm("Do You Wants to Delete Record ?")){
+   if(confirm("¿ Seguro que quiere eliminar el registro ?")){
    	$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
    $.post("suppliers/delete_suppliers",{q_id:q_id},function(result){
    //alert(result);return;

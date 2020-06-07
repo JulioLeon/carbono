@@ -281,7 +281,7 @@ function update_paid_payment_total() {
   $("#paid_amt_tot").html(tot.toFixed(2));
 }
 function delete_payment(payment_id){
- if(confirm("Do You Wants to Delete Record ?")){
+ if(confirm("¿ Seguro que quiere eliminar el registro ?")){
     var base_url=$("#base_url").val().trim();
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
    $.post(base_url+"purchase/delete_payment",{payment_id:payment_id},function(result){
@@ -314,7 +314,7 @@ function delete_payment(payment_id){
 function delete_purchase(q_id)
 {
   
-   if(confirm("Do You Wants to Delete Record ?")){
+   if(confirm("¿ Seguro que quiere eliminar el registro ?")){
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
     $.post("purchase/delete_purchase",{q_id:q_id},function(result){
    //alert(result);return;
@@ -480,7 +480,7 @@ function save_payment(purchase_id){
 }
 
 function delete_purchase_payment(payment_id){
- if(confirm("Do You Wants to Delete Record ?")){
+ if(confirm("¿ Seguro que quiere eliminar el registro ?")){
     var base_url=$("#base_url").val().trim();
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
    $.post(base_url+"purchase/delete_payment",{payment_id:payment_id},function(result){

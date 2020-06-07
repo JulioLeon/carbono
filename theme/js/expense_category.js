@@ -33,7 +33,7 @@ $('#save,#update').click(function (e) {
 
     if(this_id=="save")  //Save start
     {
-					if(confirm("Do You Wants to Save Record ?")){
+					if(confirm("¿ Quiere guardar el registro ?")){
 						e.preventDefault();
 						data = new FormData($('#expense-form')[0]);//form name
 						/*Check XSS Code*/
@@ -83,7 +83,7 @@ $('#save,#update').click(function (e) {
     {
 				
 
-					if(confirm("Do You Wants to Update Record ?")){
+					if(confirm("¿ Desea actualizar el registro ?")){
 						e.preventDefault();
 						data = new FormData($('#expense-form')[0]);//form name
 						/*Check XSS Code*/
@@ -186,7 +186,7 @@ function update_status(id,status)
 function delete_category(q_id)
 {
 	
-   if(confirm("Do You Wants to Delete Record ?")){
+   if(confirm("¿ Seguro que quiere eliminar el registro ?")){
    	$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
    $.post("delete_category",{q_id:q_id},function(result){
    	result=result.trim();

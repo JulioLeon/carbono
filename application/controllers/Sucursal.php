@@ -49,8 +49,9 @@ class Sucursal extends MY_Controller {
 		$codigo = $this->input->post('codigo');
 		$nombre = $this->input->post('nombre');
 		$tienda = $this->input->post('tienda');
+		$distri = $this->input->post('distri');
 		$estado = $this->input->post('estado');
-		$consulta = $this->Sucursal_model->graba_sucursal($codigo,$nombre,$tienda,$estado);
+		$consulta = $this->Sucursal_model->graba_sucursal($codigo,$nombre,$tienda,$distri,$estado);
 		//$rpta = $consulta[0]->rpta;
 		//echo $consulta[0]->rpta;
 		echo json_encode($consulta[0]->rpta);
@@ -61,8 +62,9 @@ class Sucursal extends MY_Controller {
 		$codigo = $this->input->post('codigo');
 		$nombre = $this->input->post('nombre');
 		$tienda = $this->input->post('tienda');
-		$estado = $this->input->post('estado');
-		$consulta = $this->Sucursal_model->actualiza_sucursal($codigo,$nombre,$tienda,$estado);		
+		$distri = $this->input->post('distri');
+		$estado = $this->input->post('estado');		
+		$consulta = $this->Sucursal_model->actualiza_sucursal($codigo,$nombre,$tienda,$distri,$estado);		
 		echo json_encode($consulta[0]->rpta);
 	}
 

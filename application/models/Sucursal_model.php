@@ -8,7 +8,7 @@ class Sucursal_model extends CI_Model {
 	{
 
         $opc = 1;
-        $query = $this->db->query(" CALL SP_SUCURSAL2($opc,'','','','',@outsucursal); ");
+        $query = $this->db->query(" CALL SP_SUCURSAL($opc,'','','','','',@outsucursal); ");
         //$query = $this->db->query("Select @outsucursal  as mensaje;"); 
         return $query->result(); 
     }    
@@ -21,18 +21,18 @@ class Sucursal_model extends CI_Model {
         return $query->result();
     }
 
-    public function graba_sucursal($codigo,$nombre,$tienda,$estado)
+    public function graba_sucursal($codigo,$nombre,$tienda,$distri,$estado)
     {
         $opc = 2;        
-        $this->db->query(" CALL SP_SUCURSAL2($opc, '".$codigo."','".$nombre."','".$tienda."','".$estado."',@outsucursal);");
+        $this->db->query(" CALL SP_SUCURSAL($opc, '".$codigo."','".$nombre."','".$tienda."','".$distri."','".$estado."',@outsucursal);");
         $query = $this->db->query("SELECT @outsucursal as rpta;");
         return $query->result();
     }
 
-    public function actualiza_sucursal($codigo,$nombre,$tienda,$estado)
+    public function actualiza_sucursal($codigo,$nombre,$tienda,$distri,$estado)
     {
         $opc = 3;
-        $this->db->query(" CALL SP_SUCURSAL2($opc, '".$codigo."','".$nombre."','".$tienda."','".$estado."',@outsucursal);");
+        $this->db->query(" CALL SP_SUCURSAL($opc, '".$codigo."','".$nombre."','".$tienda."','".$distri."','".$estado."',@outsucursal);");
         $query = $this->db->query("SELECT @outsucursal as rpta;");
         return $query->result();
     }

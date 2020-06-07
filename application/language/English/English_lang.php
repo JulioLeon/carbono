@@ -68,7 +68,7 @@ $lang['supplier'					]	=		'Supplier';
 $lang['purchase'					]	=		'Purchase';
 $lang['customer'					]	=		'Customer';
 $lang['expense'						]	=		'Expense';
-$lang['confirm_update_record'		]	=		'Do You Wants to Update Record ?';
+$lang['confirm_update_record'		]	=		'¿ Desea actualizar el registro ?';
 
 $lang['company_name'				]	=		'Company Name';
 $lang['mobile'						]	=		'Mobile';

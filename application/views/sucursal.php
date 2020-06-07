@@ -57,14 +57,14 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example33" class="table table-bordered table-striped" width="100%">
+              <table id="example34" class="table table-bordered table-striped" width="100%">
                 <thead class="bg-primary ">
-                <tr>
-                                   
+                <tr>                                   
                   <th>Código</th>
                   <th>Nombre Sucursal</th>
                   <th>Ubicación</th>  
-                  <th>estado</th>                                        	         	  	  
+                  <th>Distrito</th>
+                  <th>Estado</th>                                                          	         	  	  
                   <th><?= $this->lang->line('action'); ?></th>
                 </tr>
                 </thead>
@@ -82,13 +82,8 @@
       </div>
       <!-- /.row -->
     </section>
-    <!-- /.content -->         
-    
-    <!-- inicio Modal -->
-
-    
-  
-
+    <!-- /.content -->             
+    <!-- inicio Modal -->      
      <?= form_close();?>
   </div>
 
@@ -139,7 +134,15 @@
                     <input type="text" class="form-control" id="dirsuc">
                   </div>
                 </div>
-              </div>                                    
+              </div>       
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Distrito </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="dissuc">
+                  </div>
+                </div>
+              </div>                                   
               <div class="col-md-6">
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
@@ -205,7 +208,15 @@
                     <input type="text" class="form-control" id="udirsuc">
                   </div>
                 </div>
-              </div>                                    
+              </div>    
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Distrito </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="udissuc">
+                  </div>
+                </div>
+              </div>                                 
               <div class="col-md-6">
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Estado </label>
@@ -253,7 +264,7 @@ $(document).ready(function() {
 
   mostrar();
     //datatables
-    $('#example33').DataTable({
+    $('#example34').DataTable({
       buttons: {
         buttons: [
             {
@@ -284,6 +295,7 @@ $(document).ready(function() {
         { data: 'id_sucursal' },
         { data: 'nom_suc' },
         { data: 'ubicacion' },
+        { data: 'distrito'},
         { data: null,"render" : function(data){
               if (data.estado==1) {
                   return "<span class='label label-success'>Activo</span>";                
@@ -297,7 +309,7 @@ $(document).ready(function() {
           return "<div class='btn-group' title='Ver acciones'> " +
 		      "<a class='btn btn-primary btn-o dropdown-toggle' data-toggle='dropdown' href='#' aria-haspopup='true' aria-expanded='false'>Acción <span class='caret'></span></a>" +
           "<ul role='menu' class='dropdown-menu dropdown-light pull-right'>" + 
-          "<li><a title='Editar registro ?' href='#' onclick=\"editarSucursal('"+data.id_sucursal+"','" + data.nom_suc + "','" + data.ubicacion + "','" + data.estado + "');\"   data-toggle='modal' data-target='#updatesucursal'>" +
+          "<li><a title='Editar registro ?' href='#' onclick=\"editarSucursal('"+data.id_sucursal+"','" + data.nom_suc + "','" + data.ubicacion + "','" + data.distrito + "','" + data.estado + "');\"   data-toggle='modal' data-target='#updatesucursal'>" +
           "<i class='fa fa-fw fa-edit text-blue'></i>Editar	</a>	</li>" + 
           "<li><a style='cursor:pointer' title='Borrar registro ?' onclick='delete_items(999)'>	<i class='fa fa-fw fa-trash text-red'></i>Borrar</a></li></ul>" + 
 	        "</div>";

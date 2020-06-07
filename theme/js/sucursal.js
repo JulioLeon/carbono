@@ -20,6 +20,7 @@ function agregar_sucursal() {
     var codigo = $("#codsuc").val();
     var nombre = $("#nomsuc").val();
     var tienda = $("#dirsuc").val();
+    var distri = $("#dissuc").val();
     var estado = $("#estsuc").val();
     $.ajax ({
         type: "post",
@@ -28,6 +29,7 @@ function agregar_sucursal() {
             codigo:codigo,
             nombre:nombre,
             tienda:tienda,
+            distri:distri,
             estado:estado
         },
         success: function (response) {
@@ -48,11 +50,12 @@ function agregar_sucursal() {
     })
 }
 
-function editarSucursal(codigo, nombre,id_sucu,estado) {
+function editarSucursal(codigo, nombre,id_sucu, distrito, estado) {
     //alert("valor: " + codigo + " - " + nombre);
     $("#ucodsuc").val(codigo);    
     $("#unomsuc").val(nombre);
     $("#udirsuc").val(id_sucu);
+    $("#udissuc").val(distrito);
     $("#uestsuc").val(estado);
 }
 
@@ -60,6 +63,7 @@ function actualizar_sucursal() {
     var codigo = $("#ucodsuc").val();
     var nombre = $("#unomsuc").val();
     var tienda = $("#udirsuc").val();
+    var distri = $("#udissuc").val();
     var estado = $("#uestsuc").val();
     $.ajax({
         type: "post",
@@ -68,6 +72,7 @@ function actualizar_sucursal() {
             codigo:codigo,
             nombre:nombre,
             tienda:tienda,
+            distri:distri,
             estado:estado
         },
         success: function (response) {

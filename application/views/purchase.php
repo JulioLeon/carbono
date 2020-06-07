@@ -352,7 +352,7 @@
                                                     else
                                                     {
                                                        ?>
-                                                <option value="">No Records Found</option>
+                                                <option value="">No se encuentran registros</option>
                                                 <?php
                                                    }
                                                    ?>
@@ -630,7 +630,7 @@
       <script src="<?php echo $theme_link; ?>js/purchase.js"></script>  
       <script>
          $(".close_btn").click(function(){
-           if(confirm('Desea navegar fuera de esta página?')){
+           if(confirm('¿Desea navegar fuera de esta página?')){
                window.location='<?php echo $base_url; ?>dashboard';
              }
          });

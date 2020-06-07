@@ -76,7 +76,7 @@ $('#save,#update').click(function (e) {
 
     var this_id=this.id;  // comando save
     
-			if(confirm("Do You Wants to Save Record ?")){
+			if(confirm("¿ Quiere guardar el registro ?")){
 				e.preventDefault();
 				data = new FormData($('#sales-form')[0]);//form name
         /*Check XSS Code*/
@@ -239,7 +239,7 @@ function update_paid_payment_total() {
   $("#paid_amt_tot").html(tot.toFixed(2));
 }
 function delete_payment(payment_id){
- if(confirm("Do You Wants to Delete Record ?")){
+ if(confirm("¿ Seguro que quiere eliminar el registro ?")){
     var base_url=$("#base_url").val().trim();
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
    $.post(base_url+"sales/delete_payment",{payment_id:payment_id},function(result){
@@ -272,7 +272,7 @@ function delete_payment(payment_id){
 function delete_sales(q_id)
 {
   
-   if(confirm("Do You Wants to Delete Record ?")){
+   if(confirm("¿ Seguro que quiere eliminar el registro ?")){
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
     $.post("sales/delete_sales",{q_id:q_id},function(result){
    //alert(result);return;
@@ -438,7 +438,7 @@ function save_payment(sales_id){
 }
 
 function delete_sales_payment(payment_id){
- if(confirm("Do You Wants to Delete Record ?")){
+ if(confirm("¿ Seguro que quiere eliminar el registro ?")){
     var base_url=$("#base_url").val().trim();
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
    $.post(base_url+"sales/delete_payment",{payment_id:payment_id},function(result){
