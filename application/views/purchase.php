@@ -216,7 +216,7 @@
                                  </div>                                       
                                  
                               </div>
-
+<!-- probando cambios -->
                               <!-- <div class="form-group">
                                 <label for="warehouse_id" class="col-sm-2 control-label"><?= $this->lang->line('warehouse'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
