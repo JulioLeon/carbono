@@ -126,7 +126,7 @@ class Suppliers_model extends CI_Model {
 	$valor06,$valor07,$valor08,$valor09,$valor10,$valor11,$valor12)
 	{
 		//values('$supplier_code','$supplier_name','$mobile','$phone','$email',
-		$SYSTEM_IP,$SYSTEM_NAME,$CUR_DATE,$CUR_TIME,$CUR_USERNAME)";		
+		$SYSTEM_IP;$SYSTEM_NAME;$CUR_DATE;$CUR_TIME;$CUR_USERNAME;		
 		
 		$opcion = 2;
 		$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','','','','','','','','','')");
