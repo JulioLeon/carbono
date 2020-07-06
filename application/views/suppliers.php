@@ -74,14 +74,14 @@
                   <div class="col-sm-8">
                     <select class="form-control select2" id="tipodoc" name="tipodoc"  style="width: 100%;" >                    
                     </select>
-                    <span id="state_msg" style="display:none" class="text-danger"></span>
+                    <span id="tipodoc_msg" style="display:none" class="text-danger"></span>
                   </div>
                   </div>
 
                   <div class="form-group">
                       <label for="documento" class="col-sm-4 control-label">Nro Documento<label class = "text-danger">*</label></label>
                       <div class="col-sm-8">
-                          <input type="text" class="form-control no_special_char_no_space" id="nrodoc" name="nrodoc" placeholder="" value="<?php print $nrodoc; ?>">
+                          <input type="text" class="form-control no_special_char_no_space" id="nrodoc" name="nrodoc" placeholder="" value="<?php print $nrodoc; ?>" onblur="vrfnrodocumento()">
                           <span id="nrodoc_msg" style="display:none" class="text-danger"></span>
                       </div>
                     </div>

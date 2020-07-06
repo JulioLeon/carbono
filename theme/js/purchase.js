@@ -21,7 +21,7 @@ $('#save,#update').click(function (e) {
       if(!$("#"+id).val().trim() ) //Also check Others????
         {
 
-            $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
+            $('#'+id+'_msg').fadeIn(200).show().html('Datos requerido').addClass('required');
            // $('#'+id).css({'background-color' : '#E8E2E9'});
             flag=false;
         }
@@ -339,7 +339,7 @@ function multi_delete(){
   //var base_url=$("#base_url").val().trim();
     var this_id=this.id;
     
-    if(confirm("Are you sure ?")){
+    if(confirm("¿Está seguro?")){
       data = new FormData($('#table_form')[0]);//form name
       /*Check XSS Code*/
       if(!xss_validation(data)){ return false; }
@@ -417,7 +417,7 @@ function save_payment(purchase_id){
       if(!$("#"+id).val().trim() ) //Also check Others????
         {
 
-            $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
+            $('#'+id+'_msg').fadeIn(200).show().html('Datos requerido').addClass('required');
            // $('#'+id).css({'background-color' : '#E8E2E9'});
             flag=false;
         }

@@ -87,7 +87,7 @@ $('.make_sale').click(function (e) {
 					}
 					else if(result[0]=="failed")
 					{
-					   toastr['error']("Sorry! Failed to save Record.Try again");
+					   toastr['error']("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
 					}
 					else
 					{
@@ -174,7 +174,7 @@ $('#save,#update').click(function (e) {
 					}
 					else if(result[0]=="failed")
 					{
-					   toastr['error']("Sorry! Failed to save Record.Try again");
+					   toastr['error']("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
 					}
 					else
 					{
@@ -264,7 +264,7 @@ $('#hold_invoice').click(function (e) {
 							}
 							else if(result[0]=="failed")
 							{
-							   toastr['error']("Sorry! Failed to save Record.Try again");
+							   toastr['error']("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
 							}
 							else
 							{

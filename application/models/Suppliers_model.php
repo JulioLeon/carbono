@@ -78,49 +78,59 @@ class Suppliers_model extends CI_Model {
 	//Datatable end
 
 	//Save Cutomers
-	public function verify_and_save(){
-		//Filtering XSS and html escape from user inputs 
-		extract($this->security->xss_clean(html_escape(array_merge($this->data,$_REQUEST))));
+	// public function verify_and_save(){
+	// 	//Filtering XSS and html escape from user inputs 
+	// 	extract($this->security->xss_clean(html_escape(array_merge($this->data,$_REQUEST))));
 
-		//Validate This suppliers already exist or not		
-		$query=$this->db->query("select * from db_suppliers where upper(supplier_name)=upper('$supplier_name')");
-		if($query->num_rows()>0){
-			return "Sorry! This Suppliers Name already Exist.";
-		}
-		$query2=$this->db->query("select * from db_suppliers where mobile='$mobile'");
-		if($query2->num_rows()>0){
-			return "Sorry!This Mobile Number already Exist.";;
-		}
+	// 	//Validate This suppliers already exist or not		
+	// 	$query=$this->db->query("select * from db_suppliers where upper(supplier_name)=upper('$supplier_name')");
+	// 	if($query->num_rows()>0){
+	// 		return "Sorry! This Suppliers Name already Exist.";
+	// 	}
+	// 	$query2=$this->db->query("select * from db_suppliers where mobile='$mobile'");
+	// 	if($query2->num_rows()>0){
+	// 		return "Sorry!This Mobile Number already Exist.";;
+	// 	}
 		
-		$qs5="select supplier_init from db_company";
-		$q5=$this->db->query($qs5);
-		$supplier_init=$q5->row()->supplier_init;
+	// 	$qs5="select supplier_init from db_company";
+	// 	$q5=$this->db->query($qs5);
+	// 	$supplier_init=$q5->row()->supplier_init;
 
-		//Create suppliers unique Number
-		$this->db->query("ALTER TABLE db_suppliers AUTO_INCREMENT = 1");
-		$qs4="select coalesce(max(id),0)+1 as maxid from db_suppliers";
-		$q1=$this->db->query($qs4);
-		$maxid=$q1->row()->maxid;																																																														
-		$supplier_code=$supplier_init.str_pad($maxid, 4, '0', STR_PAD_LEFT);
-		//end
+	// 	//Create suppliers unique Number
+	// 	$this->db->query("ALTER TABLE db_suppliers AUTO_INCREMENT = 1");
+	// 	$qs4="select coalesce(max(id),0)+1 as maxid from db_suppliers";
+	// 	$q1=$this->db->query($qs4);
+	// 	$maxid=$q1->row()->maxid;																																																														
+	// 	$supplier_code=$supplier_init.str_pad($maxid, 4, '0', STR_PAD_LEFT);
+	// 	//end
 
-		$query1="insert into db_suppliers(supplier_code,supplier_name,mobile,phone,email,
-											country_id,state_id,postcode,address,opening_balance,
-											system_ip,system_name,
-											created_date,created_time,created_by,status,gstin,tax_number)
-											values('$supplier_code','$supplier_name','$mobile','$phone','$email',
-											'$country','$state','$postcode','$address','',
-											'$SYSTEM_IP','$SYSTEM_NAME',
-											'$CUR_DATE','$CUR_TIME','$CUR_USERNAME',1,'$gstin','$tax_number')";
+	// 	$query1="insert into db_suppliers(supplier_code,supplier_name,mobile,phone,email,
+	// 										country_id,state_id,postcode,address,opening_balance,
+	// 										system_ip,system_name,
+	// 										created_date,created_time,created_by,status,gstin,tax_number)
+	// 										values('$supplier_code','$supplier_name','$mobile','$phone','$email',
+	// 										'$country','$state','$postcode','$address','',
+	// 										'$SYSTEM_IP','$SYSTEM_NAME',
+	// 										'$CUR_DATE','$CUR_TIME','$CUR_USERNAME',1,'$gstin','$tax_number')";
 											
-		if ($this->db->simple_query($query1)){
-				$this->session->set_flashdata('success', 'Success!! New Supplier Added Successfully!');
-		        return "success";
-		}
-		else{
-		        return "failed";
-		}
+	// 	if ($this->db->simple_query($query1)){
+	// 			$this->session->set_flashdata('success', 'Success!! New Supplier Added Successfully!');
+	// 	        return "success";
+	// 	}
+	// 	else{
+	// 	        return "failed";
+	// 	}
 		
+	// }
+	public function verify_and_save($valor01,$valor02,$valor03,$valor04,$valor05,
+	$valor06,$valor07,$valor08,$valor09,$valor10,$valor11,$valor12)
+	{
+		//values('$supplier_code','$supplier_name','$mobile','$phone','$email',
+		$SYSTEM_IP,$SYSTEM_NAME,$CUR_DATE,$CUR_TIME,$CUR_USERNAME)";		
+		
+		$opcion = 2;
+		$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','','','','','','','','','')");
+		return $query->result();
 	}
 
 	//Get suppliers_details
@@ -191,7 +201,7 @@ class Suppliers_model extends CI_Model {
         else{
             echo "failed";
         }	
-	}
+	}  	
 	public function select_tipodoc(){
 		$opcion = 1;
 		$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','','','','','','','','','')");

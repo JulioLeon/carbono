@@ -26,9 +26,21 @@ class Suppliers extends MY_Controller {
 	public function newsuppliers(){
 		//print_r($_REQUEST);exit();
 		$this->form_validation->set_rules('supplier_name', 'Supplier Name', 'trim|required');
-		$this->form_validation->set_rules('mobile', 'Mobile', 'trim|required');
-		$this->form_validation->set_rules('state', 'State', 'trim|required');
+		$this->form_validation->set_rules('tipodoc', 'tipodoc', 'trim|required');
+		$this->form_validation->set_rules('nrodoc', 'nrodoc', 'trim|required');
 
+		$nombre = $this->input->post('nombre');
+		$tipodoc = $this->input->post('tipodoc');
+		$nrodoc = $this->input->post('nrodoc');
+		$mobile = $this->input->post('mobile');
+		$email2 = $this->input->post('email2');
+		$phone = $this->input->post('phone');
+		$country = $this->input->post('country');
+		$state = $this->input->post('state');
+		$postcode = $this->input->post('postcode');
+		$gstin= $this->input->post('gstin');
+		$tax_number = $this->input->post('tax_number');
+		$address= $this->input->post(' addres');
 		
 		if ($this->form_validation->run() == TRUE) {
 			$result=$this->suppliers->verify_and_save();
@@ -134,24 +146,23 @@ class Suppliers extends MY_Controller {
 		$ids=implode (",",$_POST['checkbox']);
 		return $this->suppliers->delete_suppliers_from_table($ids);
 	}
-	public function loadTipoDoc(){
-		$query = $this->Suppliers_model->select_tipodoc();
-		$q2=$this->db->query($query);
-                    if($q2->num_rows()>0)
+	public function loadTipoDoc(){		
+		$query = $this->suppliers->select_tipodoc();					
+		$cant = count($query);
+                    if($cant>0)
                     {
                       echo '<option value="">-Select-</option>'; 
-                      foreach($q2->result() as $res1)
+                      foreach($query as $res1)
                       {
-                      $selected = ($nomdoc==$res1->coddoc)? 'selected' : '';
-                      echo "<option $selected value='".$res1->coddoc."'>".$res1->nomdoc."</option>";
+                      //$selected = ($nomdoc==$res1->coddoc)? 'selected' : '';
+		      //echo "<option $selected value='".$res1->coddoc."'>".$res1->nomdoc."</option>";
+		      echo "<option value='$res1->coddoc'>".$res1->nomdoc." </option>";
                       }
                     }
                     else
-                    {
-                      ?>
-                      <option value="">No se encontraron registros</option>
-                      <?php
-                    }
+                    {                      
+                      echo "<option value=''>No se encontraron registros</option>";
+                    } 
 	}
 
 }

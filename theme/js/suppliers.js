@@ -25,15 +25,42 @@ $(document).ready(function(){
 });
 
 function cargotipodoc() {
+	//console.log("Desde el JS");
 	$.ajax({
 		type: "post",
-		url: "suppliers/loadTipoDoc",
+		url: "loadTipoDoc",
 		data: {},
 		success: function (response) {
 			$("#tipodoc").html(response);
-			
+			console.log("Desde el JS - Ayax Succes");
 		}
 	});	
+}
+function vrfnrodocumento() {
+	var numero = $("#nrodoc").val();
+	var tipodoc = $("#tipodoc").val();
+	console.log(numero + "tipo: " + tipodoc);	
+	if (tipodoc == "1") {
+		if (numero.length == 8) {
+			$("#nrodoc").css("background-color","#D7E7A9");			
+			$("#nrodoc_msg").fadeOut(200).hide();
+		}
+		else {
+			$("#nrodoc").css("background-color","#F99A9C");
+			$('#nrodoc_msg').fadeIn(200).show().html('El numero debe ser de 8 cifras').addClass('required');
+		}
+	} 
+	if (tipodoc == "6")	{
+		if (numero.length == 11){
+			$("#nrodoc").css("background-color","#D7E7A9");
+			$("#nrodoc_msg").fadeOut(200).hide();
+		}
+		else {
+			$("#nrodoc").css("background-color","#F99A9C");	
+			$('#nrodoc_msg').fadeIn(200).show().html('El numero debe ser de 11 cifras').addClass('required');
+		}
+	}
+	
 }
 
 $('#save,#update').click(function (e) {
@@ -47,7 +74,7 @@ $('#save,#update').click(function (e) {
       if(!$("#"+id).val().trim() ) //Also check Others????
         {
 
-            $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
+            $('#'+id+'_msg').fadeIn(200).show().html('Dato requerido').addClass('required');
             //$('#'+id).css({'background-color' : '#E8E2E9'});
             flag=false;
         }
@@ -61,21 +88,21 @@ $('#save,#update').click(function (e) {
 
     //Validate Input box or selection box should not be blank or empty
 	check_field("supplier_name");
-	check_field("mobile");
-	check_field("state");
+	check_field("tipodoc");
+	check_field("nrodoc");
 
     var email=$("#email").val().trim();
     if (email!='' && !validateEmail(email)) {
-            $("#email_msg").html("Invalid Email!").show();
+            $("#email_msg").html("Correo inválido!").show();
              flag=false;
         }
         else{
-        	$("#email_msg").html("Invalid Email!").hide();
+        	$("#email_msg").html("Correo Inválido!").hide();
         }
 
 	if(flag==false)
     {
-		toastr["warning"]("You have Missed Something to Fillup!")
+		toastr["warning"]("Falta un dato requerido!")
 		return;
     }
 
@@ -84,45 +111,69 @@ $('#save,#update').click(function (e) {
     if(this_id=="save")  //Save start
     {
 
-					if(confirm("¿ Quiere guardar el registro ?")){
-						
-						e.preventDefault();
-						data = new FormData($('#suppliers-form')[0]);//form name
-						/*Check XSS Code*/
-						if(!xss_validation(data)){ return false; }
-						
-						$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-						$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
-						$.ajax({
-						type: 'POST',
-						url: 'newsuppliers',
-						data: data,
-						cache: false,
-						contentType: false,
-						processData: false,
-						success: function(result){
-              //alert(result);return;
-							if(result=="success")
-							{
-								//alert("Record Saved Successfully!");
-								window.location=base_url+"suppliers";
-							}
-							else if(result=="failed")
-							{
-							   toastr['error']("Sorry! Failed to save Record.Try again");
-							   //	return;
-							}
-							else
-							{
-								toastr['error'](result);
-							}
-							$("#"+this_id).attr('disabled',false);  //Enable Save or Update button
-							$(".overlay").remove();
-					   }
-					   });
-				}
+	if(confirm("¿ Quiere guardar el registro ?")){		
+		var nombre = $("#supplier_name").val().trim();
+		var tipodoc= $("#tipodoc").val().trim();
+		var nrodoc = $("#nrodoc").val().trim();
+		var mobile = $("#mobile").val().trim();
+		var email2 = $("#email").val().trim();
+		var phone  = $("#phone").val().trim();
+		var country= $("#country").val().trim();
+		var state  = $("#state").val().trim();
+		var postcode = $("#postcode").val().trim();
+		var gstin  = $("#gstin").val().trim();
+		var tax_number = $("#tax_number").val().trim();
+		var address = $("#address").val().trim();
+		e.preventDefault();
+		data = new FormData($('#suppliers-form')[0]);//form name
+		/*Check XSS Code*/
+		if(!xss_validation(data)){ return false; }
+		
+		$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+		$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
+		$.ajax({
+		type: 'POST',
+		url: 'newsuppliers',
+		data: {
+			nombre : nombre,
+			tipodoc : tipodoc,
+			nrodoc : nrodoc,
+			mobile : mobile,
+			email2 : email2,
+			phone : phone,
+			country : country,
+			state : state,
+			postcode : postcode,
+			gstin: gstin,
+			tax_number : tax_number,
+			address : address
+		},
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(result){
+//alert(result);return;
+			if(result=="success")
+			{
+				//alert("Record Saved Successfully!");
+				window.location=base_url+"suppliers";
+			}
+			else if(result=="failed")
+			{
+				toastr['error']("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
+				//	return;
+			}
+			else
+			{
+				toastr['error'](result);
+			}
+			$("#"+this_id).attr('disabled',false);  //Enable Save or Update button
+			$(".overlay").remove();
+		}
+		});
+	}
 
-				//e.preventDefault
+//e.preventDefault
 
 
     }//Save end
@@ -154,7 +205,7 @@ $('#save,#update').click(function (e) {
 							}
 							else if(result=="failed")
 							{
-							   toastr["error"]("Sorry! Failed to save Record.Try again!");
+							   toastr["error"]("¡Lo siento! No se pudo guardar el registro. Intente nuevamente!");
 							}
 							else
 							{
@@ -261,7 +312,7 @@ function multi_delete(){
 	//var base_url=$("#base_url").val().trim();
     var this_id=this.id;
     
-		if(confirm("Are you sure ?")){
+		if(confirm("¿Está seguro?")){
 			$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
 			$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 			
@@ -287,7 +338,7 @@ function multi_delete(){
 				}
 				else if(result=="failed")
 				{
-				   toastr["error"]("Sorry! Failed to save Record.Try again!");
+				   toastr["error"]("¡Lo siento! No se pudo guardar el registro. Intente nuevamente!");
 				   failed.currentTime = 0; 
 				   failed.play();
 				}

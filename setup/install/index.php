@@ -212,7 +212,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST) {
                   if(!$("#"+id).val().trim() ) //Also check Others????
                     {
 
-                        $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
+                        $('#'+id+'_msg').fadeIn(200).show().html('Datos requerido').addClass('required');
                        // $('#'+id).css({'background-color' : '#E8E2E9'});
                         flag=false;
                     }

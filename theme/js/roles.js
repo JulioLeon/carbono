@@ -8,7 +8,7 @@ $('#save,#update').click(function (e) {
     {
       if(!$("#"+id).val().trim() ) //Also check Others????
         {
-            $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
+            $('#'+id+'_msg').fadeIn(200).show().html('Datos requerido').addClass('required');
            // $('#'+id).css({'background-color' : '#E8E2E9'});
             flag=false;
         }
@@ -58,7 +58,7 @@ $('#save,#update').click(function (e) {
 							}
 							else if(result=="failed")
 							{
-								toastr["error"]("Sorry! Failed to save Record.Try again!");
+								toastr["error"]("¡Lo siento! No se pudo guardar el registro. Intente nuevamente!");
 							   //	return;
 							}
 							else
@@ -104,8 +104,8 @@ $('#save,#update').click(function (e) {
 							}
 							else if(result=="failed")
 							{
-								toastr["error"]("Sorry! Failed to save Record.Try again!");
-							   //alert("Sorry! Failed to save Record.Try again");
+								toastr["error"]("¡Lo siento! No se pudo guardar el registro. Intente nuevamente!");
+							   //alert("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
 							   //	return;
 							}
 							else
@@ -210,7 +210,7 @@ function multi_delete(){
 	//var base_url=$("#base_url").val().trim();
     var this_id=this.id;
     
-		if(confirm("Are you sure ?")){
+		if(confirm("¿Está seguro?")){
 			$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
 			$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 			
@@ -236,7 +236,7 @@ function multi_delete(){
 				}
 				else if(result=="failed")
 				{
-				   toastr["error"]("Sorry! Failed to save Record.Try again!");
+				   toastr["error"]("¡Lo siento! No se pudo guardar el registro. Intente nuevamente!");
 				   failed.currentTime = 0; 
 				   failed.play();
 				}
