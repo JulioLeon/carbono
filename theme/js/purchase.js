@@ -183,7 +183,7 @@ $("#item_search").autocomplete({
                 var result;
                 result = [
                     {
-                        //label: 'No Records Found '+data.term,
+                        //label: 'No se encontraron registros '+data.term,
                         label: 'No se encuentra registro ',
                         value: ''
                     }

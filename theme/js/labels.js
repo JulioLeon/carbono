@@ -19,8 +19,8 @@ $("#item_search").autocomplete({
                 var result;
                 result = [
                     {
-                        //label: 'No Records Found '+data.term,
-                        label: 'No Records Found ',
+                        //label: 'No se encontraron registros '+data.term,
+                        label: 'No se encontraron registros ',
                         value: ''
                     }
                 ];

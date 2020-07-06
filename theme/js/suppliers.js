@@ -20,6 +20,22 @@ $(document).submit(function(event) {
 	}
 });
 
+$(document).ready(function(){
+	cargotipodoc();
+});
+
+function cargotipodoc() {
+	$.ajax({
+		type: "post",
+		url: "suppliers/loadTipoDoc",
+		data: {},
+		success: function (response) {
+			$("#tipodoc").html(response);
+			
+		}
+	});	
+}
+
 $('#save,#update').click(function (e) {
 	var base_url=$("#base_url").val().trim();
     /*Initially flag set true*/
@@ -238,6 +254,7 @@ function delete_suppliers(q_id)
    });
    }//end confirmation
 }
+
 //Delete Record end
 //Delete Record end
 function multi_delete(){

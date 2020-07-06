@@ -246,7 +246,7 @@
                               else
                               {
                                  ?>
-                          <option value="">No Records Found</option>
+                          <option value="">No se encontraron registros</option>
                           <?php
                              }
                              ?>
@@ -346,7 +346,7 @@
                          else
                          {
                             ?>
-                            <option value="">No Records Found</option>
+                            <option value="">No se encontraron registros</option>
                             <?php
                          }
                         ?>
@@ -523,7 +523,7 @@
                          else
                          {
                             ?>
-                            <option value="">No Records Found</option>
+                            <option value="">No se encontraron registros</option>
                             <?php
                          }
                         ?>
@@ -553,7 +553,7 @@
                               <div class="row search_div" style="overflow-y: scroll;min-height: 100px;max-height: 500px;">
                               
                               </div>
-                              <h3 class='text-danger text-center error_div' style="display: none;">Sorry! No Records Found</h3>
+                              <h3 class='text-danger text-center error_div' style="display: none;">Sorry! No se encontraron registros</h3>
                             </section>
                       
                          

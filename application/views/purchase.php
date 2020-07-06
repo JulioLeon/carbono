@@ -218,6 +218,7 @@
                               </div>
 <!-- probando cambios -->
 <!-- segundo cambio -->
+<!-- tercer cambio -->
                               <!-- <div class="form-group">
                                 <label for="warehouse_id" class="col-sm-2 control-label"><?= $this->lang->line('warehouse'); ?> <label class="text-danger">*</label></label>
                                  <div class="col-sm-3">
@@ -238,7 +239,7 @@
                                               else
                                               {
                                                  ?>
-                                          <option value="">No Records Found</option>
+                                          <option value="">No se encontraron registros</option>
                                           <?php
                                              }
                                              ?>

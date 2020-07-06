@@ -50,7 +50,7 @@
                              }
                            }
                            else{
-                              echo "No Records Found";
+                              echo "No se encontraron registros";
                            }
                           ?>
                       </select>
@@ -108,7 +108,7 @@
                            }
                          }
                          else{
-                            echo "No Records Found";
+                            echo "No se encontraron registros";
                          }
                         ?>
                     </select>

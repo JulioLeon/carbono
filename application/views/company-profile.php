@@ -146,7 +146,7 @@
              else
              {
                 ?>
-                <option value="">No Records Found</option>
+                <option value="">No se encontraron registros</option>
                 <?php
              }
             ?>
@@ -176,7 +176,7 @@
              else
              {
                 ?>
-                <option value="">No Records Found</option>
+                <option value="">No se encontraron registros</option>
                 <?php
              }
             ?>

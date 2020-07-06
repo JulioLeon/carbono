@@ -66,10 +66,29 @@
                   </div>
                   </div>
                   
+                  <div class="form-group">
+                  <label for="state" class="col-sm-4 control-label">Tipo documento
+                      <label class="text-danger">*</label> 
+                  </label>
+		  
+                  <div class="col-sm-8">
+                    <select class="form-control select2" id="tipodoc" name="tipodoc"  style="width: 100%;" >                    
+                    </select>
+                    <span id="state_msg" style="display:none" class="text-danger"></span>
+                  </div>
+                  </div>
 
+                  <div class="form-group">
+                      <label for="documento" class="col-sm-4 control-label">Nro Documento<label class = "text-danger">*</label></label>
+                      <div class="col-sm-8">
+                          <input type="text" class="form-control no_special_char_no_space" id="nrodoc" name="nrodoc" placeholder="" value="<?php print $nrodoc; ?>">
+                          <span id="nrodoc_msg" style="display:none" class="text-danger"></span>
+                      </div>
+                    </div>
+                    
                 
                   <div class="form-group">
-                      <label for="mobile" class="col-sm-4 control-label"><?= $this->lang->line('mobile'); ?><label class="text-danger">*</label></label>
+                      <label for="mobile" class="col-sm-4 control-label"><?= $this->lang->line('mobile'); ?></label>
 
                   <div class="col-sm-8">
                     <input type="text" class="form-control no_special_char_no_space" id="mobile" name="mobile" placeholder="" value="<?php print $mobile; ?>" >
@@ -93,26 +112,13 @@
                   </div>
                   </div>
                   
-                   
-                   <div class="form-group">
-                  <label for="gstin" class="col-sm-4 control-label"><?= $this->lang->line('gst_number'); ?></label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="gstin" name="gstin" placeholder="" value="<?php print $gstin; ?>" >
-          <span id="gstin_msg" style="display:none" class="text-danger"></span>
-                  </div>
-                  </div>
-                   <div class="form-group">
-                  <label for="tax_number" class="col-sm-4 control-label"><?= $this->lang->line('tax_number'); ?></label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="tax_number" name="tax_number" placeholder="" value="<?php print $tax_number; ?>" >
-          <span id="tax_number_msg" style="display:none" class="text-danger"></span>
-                  </div>
-                  </div>
+                                     
                   <!-- ########### -->
                </div>
-
-
+               
+                
                <div class="col-md-5">
+                    
 
                   <div class="form-group">
                   <label for="country" class="col-sm-4 control-label"><?= $this->lang->line('country'); ?></label>
@@ -133,7 +139,7 @@
              else
              {
                 ?>
-                <option value="">No Records Found</option>
+                <option value="">No se encontraron registros</option>
                 <?php
              }
             ?>
@@ -142,7 +148,7 @@
                   </div>
                   </div>
                    <div class="form-group">
-                   <label for="state" class="col-sm-4 control-label"><?= $this->lang->line('state'); ?><label class="text-danger">*</label> </label>
+                   <label for="state" class="col-sm-4 control-label"><?= $this->lang->line('state'); ?></label>
                   
           <div class="col-sm-8">
                     <select class="form-control select2" id="state" name="state"  style="width: 100%;" >
@@ -161,7 +167,7 @@
              else
              {
                 ?>
-                <option value="">No Records Found</option>
+                <option value="">No se encontraron registros</option>
                 <?php
              }
             ?>
@@ -178,13 +184,28 @@
                   </div>
                   </div>
 
+                  <div class="form-group">
+                          <label for="gstin" class="col-sm-4 control-label"><?= $this->lang->line('gst_number'); ?></label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="gstin" name="gstin" placeholder="" value="<?php print $gstin; ?>" >
+                          <span id="gstin_msg" style="display:none" class="text-danger"></span>
+                          </div>
+                          </div>
+                          <div class="form-group">
+                          <label for="tax_number" class="col-sm-4 control-label"><?= $this->lang->line('tax_number'); ?></label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="tax_number" name="tax_number" placeholder="" value="<?php print $tax_number; ?>" >
+                          <span id="tax_number_msg" style="display:none" class="text-danger"></span>
+                          </div>
+                    </div>
+
                    <div class="form-group">
                   <label for="address" class="col-sm-4 control-label"><?= $this->lang->line('address'); ?></label>
                   <div class="col-sm-8">
                     <textarea type="text" class="form-control" id="address" name="address" placeholder="" ><?php print $address; ?></textarea>
           <span id="address_msg" style="display:none" class="text-danger"></span>
                   </div>
-                  </div>
+                  </div>                  
                    
                 </div>
                   <!-- ########### -->

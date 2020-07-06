@@ -134,6 +134,24 @@ class Suppliers extends MY_Controller {
 		$ids=implode (",",$_POST['checkbox']);
 		return $this->suppliers->delete_suppliers_from_table($ids);
 	}
-	
+	public function loadTipoDoc(){
+		$query = $this->Suppliers_model->select_tipodoc();
+		$q2=$this->db->query($query);
+                    if($q2->num_rows()>0)
+                    {
+                      echo '<option value="">-Select-</option>'; 
+                      foreach($q2->result() as $res1)
+                      {
+                      $selected = ($nomdoc==$res1->coddoc)? 'selected' : '';
+                      echo "<option $selected value='".$res1->coddoc."'>".$res1->nomdoc."</option>";
+                      }
+                    }
+                    else
+                    {
+                      ?>
+                      <option value="">No se encontraron registros</option>
+                      <?php
+                    }
+	}
 
 }

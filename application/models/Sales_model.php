@@ -802,7 +802,7 @@ class Sales_model extends CI_Model {
 		                           }
 		                         }
 		                         else{
-		                            echo "No Records Found";
+		                            echo "No se encontraron registros";
 		                         }
 		                        ?>
 		                    </select>
@@ -992,7 +992,7 @@ class Sales_model extends CI_Model {
 										}
 									}
 									else{
-										echo "<tr><td colspan='7' class='text-danger text-center'>No Records Found</td></tr>";
+										echo "<tr><td colspan='7' class='text-danger text-center'>No se encontraron registros</td></tr>";
 									}
 									?>
                                 </tbody>
