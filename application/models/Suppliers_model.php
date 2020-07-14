@@ -204,7 +204,7 @@ class Suppliers_model extends CI_Model {
 	}  	
 	public function select_tipodoc(){
 		$opcion = 1;
-		$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','','','','','','','','','')");
+		$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','','','','','','','','','','','','','','','','','','','')");
 		return $query->result();
 	}
 
