@@ -26,7 +26,7 @@ class Customers extends MY_Controller {
 	public function newcustomers(){
 		$this->form_validation->set_rules('customer_name', 'Customer Name', 'trim|required');
 		//$this->form_validation->set_rules('mobile', 'Mobile', 'trim|required');
-		$this->form_validation->set_rules('state', 'State', 'trim|required');
+		//$this->form_validation->set_rules('state', 'State', 'trim|required');
 
 		
 		if ($this->form_validation->run() == TRUE) {

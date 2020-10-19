@@ -32,7 +32,7 @@ function cargotipodoc() {
 		data: {},
 		success: function (response) {
 			$("#tipodoc").html(response);
-			console.log("Desde el JS - Ayax Succes");
+			//console.log("Desde el JS - Ayax Succes");
 		}
 	});	
 }
@@ -63,8 +63,62 @@ function vrfnrodocumento() {
 	
 }
 
-$('#save,#update').click(function (e) {
+function guardarproveedor() {
 	var base_url=$("#base_url").val().trim();
+	var nombre = $("#supplier_name").val().trim();
+	var tipodoc= $("#tipodoc").val().trim();
+	var nrodoc = $("#nrodoc").val().trim();
+	var mobile = $("#mobile").val().trim();
+	var email2 = $("#email").val().trim();
+	var phone  = $("#phone").val().trim();
+	var country= $("#country").val().trim();
+	var state  = $("#state").val().trim();
+	var postcode = $("#postcode").val().trim();
+	var gstin  = $("#gstin").val().trim();
+	var tax_number = $("#tax_number").val().trim();
+	var address = $("#address").val().trim();
+	$.ajax({
+		type: "post",
+		url: "newsuppliers",
+		data: {
+			nombre : nombre,
+			tipodoc : tipodoc,
+			nrodoc : nrodoc,
+			mobile : mobile,
+			email2 : email2,
+			phone : phone,
+			country : country,
+			state : state,
+			postcode : postcode,
+			gstin: gstin,
+			tax_number : tax_number,
+			address : address		  
+		},
+		success: function(result){
+			// alert(result);return;
+			if(result=="success")
+			{
+				//alert("Record Saved Successfully!");
+				window.location=base_url+"suppliers";
+				return;
+			}
+			else if(result=="failed")
+			{
+			toastr['error']("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
+			//	return;
+			}
+			else
+			{
+				toastr['error'](result);
+			}
+			//$("#"+this_id).attr('disabled',false);  //Enable Save or Update button
+			//$(".overlay").remove();		
+		}
+	    });
+}
+
+$('#save,#update').click(function (e) {
+    var base_url=$("#base_url").val().trim();
     /*Initially flag set true*/
     var flag=true;
 
@@ -110,7 +164,6 @@ $('#save,#update').click(function (e) {
 
     if(this_id=="save")  //Save start
     {
-
 	if(confirm("¿ Quiere guardar el registro ?")){		
 		var nombre = $("#supplier_name").val().trim();
 		var tipodoc= $("#tipodoc").val().trim();
@@ -124,58 +177,17 @@ $('#save,#update').click(function (e) {
 		var gstin  = $("#gstin").val().trim();
 		var tax_number = $("#tax_number").val().trim();
 		var address = $("#address").val().trim();
-		e.preventDefault();
-		data = new FormData($('#suppliers-form')[0]);//form name
+		//e.preventDefault();
+		//data = new FormData($('#suppliers-form')[0]);//form name
 		/*Check XSS Code*/
-		if(!xss_validation(data)){ return false; }
+		//if(!xss_validation(data)){ return false; }
 		
 		$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
 		$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
-		$.ajax({
-		type: 'POST',
-		url: 'newsuppliers',
-		data: {
-			nombre : nombre,
-			tipodoc : tipodoc,
-			nrodoc : nrodoc,
-			mobile : mobile,
-			email2 : email2,
-			phone : phone,
-			country : country,
-			state : state,
-			postcode : postcode,
-			gstin: gstin,
-			tax_number : tax_number,
-			address : address
-		},
-		cache: false,
-		contentType: false,
-		processData: false,
-		success: function(result){
-//alert(result);return;
-			if(result=="success")
-			{
-				//alert("Record Saved Successfully!");
-				window.location=base_url+"suppliers";
-			}
-			else if(result=="failed")
-			{
-				toastr['error']("¡Lo siento! No se pudo guardar el registro. Intente nuevamente");
-				//	return;
-			}
-			else
-			{
-				toastr['error'](result);
-			}
-			$("#"+this_id).attr('disabled',false);  //Enable Save or Update button
-			$(".overlay").remove();
-		}
-		});
+		
+		
 	}
-
 //e.preventDefault
-
-
     }//Save end
 	
 	else if(this_id=="update")  //Update start

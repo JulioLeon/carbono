@@ -55,9 +55,10 @@
                     <input type="checkbox" class="group_check checkbox" >
                   </th>
                   <th><?= $this->lang->line('supplier_name'); ?></th>
+                  <th width="10%">Tipo Documento</th>
+                  <th>Nro Documento</th>
                   <th><?= $this->lang->line('mobile'); ?></th>
-                  <th><?= $this->lang->line('email'); ?></th><!-- 
-                  <th><?= $this->lang->line('purchase_due'); ?></th> -->
+                  <th><?= $this->lang->line('email'); ?></th>                  
                   <th><?= $this->lang->line('status'); ?></th>
                   <th><?= $this->lang->line('action'); ?></th>
                 </tr>
@@ -148,7 +149,7 @@ $(document).ready(function() {
         //Set column definition initialisation properties.
         "columnDefs": [
         { 
-            "targets": [ 0,5 ], //first column / numbering column
+            "targets": [ 0,7 ], //first column / numbering column
             "orderable": false, //set not orderable
         },
         {

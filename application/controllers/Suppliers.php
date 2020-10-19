@@ -2,10 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Suppliers extends MY_Controller {
+
 	public function __construct(){
 		parent::__construct();
 		$this->load_global();
-		$this->load->model('suppliers_model','suppliers');
+		$this->load->model('Suppliers_model','suppliers');
 	}
 	
 	public function index()
@@ -23,13 +24,8 @@ class Suppliers extends MY_Controller {
 		$this->load->view('suppliers',$data);
 	}
 
-	public function newsuppliers(){
-		//print_r($_REQUEST);exit();
-		$this->form_validation->set_rules('supplier_name', 'Supplier Name', 'trim|required');
-		$this->form_validation->set_rules('tipodoc', 'tipodoc', 'trim|required');
-		$this->form_validation->set_rules('nrodoc', 'nrodoc', 'trim|required');
-
-		$nombre = $this->input->post('nombre');
+	public function newsuppliers(){				
+		/*$nombre = $this->input->post('nombre');
 		$tipodoc = $this->input->post('tipodoc');
 		$nrodoc = $this->input->post('nrodoc');
 		$mobile = $this->input->post('mobile');
@@ -41,13 +37,19 @@ class Suppliers extends MY_Controller {
 		$gstin= $this->input->post('gstin');
 		$tax_number = $this->input->post('tax_number');
 		$address= $this->input->post(' addres');
-		
-		if ($this->form_validation->run() == TRUE) {
-			$result=$this->suppliers->verify_and_save();
-			echo $result;
-		} else {
-			echo "Please Fill Compulsory(* marked) Fields.";
+		*/				
+		$result=$this->suppliers->verify_and_save();
+		//;	
+		if ($result[0]->nres == '1') {
+			$this->session->set_flashdata('success', 'Registro grabado!');
+			echo 'success';
 		}
+		else {
+			echo $result[0]->nmsj;
+		}
+		
+							
+		
 	}
 	public function update($id){
 		$this->permission_check('suppliers_edit');
@@ -59,8 +61,8 @@ class Suppliers extends MY_Controller {
 	}
 	public function update_suppliers(){
 		$this->form_validation->set_rules('supplier_name', 'Customer Name', 'trim|required');
-		$this->form_validation->set_rules('mobile', 'Mobile', 'trim|required');
-		$this->form_validation->set_rules('state', 'State', 'trim|required');
+		//$this->form_validation->set_rules('mobile', 'Mobile', 'trim|required');
+		//$this->form_validation->set_rules('state', 'State', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE) {
 			$result=$this->suppliers->update_suppliers();
@@ -81,6 +83,8 @@ class Suppliers extends MY_Controller {
 			$row = array();
 			$row[] = '<input type="checkbox" name="checkbox[]" value='.$suppliers->id.' class="checkbox column_checkbox" >';
 			$row[] = $suppliers->supplier_name;
+			$row[] = $suppliers->tipodoc;
+			$row[] = $suppliers->nrodoc;
 			$row[] = $suppliers->mobile;
 			$row[] = $suppliers->email;
 			/*$row[] = $this->currency($suppliers->purchase_due);*/

@@ -234,10 +234,11 @@
                                     
                                               ?>
                                  <div class="col-md-3 col-md-offset-3">
-                                    <button type="submit" id="<?php echo $btn_id;?>" class=" btn btn-block btn-success" title="Save Data"><?php echo $btn_name;?></button>
+                                    <!--<button type="submit" id="<?php echo $btn_id;?>" class=" btn btn-block btn-success" title="Guardar datos"><?php echo $btn_name;?></button> -->
+                                    <button type="submit" onclick="guardarproveedor();" class=" btn btn-block btn-success" title="Guardar datos">Guardar</button>
                                  </div>
                                  <div class="col-sm-3">
-                                    <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Go Dashboard">Cerrar</button>
+                                    <button type="button" class="col-sm-3 btn btn-block btn-warning close_btn" title="Ir Dashboard">Cerrar</button>
                                  </div>
                               </div>
                            </div>

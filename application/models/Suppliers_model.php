@@ -5,8 +5,8 @@ class Suppliers_model extends CI_Model {
 
 	//Datatable start
 	var $table = 'db_suppliers as a';
-	var $column_order = array('a.id','a.supplier_name','a.mobile','a.email','a.opening_balance','a.purchase_due','a.status'); //set column field database for datatable orderable
-	var $column_search = array('a.id','a.supplier_name','a.mobile','a.email','a.opening_balance','a.purchase_due','a.status'); //set column field database for datatable searchable 
+	var $column_order = array('a.id','a.supplier_name','a.tipodoc','a.nrodoc','a.mobile','a.email','a.opening_balance','a.purchase_due','a.status'); //set column field database for datatable orderable
+	var $column_search = array('a.id','a.supplier_name','a.tipodoc','a.nrodoc','a.mobile','a.email','a.opening_balance','a.purchase_due','a.status'); //set column field database for datatable searchable 
 	var $order = array('a.id' => 'desc'); // default order 
 
 	public function __construct()
@@ -18,8 +18,8 @@ class Suppliers_model extends CI_Model {
 	{
 		$this->db->select($this->column_order);
 		$this->db->from($this->table);
-		$this->db->from('db_country as b')->where('b.id=a.country_id');
-		$this->db->from('db_states as c')->where('c.id=a.state_id');
+		//$this->db->from('db_country as b')->where('b.id=a.country_id');
+		//$this->db->from('db_states as c')->where('c.id=a.state_id');
 		$i = 0;
 	
 		foreach ($this->column_search as $item) // loop column 
@@ -75,62 +75,16 @@ class Suppliers_model extends CI_Model {
 		$this->db->from($this->table);
 		return $this->db->count_all_results();
 	}
-	//Datatable end
-
-	//Save Cutomers
-	// public function verify_and_save(){
-	// 	//Filtering XSS and html escape from user inputs 
-	// 	extract($this->security->xss_clean(html_escape(array_merge($this->data,$_REQUEST))));
-
-	// 	//Validate This suppliers already exist or not		
-	// 	$query=$this->db->query("select * from db_suppliers where upper(supplier_name)=upper('$supplier_name')");
-	// 	if($query->num_rows()>0){
-	// 		return "Sorry! This Suppliers Name already Exist.";
-	// 	}
-	// 	$query2=$this->db->query("select * from db_suppliers where mobile='$mobile'");
-	// 	if($query2->num_rows()>0){
-	// 		return "Sorry!This Mobile Number already Exist.";;
-	// 	}
 		
-	// 	$qs5="select supplier_init from db_company";
-	// 	$q5=$this->db->query($qs5);
-	// 	$supplier_init=$q5->row()->supplier_init;
-
-	// 	//Create suppliers unique Number
-	// 	$this->db->query("ALTER TABLE db_suppliers AUTO_INCREMENT = 1");
-	// 	$qs4="select coalesce(max(id),0)+1 as maxid from db_suppliers";
-	// 	$q1=$this->db->query($qs4);
-	// 	$maxid=$q1->row()->maxid;																																																														
-	// 	$supplier_code=$supplier_init.str_pad($maxid, 4, '0', STR_PAD_LEFT);
-	// 	//end
-
-	// 	$query1="insert into db_suppliers(supplier_code,supplier_name,mobile,phone,email,
-	// 										country_id,state_id,postcode,address,opening_balance,
-	// 										system_ip,system_name,
-	// 										created_date,created_time,created_by,status,gstin,tax_number)
-	// 										values('$supplier_code','$supplier_name','$mobile','$phone','$email',
-	// 										'$country','$state','$postcode','$address','',
-	// 										'$SYSTEM_IP','$SYSTEM_NAME',
-	// 										'$CUR_DATE','$CUR_TIME','$CUR_USERNAME',1,'$gstin','$tax_number')";
-											
-	// 	if ($this->db->simple_query($query1)){
-	// 			$this->session->set_flashdata('success', 'Success!! New Supplier Added Successfully!');
-	// 	        return "success";
-	// 	}
-	// 	else{
-	// 	        return "failed";
-	// 	}
-		
-	// }
-	public function verify_and_save($valor01,$valor02,$valor03,$valor04,$valor05,
-	$valor06,$valor07,$valor08,$valor09,$valor10,$valor11,$valor12)
-	{
-		//values('$supplier_code','$supplier_name','$mobile','$phone','$email',
-		$SYSTEM_IP;$SYSTEM_NAME;$CUR_DATE;$CUR_TIME;$CUR_USERNAME;		
-		
+	public function verify_and_save()
+	{		
+		//$SYSTEM_IP;$SYSTEM_NAME;$CUR_DATE;$CUR_TIME;$CUR_USERNAME;				
 		$opcion = 2;
-		$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','','','','','','','','','')");
-		return $query->result();
+		//$query = $this->db->query("CALL SP_PROVEEDOR('".$opcion."','".$valor01."','".$valor02."','".$valor03."','".$valor04."','".$valor05."','".$valor06."','','','','','','','','','','','','','')");
+		$query = $this->db->query(" CALL SP_PROVEEDOR('2','6','20603625154','Arpesa 002','987654321','013511196','correo_fuk','','','','3','23','','mi direccion local','','','','','','') ");
+		return $query->result();		
+		//return mysqli_affected_rows($query);		
+		
 	}
 
 	//Get suppliers_details
